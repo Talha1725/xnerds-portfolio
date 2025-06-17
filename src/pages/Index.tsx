@@ -135,14 +135,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What We Do Section - Light Surface */}
-      <section className="py-20 bg-surface-light relative overflow-hidden">
+      {/* What We Do Section - Enhanced Light Surface */}
+      <section className="py-20 bg-gradient-to-br from-surface-light via-white to-surface-light relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 50% 50%, rgba(0,71,171,0.3) 1px, transparent 1px)`,
             backgroundSize: '50px 50px'
           }}></div>
+        </div>
+
+        {/* Subtle floating elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-40 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-40 left-20 w-80 h-80 bg-primary-light/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -159,14 +165,14 @@ const Index = () => {
             {services.map((service, index) => (
               <Card
                 key={service.title}
-                className="group relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white/95 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 animate-fade-in-up"
+                className="group relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 animate-fade-in-up border border-primary/5"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Subtle glow effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
                     <service.icon className="h-10 w-10 text-primary" />
                   </div>
                   <h3 className="text-xl font-heading font-bold text-surface-dark mb-4 group-hover:text-primary transition-colors duration-300">
@@ -195,12 +201,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section - White Surface */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      {/* Why Choose Us Section - Subtle Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-slate-light/30 via-surface-light to-white relative overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary-light/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-20 right-20 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary-light/3 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -217,14 +223,14 @@ const Index = () => {
             {whyChooseUs.map((item, index) => (
               <Card
                 key={item.title}
-                className="group text-center relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white/95 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up"
+                className="group text-center relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up border border-primary/5"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Glassmorphism border */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
                     <item.icon className="h-10 w-10 text-primary" />
                   </div>
                   <h3 className="text-xl font-heading font-bold text-surface-dark mb-4 group-hover:text-primary transition-colors duration-300">
@@ -240,8 +246,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section - Dark Accent */}
-      <section className="py-20 bg-gradient-to-r from-surface-dark via-slate-dark to-surface-dark relative overflow-hidden">
+      {/* CTA Section - Enhanced Dark */}
+      <section className="py-20 bg-gradient-to-br from-surface-dark via-slate-dark to-surface-dark relative overflow-hidden">
         {/* Tech Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -251,6 +257,12 @@ const Index = () => {
             `,
             backgroundSize: '60px 60px'
           }}></div>
+        </div>
+
+        {/* Enhanced floating elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-1/4 w-32 h-32 bg-primary-light/20 rounded-full blur-xl animate-float"></div>
+          <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-primary/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -264,8 +276,7 @@ const Index = () => {
             <Button
               asChild
               size="lg"
-              variant="outline"
-              className="bg-white text-surface-dark border-white hover:bg-slate-light rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="bg-gradient-to-r from-primary-light to-primary hover:from-primary-light/90 hover:to-primary/90 text-white rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <Link to="/contact">Let's Talk</Link>
             </Button>

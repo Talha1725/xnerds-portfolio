@@ -30,18 +30,20 @@ export const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          ? "bg-surface-light/95 backdrop-blur-md shadow-lg border-b border-primary/10"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary-light rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">xN</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">xN</span>
             </div>
-            <span className="font-heading font-bold text-xl text-gray-900">
+            <span className={`font-heading font-bold text-xl transition-colors duration-200 ${
+              isScrolled ? "text-surface-dark" : "text-white"
+            }`}>
               xNerds Solutions
             </span>
           </Link>
@@ -55,7 +57,9 @@ export const Navigation = () => {
                 className={`font-medium transition-colors duration-200 hover:text-primary ${
                   location.pathname === item.path
                     ? "text-primary"
-                    : "text-gray-700"
+                    : isScrolled 
+                      ? "text-slate-dark hover:text-primary" 
+                      : "text-slate-light hover:text-primary-light"
                 }`}
               >
                 {item.name}
@@ -63,7 +67,7 @@ export const Navigation = () => {
             ))}
             <Button
               asChild
-              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+              className="bg-gradient-to-r from-primary to-primary-light hover:from-primary/90 hover:to-primary-light/90 text-white rounded-full px-6 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link to="/contact">Let's Talk</Link>
             </Button>
@@ -73,7 +77,9 @@ export const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className={`md:hidden transition-colors duration-200 ${
+              isScrolled ? "text-surface-dark hover:text-primary" : "text-white hover:text-primary-light"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -86,7 +92,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 animate-fade-in">
+          <div className="md:hidden bg-surface-light/95 backdrop-blur-md border-t border-primary/10 animate-fade-in rounded-b-2xl shadow-lg">
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
                 <Link
@@ -95,7 +101,7 @@ export const Navigation = () => {
                   className={`block font-medium transition-colors duration-200 hover:text-primary ${
                     location.pathname === item.path
                       ? "text-primary"
-                      : "text-gray-700"
+                      : "text-slate-dark"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -104,7 +110,7 @@ export const Navigation = () => {
               ))}
               <Button
                 asChild
-                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full"
+                className="w-full bg-gradient-to-r from-primary to-primary-light hover:from-primary/90 hover:to-primary-light/90 text-white rounded-full shadow-lg"
               >
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Let's Talk
