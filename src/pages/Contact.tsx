@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -86,7 +87,7 @@ const Contact = () => {
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
               Let's Build Something Great Together
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Ready to transform your digital presence? Get in touch and let's discuss how we can help bring your vision to life.
             </p>
           </div>
@@ -247,14 +248,19 @@ const Contact = () => {
 
               {/* Lahore Map/Illustration */}
               <Card className="shadow-lg rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4">📍</div>
-                  <h3 className="font-heading font-semibold text-slate-100 mb-2">
-                    Lahore, Pakistan
-                  </h3>
-                  <p className="text-slate-300 text-sm">
-                    Serving clients globally from the heart of Pakistan's tech hub
-                  </p>
+                <CardContent className="p-6">
+                  <div className="aspect-video relative rounded-lg overflow-hidden">
+                   
+                    <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.1130927899044!2d74.26498137629807!3d31.521053674213658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919031d26c1a607%3A0x12265c8b47c7643c!2sISOSS%20House!5e0!3m2!1sen!2s!4v1750163847712!5m2!1sen!2s" 
+                      width="600" 
+                      height="450" 
+                      style={{ border: 0 }} 
+                      allowFullScreen 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -278,20 +284,22 @@ const Contact = () => {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Don't wait - your digital transformation journey starts with a single conversation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="bg-transparent text-white border-white hover:bg-white hover:text-slate-900 rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
               >
-                <a href="mailto:info@xnerds.com">Email Us</a>
+                <a href="mailto:info@xnerds.com" className="flex items-center gap-3">
+                  Email Us
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                </a>
               </Button>
               <Button
                 asChild
-                size="lg"
                 variant="outline"
-                className="bg-transparent text-white border-white hover:bg-white hover:text-slate-900 rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+                size="lg"
+                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
               >
                 <a href="tel:+923234314748">Call Now</a>
               </Button>

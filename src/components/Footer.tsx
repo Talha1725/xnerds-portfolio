@@ -61,9 +61,8 @@ export const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4 mt-6">
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Twitter, href: "#", label: "Twitter" },
+                { icon: Github, href: "https://github.com/XnerdsORG", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/xnerds-solutions/posts/", label: "LinkedIn" },
               ].map((social) => (
                 <a
                   key={social.label}
