@@ -13,8 +13,7 @@ export const Footer = () => {
               <img src="/logo.png" alt="Logo" className="w-[50px] h-[50px]" />
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Empowering businesses through innovative AI solutions and exceptional software services since 2023.
-            </p>
+            xNerds is a forward-thinking company dedicated to delivering innovative technology solutions and exceptional service to drive your success.</p>
             <div className="bg-gradient-to-r from-primary to-primary-light p-4 rounded-lg">
               <p className="font-semibold text-white">Let's build something great together.</p>
             </div>
@@ -67,6 +66,7 @@ export const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
                   className="text-gray-400 hover:text-primary-light transition-all duration-200 transform hover:scale-110"
                   aria-label={social.label}
                 >

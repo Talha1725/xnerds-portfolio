@@ -2,95 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { services } from "@/utils/data";
 
 const Services = () => {
-  const services = [
-    {
-      title: "Web Development",
-      description: "We create stunning, responsive websites that engage your audience and drive results. From simple landing pages to complex web applications, we use the latest technologies to deliver exceptional user experiences.",
-      features: [
-        "Responsive Design",
-        "Custom CMS Solutions",
-        "E-commerce Platforms",
-        "Progressive Web Apps",
-        "API Integration",
-        "Performance Optimization"
-      ],
-      icon: "🌐",
-      technologies: ["React", "Next.js", "Vue.js", "Node.js", "WordPress"]
-    },
-    {
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that provide seamless user experiences across all devices. We build apps that users love and businesses rely on.",
-      features: [
-        "Native iOS & Android",
-        "Cross-platform Solutions",
-        "UI/UX Design",
-        "App Store Optimization",
-        "Push Notifications",
-        "Offline Functionality"
-      ],
-      icon: "📱",
-      technologies: ["Flutter", "React Native", "Swift", "Kotlin", "Xamarin"]
-    },
-    {
-      title: "POS Solutions",
-      description: "Complete Point-of-Sale systems that streamline your business operations. FBR-compliant solutions with real-time reporting and inventory management.",
-      features: [
-        "FBR Compliance",
-        "Inventory Management",
-        "Sales Analytics",
-        "Multi-location Support",
-        "Payment Integration",
-        "Customer Management"
-      ],
-      icon: "🏪",
-      technologies: ["Cloud-based", "Mobile POS", "Hardware Integration"]
-    },
-    {
-      title: "DevOps & Cloud Services",
-      description: "Streamline your development workflow with modern DevOps practices and cloud infrastructure. We help you deploy, scale, and maintain applications efficiently.",
-      features: [
-        "CI/CD Pipelines",
-        "Cloud Migration",
-        "Container Orchestration",
-        "Infrastructure as Code",
-        "Monitoring & Logging",
-        "Security Implementation"
-      ],
-      icon: "☁️",
-      technologies: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"]
-    },
-    {
-      title: "AI & Data Analytics",
-      description: "Harness the power of artificial intelligence and data analytics to make informed decisions and automate processes. Transform your data into actionable insights.",
-      features: [
-        "Machine Learning Models",
-        "Natural Language Processing",
-        "Business Intelligence",
-        "Predictive Analytics",
-        "Data Visualization",
-        "AI Chatbots"
-      ],
-      icon: "🤖",
-      technologies: ["Python", "TensorFlow", "Power BI", "Tableau", "OpenAI"]
-    },
-    {
-      title: "Staff Augmentation",
-      description: "Accelerate your projects with flexible, on-demand access to skilled developers, engineers, and AI experts — handpicked to fit your tech stack and culture.",
-      features: [
-        "Full-Stack & Frontend Engineers",
-        "AI/ML & Data Science Experts",
-        "DevOps & Cloud Architects",
-        "UI/UX Designers & QA Engineers",
-        "Long-Term or Project-Based",
-        "Seamless Team Extension"
-      ],
-      icon: "👥",
-      technologies: ["Python", "Javascript", "Java", "OpenAI"]
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
       {/* Hero Section */}
@@ -140,14 +54,14 @@ const Services = () => {
                 key={service.title}
                 className={`flex flex-col ${
                   index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } items-center gap-12 animate-fade-in-up`}
+                } lg:items-center gap-12 animate-fade-in-up`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Service Content */}
                 <div className="flex-1 space-y-6">
                   <div className="flex items-center space-x-4">
                     <div className="w-16 h-16 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl flex items-center justify-center text-2xl border border-primary/10">
-                      {service.icon}
+                      <service.icon className="h-8 w-8 text-slate-300" />
                     </div>
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100">
                       {service.title}
@@ -166,17 +80,6 @@ const Services = () => {
                       </div>
                     ))}
                   </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Service Visual */}
@@ -184,8 +87,12 @@ const Services = () => {
                   <Card className="relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-slate-800/50 shadow-lg hover:shadow-2xl transition-all duration-500 group">
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <CardContent className="p-8 relative z-10">
-                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10">
-                        {service.icon}
+                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10 overflow-hidden">
+                        <img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </CardContent>
                   </Card>

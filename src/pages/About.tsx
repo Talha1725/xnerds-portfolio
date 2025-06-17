@@ -1,103 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { CheckCircle, Rocket, Users, Target, Lightbulb, Award, Code, Brain, Zap, Palette, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { timeline, values, team } from "@/utils/data";
 
 const About = () => {
   const [activeTimelineItem, setActiveTimelineItem] = useState(2);
-
-  const timeline = [
-    {
-      year: "2023",
-      title: "Founded",
-      description: "xNerds Solutions was established in Lahore with a vision to empower businesses through innovative technology solutions.",
-      icon: Rocket,
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      year: "2023",
-      title: "First Projects",
-      description: "Successfully delivered our first web development and mobile app projects, establishing our reputation for quality.",
-      icon: Code,
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      year: "2024",
-      title: "AI Integration",
-      description: "Expanded our services to include AI and machine learning solutions, helping clients automate and optimize their operations.",
-      icon: Brain,
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      year: "2024",
-      title: "Growth",
-      description: "Reached 30+ satisfied clients and 50+ completed projects, building a strong portfolio across multiple industries.",
-      icon: Users,
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      year: "2025",
-      title: "Innovation",
-      description: "Continuing to push boundaries with cutting-edge solutions in AI, cloud computing, and digital transformation.",
-      icon: Zap,
-      color: "from-indigo-500 to-purple-500"
-    }
-  ];
-
-  const values = [
-    {
-      title: "Innovation",
-      description: "We stay ahead of technology trends to provide cutting-edge solutions that give our clients a competitive advantage.",
-      icon: Lightbulb,
-      gradient: "from-blue-500 via-blue-600 to-cyan-500"
-    },
-    {
-      title: "Quality",
-      description: "Every project is crafted with attention to detail and rigorous testing to ensure exceptional performance and reliability.",
-      icon: Award,
-      gradient: "from-purple-500 via-purple-600 to-pink-500"
-    },
-    {
-      title: "Collaboration",
-      description: "We work closely with our clients as partners, understanding their vision and translating it into successful digital solutions.",
-      icon: Users,
-      gradient: "from-green-500 via-green-600 to-emerald-500"
-    },
-    {
-      title: "Growth",
-      description: "We're committed to continuous learning and improvement, always expanding our skills and knowledge to serve you better.",
-      icon: Target,
-      gradient: "from-orange-500 via-orange-600 to-red-500"
-    }
-  ];
-
-  const team = [
-    {
-      name: "Development Team",
-      role: "Full-Stack Developers",
-      description: "Expert developers specializing in modern web and mobile technologies.",
-      icon: Code
-    },
-    {
-      name: "AI Specialists",
-      role: "Machine Learning Engineers",
-      description: "Data scientists and AI engineers creating intelligent solutions.",
-      icon: Brain
-    },
-    {
-      name: "DevOps Team",
-      role: "Cloud Engineers",
-      description: "Infrastructure experts ensuring scalable and secure deployments.",
-      icon: Zap
-    },
-    {
-      name: "Design Team",
-      role: "UI/UX Designers",
-      description: "Creative designers crafting beautiful and intuitive user experiences.",
-      icon: Palette
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">

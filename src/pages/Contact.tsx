@@ -56,7 +56,6 @@ const Contact = () => {
   const socialLinks = [
     { icon: Github, href: "#", label: "GitHub", color: "hover:text-gray-900" },
     { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-600" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-400" },
   ];
 
   return (
