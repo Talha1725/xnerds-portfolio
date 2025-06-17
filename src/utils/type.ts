@@ -54,3 +54,9 @@ export interface Project {
     description: string;
     icon: LucideIcon;
   }
+
+  export interface Message {
+    text: string;
+    isUser: boolean;
+  }
+  

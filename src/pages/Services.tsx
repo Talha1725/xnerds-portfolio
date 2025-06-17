@@ -54,7 +54,7 @@ const Services = () => {
                 key={service.title}
                 className={`flex flex-col ${
                   index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } items-center gap-12 animate-fade-in-up`}
+                } lg:items-center gap-12 animate-fade-in-up`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Service Content */}
