@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -104,7 +103,7 @@ const Index = () => {
           }}></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 pt-20">
+        <div className="container mx-auto px-4 relative z-10 pt-10">
           <div className="max-w-6xl mx-auto text-center">
             {/* Animated Badge */}
             <div className="mb-8 animate-fade-in-up">
@@ -123,7 +122,7 @@ const Index = () => {
                 </span>{" "}
                 With Technology
               </h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-6 max-w-4xl mx-auto leading-relaxed font-medium">
+              <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-4xl mx-auto leading-relaxed font-medium">
                 We craft innovative software solutions that drive growth, efficiency, and success for modern businesses
               </p>
               <p className="text-base text-slate-400 max-w-3xl mx-auto font-normal">
@@ -132,11 +131,11 @@ const Index = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Button
                 asChild
                 size="lg"
-                className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
+                className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105"
               >
                 <Link to="/contact" className="flex items-center gap-3">
                   Get Started Today
@@ -147,7 +146,7 @@ const Index = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="group rounded-full px-12 py-6 text-lg font-bold border-2 border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:border-teal-400/40 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 backdrop-blur-sm"
+                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
               >
                 <Link to="/portfolio" className="flex items-center gap-3">
                   <Play className="h-5 w-5 group-hover:scale-125 transition-transform duration-300" />
@@ -172,7 +171,13 @@ const Index = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+          onClick={() => {
+            const servicesSection = document.querySelector('section:nth-of-type(2)');
+            servicesSection?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
           <div className="w-6 h-10 border-2 border-blue-400/40 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-blue-400/60 rounded-full mt-2 animate-pulse"></div>
           </div>
@@ -180,7 +185,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -206,7 +211,7 @@ const Index = () => {
             {services.map((service, index) => (
               <Card
                 key={service.title}
-                className="group relative overflow-hidden border-0 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1 animate-fade-in-up cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1 animate-fade-in-up cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-all duration-500`}></div>
@@ -240,8 +245,8 @@ const Index = () => {
               asChild
               variant="outline"
               size="lg"
-              className="group rounded-full px-12 py-6 text-lg font-bold border-2 border-teal-500/30 text-teal-300 hover:bg-teal-500/10 hover:border-teal-400/60 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 backdrop-blur-sm"
-            >
+              className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
+              >
               <Link to="/services" className="flex items-center gap-3">
                 Explore All Services
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -252,7 +257,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-green-500/15 to-teal-500/15 rounded-full blur-3xl animate-float"></div>
         </div>
@@ -348,7 +353,7 @@ const Index = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="group rounded-full px-12 py-6 text-lg font-bold border-2 border-slate-600/50 text-slate-300 hover:bg-slate-700/30 hover:border-slate-500/70 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3"
+                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
               >
                 <Link to="/about">Learn More About Us</Link>
               </Button>
