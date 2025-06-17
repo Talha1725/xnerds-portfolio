@@ -17,7 +17,6 @@ const Services = () => {
         "Performance Optimization"
       ],
       icon: "🌐",
-      gradient: "from-blue-500 to-cyan-500",
       technologies: ["React", "Next.js", "Vue.js", "Node.js", "WordPress"]
     },
     {
@@ -32,7 +31,6 @@ const Services = () => {
         "Offline Functionality"
       ],
       icon: "📱",
-      gradient: "from-purple-500 to-pink-500",
       technologies: ["Flutter", "React Native", "Swift", "Kotlin", "Xamarin"]
     },
     {
@@ -47,7 +45,6 @@ const Services = () => {
         "Customer Management"
       ],
       icon: "🏪",
-      gradient: "from-green-500 to-emerald-500",
       technologies: ["Cloud-based", "Mobile POS", "Hardware Integration"]
     },
     {
@@ -62,7 +59,6 @@ const Services = () => {
         "Security Implementation"
       ],
       icon: "☁️",
-      gradient: "from-orange-500 to-red-500",
       technologies: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"]
     },
     {
@@ -77,21 +73,20 @@ const Services = () => {
         "AI Chatbots"
       ],
       icon: "🤖",
-      gradient: "from-indigo-500 to-purple-500",
       technologies: ["Python", "TensorFlow", "Power BI", "Tableau", "OpenAI"]
     }
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 bg-surface-light">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary-light/10">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-surface-light to-primary-light/10">
         <div className="container mx-auto px-4 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-surface-dark mb-6">
               Our Services
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-dark max-w-3xl mx-auto mb-8">
               Comprehensive technology solutions tailored to your business needs. 
               From web development to AI, we've got you covered.
             </p>
@@ -114,15 +109,15 @@ const Services = () => {
                 {/* Service Content */}
                 <div className="flex-1 space-y-6">
                   <div className="flex items-center space-x-4">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-2xl flex items-center justify-center text-2xl`}>
+                    <div className="w-16 h-16 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl flex items-center justify-center text-2xl border border-primary/10">
                       {service.icon}
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-surface-dark">
                       {service.title}
                     </h2>
                   </div>
                   
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-lg text-slate-dark leading-relaxed">
                     {service.description}
                   </p>
 
@@ -130,7 +125,7 @@ const Services = () => {
                     {service.features.map((feature) => (
                       <div key={feature} className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-slate-dark">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -139,7 +134,7 @@ const Services = () => {
                     {service.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full"
+                        className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
                       >
                         {tech}
                       </span>
@@ -149,9 +144,10 @@ const Services = () => {
 
                 {/* Service Visual */}
                 <div className="flex-1">
-                  <Card className="bg-gradient-to-br from-gray-50 to-white border-0 shadow-lg rounded-2xl overflow-hidden">
-                    <CardContent className="p-8">
-                      <div className={`w-full h-64 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center text-6xl opacity-20`}>
+                  <Card className="relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 shadow-lg hover:shadow-2xl transition-all duration-500 group">
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <CardContent className="p-8 relative z-10">
+                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10">
                         {service.icon}
                       </div>
                     </CardContent>
@@ -164,13 +160,13 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary-light">
+      <section className="py-20 bg-gradient-to-r from-surface-dark via-slate-dark to-surface-dark">
         <div className="container mx-auto px-4 text-center">
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-light mb-8 max-w-2xl mx-auto">
               Let's discuss which services are right for your project and how we can help you achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -178,7 +174,7 @@ const Services = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-white text-primary border-white hover:bg-gray-100 rounded-full px-8"
+                className="bg-white text-surface-dark border-white hover:bg-slate-light rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <Link to="/contact">Get Started</Link>
               </Button>
@@ -186,7 +182,7 @@ const Services = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-primary rounded-full px-8"
+                className="border-white text-white hover:bg-white hover:text-surface-dark rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <Link to="/portfolio">View Our Work</Link>
               </Button>

@@ -10,35 +10,30 @@ const Index = () => {
       title: "Web Development",
       description: "Responsive design, custom CMS, modern frameworks",
       icon: Code,
-      gradient: "from-blue-500 via-blue-600 to-cyan-500",
       glowColor: "blue"
     },
     {
       title: "Mobile Apps",
       description: "Android/iOS, Flutter/React Native solutions",
       icon: Settings,
-      gradient: "from-purple-500 via-purple-600 to-pink-500",
       glowColor: "purple"
     },
     {
       title: "POS Solutions",
       description: "FBR-compliant systems, sales tracking",
       icon: Calendar,
-      gradient: "from-green-500 via-green-600 to-emerald-500",
       glowColor: "green"
     },
     {
       title: "DevOps & Cloud",
       description: "CI/CD, cloud automation, Kubernetes",
       icon: Zap,
-      gradient: "from-orange-500 via-orange-600 to-red-500",
       glowColor: "orange"
     },
     {
       title: "AI & Analytics",
       description: "NLP, ML models, BI dashboards",
       icon: Brain,
-      gradient: "from-indigo-500 via-indigo-600 to-purple-500",
       glowColor: "indigo"
     }
   ];
@@ -164,29 +159,24 @@ const Index = () => {
             {services.map((service, index) => (
               <Card
                 key={service.title}
-                className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-0 bg-surface backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up relative"
-                style={{ 
-                  animationDelay: `${index * 0.1}s`,
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%)'
-                }}
+                className="group relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white/95 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Glow Effect */}
-                <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${service.gradient} blur-xl`}></div>
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <CardContent className="p-8 relative z-10">
-                  <div className={`w-20 h-20 bg-gradient-to-r ${service.gradient} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500 shadow-lg relative overflow-hidden`}>
-                    {/* Icon Glow */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-30 blur-md group-hover:opacity-50 transition-opacity duration-500`}></div>
-                    <service.icon className="h-10 w-10 text-white relative z-10" />
+                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
+                    <service.icon className="h-10 w-10 text-primary" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-surface-dark mb-4">
+                  <h3 className="text-xl font-heading font-bold text-surface-dark mb-4 group-hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-slate-dark leading-relaxed">
                     {service.description}
                   </p>
-                  {/* Subtle border accent */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-3xl"></div>
                 </CardContent>
               </Card>
             ))}
@@ -197,7 +187,7 @@ const Index = () => {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-2xl px-8 border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/40 backdrop-blur-sm bg-surface shadow-lg hover:shadow-xl transition-all duration-300"
+              className="rounded-2xl px-8 border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/40 backdrop-blur-sm bg-white shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link to="/services">Explore All Services</Link>
             </Button>
@@ -205,8 +195,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section - Slate Light */}
-      <section className="py-20 bg-slate-light relative overflow-hidden">
+      {/* Why Choose Us Section - White Surface */}
+      <section className="py-20 bg-white relative overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
@@ -227,20 +217,17 @@ const Index = () => {
             {whyChooseUs.map((item, index) => (
               <Card
                 key={item.title}
-                className="group text-center hover:shadow-xl transition-all duration-500 border-0 rounded-3xl animate-fade-in-up relative overflow-hidden"
-                style={{ 
-                  animationDelay: `${index * 0.2}s`,
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%)'
-                }}
+                className="group text-center relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-white/90 hover:bg-white/95 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                {/* Glassmorphism effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm"></div>
+                {/* Glassmorphism border */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-r group-hover:from-primary/20 group-hover:to-primary-light/20 transition-all duration-500 shadow-lg">
-                    <item.icon className="h-10 w-10 text-primary group-hover:scale-110 transition-transform duration-500" />
+                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 border border-primary/10">
+                    <item.icon className="h-10 w-10 text-primary" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-surface-dark mb-4">
+                  <h3 className="text-xl font-heading font-bold text-surface-dark mb-4 group-hover:text-primary transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-slate-dark leading-relaxed">
