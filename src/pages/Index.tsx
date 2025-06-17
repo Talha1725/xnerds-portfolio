@@ -41,18 +41,18 @@ const Index = () => {
       gradient: "from-green-500 to-teal-600"
     },
     {
-      title: "Digital Transformation",
-      description: "Strategic consulting and implementation services to modernize your business processes and technology stack.",
+      title: "Staff Augmentation",
+      description: "Extend your team with top-tier engineers, AI specialists, and developers — without the hiring overhead. We help you scale fast and smart.",
       icon: Rocket,
-      features: ["Strategy Consulting", "Process Automation", "Technology Roadmap"],
+      features: ["Vetted Tech Talent", "On-Demand Scaling", "Seamless Team Integration"],
       gradient: "from-orange-500 to-red-600"
     }
   ];
 
   const stats = [
     { number: "50+", label: "Projects Delivered", icon: TrendingUp, color: "text-blue-400" },
-    { number: "25+", label: "Happy Clients", icon: Users, color: "text-purple-400" },
-    { number: "5+", label: "Years of Excellence", icon: Award, color: "text-teal-400" },
+    { number: "50+", label: "Happy Clients", icon: Users, color: "text-purple-400" },
+    { number: "7+", label: "Years of Excellence", icon: Award, color: "text-teal-400" },
     { number: "100%", label: "Client Satisfaction", icon: Star, color: "text-yellow-400" }
   ];
 
@@ -116,18 +116,17 @@ const Index = () => {
             {/* Main Heading */}
             <div className="mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-slate-100 mb-6 leading-tight tracking-tight">
-                Transform Your{" "}
+              Innovation {" "}
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
-                  Business
+                Engineered
                 </span>{" "}
-                With Technology
+                , Solution Delivered
               </h1>
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-4xl mx-auto leading-relaxed font-medium">
-                We craft innovative software solutions that drive growth, efficiency, and success for modern businesses
+              We craft intelligent, future-ready software and AI solutions that power business growth, streamline operations, and enable digital transformation.
               </p>
               <p className="text-base text-slate-400 max-w-3xl mx-auto font-normal">
-                From custom applications to enterprise systems, we deliver technology that makes a difference
-              </p>
+              From custom apps to enterprise AI, we engineer tech that moves business forward.</p>
             </div>
 
             {/* CTA Buttons */}
@@ -342,7 +341,7 @@ const Index = () => {
               <Button
                 asChild
                 size="lg"
-                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-110"
+                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
               >
                 <Link to="/contact" className="flex items-center gap-3">
                   Start Your Project

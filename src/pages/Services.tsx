@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -73,13 +74,27 @@ const Services = () => {
       ],
       icon: "🤖",
       technologies: ["Python", "TensorFlow", "Power BI", "Tableau", "OpenAI"]
+    },
+    {
+      title: "Staff Augmentation",
+      description: "Accelerate your projects with flexible, on-demand access to skilled developers, engineers, and AI experts — handpicked to fit your tech stack and culture.",
+      features: [
+        "Full-Stack & Frontend Engineers",
+        "AI/ML & Data Science Experts",
+        "DevOps & Cloud Architects",
+        "UI/UX Designers & QA Engineers",
+        "Long-Term or Project-Based",
+        "Seamless Team Extension"
+      ],
+      icon: "👥",
+      technologies: ["Python", "Javascript", "Java", "OpenAI"]
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="py-20 h-[40vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-20 h-[70vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
@@ -104,16 +119,15 @@ const Services = () => {
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
               Our Services
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Comprehensive technology solutions tailored to your business needs. 
-              From web development to AI, we've got you covered.
+            <p className="text-sm lg:text-xl text-slate-300 max-w-3xl mx-auto">
+            At xNerds, we partner with clients at various stages — from product ideation to scaling production systems — and bring cross-functional expertise across design, engineering, AI, and DevOps. Our focus is on delivering software that is not only technically robust but also elegant in user experience and aligned with business KPIs. Each engagement is tailored, iterative, and backed by clear communication and modern development practices.
             </p>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-10 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -198,20 +212,22 @@ const Services = () => {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Let's discuss which services are right for your project and how we can help you achieve your goals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="bg-transparent text-white border-white hover:bg-white hover:text-slate-900 rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
               >
-                <Link to="/contact">Get Started</Link>
+                <Link to="/contact" className="flex items-center gap-3">
+                  Get Started
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                </Link>
               </Button>
               <Button
                 asChild
-                size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-slate-900 rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+                size="lg"
+                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
               >
                 <Link to="/portfolio">View Our Work</Link>
               </Button>

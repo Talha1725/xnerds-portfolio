@@ -1,57 +1,64 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Portfolio = () => {
   const projects = [
     {
       title: "ACTFlow",
       description: "A comprehensive process automation platform that streamlines business workflows and increases operational efficiency.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      image: "/act.png",
       tags: ["Process Automation", "React", "Node.js", "MongoDB"],
-      category: "Web Application"
+      category: "Web Application",
+      url: "https://www.actflow.ai/"
     },
     {
       title: "Antaragame",
       description: "AI-powered gaming platform that creates personalized gaming experiences using machine learning algorithms.",
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
+      image: "/antaragame.png",
       tags: ["AI Gaming", "Machine Learning", "Unity", "Python"],
-      category: "AI Platform"
+      category: "AI Platform",
+      url:"http://antaragame.io/"
     },
     {
       title: "Bitlenz",
       description: "Advanced data analytics dashboard providing real-time insights and business intelligence for enterprise clients.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/bitlenz.png",
       tags: ["Data Analytics", "Business Intelligence", "Vue.js", "D3.js"],
-      category: "Analytics Dashboard"
+      category: "Analytics Dashboard",
+      url: "https://www.bitlenz.com/"
     },
     {
       title: "BasedAgent",
       description: "Intelligent virtual AI assistant that helps businesses automate customer service and support operations.",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
+      image: "/basedagent.png",
       tags: ["AI Assistant", "NLP", "Chatbot", "OpenAI"],
-      category: "AI Solution"
+      category: "AI Solution",
+      url: "https://basedagent.co/"
     },
     {
       title: "FIGMENT",
       description: "Robust fintech trading backend system handling high-frequency transactions with enterprise-grade security.",
-      image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop",
+      image: "/figment.png",
       tags: ["Fintech", "Trading", "Backend", "Microservices"],
-      category: "Backend System"
+      category: "Backend System",
+      url: "https://figment.trade/"
     },
     {
       title: "Smart POS Pro",
       description: "FBR-compliant point-of-sale system with inventory management and real-time sales analytics for retail businesses.",
-      image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=600&h=400&fit=crop",
-      tags: ["POS System", "FBR Compliant", "Inventory", "Flutter"],
-      category: "Mobile App"
+      image: "/pos.jpg",
+      tags: ["POS System", "FBR Compliant", "Inventory"],
+      category: "Mobile App",
+      url: ""
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="py-20 h-[40vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-20 h-[70vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
@@ -76,16 +83,15 @@ const Portfolio = () => {
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
               Our Portfolio
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Explore our latest projects and see how we've helped businesses 
-              transform their digital presence with innovative solutions.
+            <p className="text-sm lg:text-xl text-slate-300 max-w-3xl mx-auto">
+            At xNerds, we don’t just deliver software — we create digital ecosystems tailored to solve specific problems across industries. Our project portfolio reflects our ability to adapt, innovate, and deliver value under varying constraints. From high-frequency crypto platforms to blockchain-based games and intelligent educational tools, we’ve partnered with startups, scaleups, and enterprise clients alike.
             </p>
           </div>
         </div>
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-20 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-10 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -117,7 +123,18 @@ const Portfolio = () => {
                     </div>
                   </div>
                   <h3 className="text-xl font-black text-slate-100 mb-4 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                    {project.title}
+                    {project.url ? (
+                      <Link 
+                        to={project.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                      >
+                        {project.title}
+                      </Link>
+                    ) : (
+                      project.title
+                    )}
                   </h3>
                   <p className="text-slate-300 mb-6 leading-relaxed text-sm font-medium group-hover:text-slate-200 transition-colors duration-300">
                     {project.description}
@@ -186,14 +203,26 @@ const Portfolio = () => {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Join our growing list of satisfied clients and let us help you build something amazing.
             </p>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white hover:text-slate-900 rounded-2xl px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            >
-              <Link to="/contact">Start Your Project</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <Button
+                asChild
+                size="lg"
+                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
+              >
+                <Link to="/contact" className="flex items-center gap-3">
+                  Start Your Project
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
+              >
+                <Link to="/about">Learn More About Us</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
