@@ -10,12 +10,7 @@ export const Footer = () => {
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary-light rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">xN</span>
-              </div>
-              <span className="font-heading font-bold text-xl">
-                xNerds Solutions
-              </span>
+              <img src="/logo.png" alt="Logo" className="w-[50px] h-[50px]" />
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               Empowering businesses through innovative AI solutions and exceptional software services since 2023.
