@@ -63,6 +63,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Modern Dark Accents Color Scheme
+				'surface': {
+					light: '#F8FAFC',
+					DEFAULT: '#FFFFFF',
+					dark: '#1E293B'
+				},
+				'slate': {
+					light: '#F1F5F9',
+					DEFAULT: '#64748B',
+					dark: '#475569'
 				}
 			},
 			fontFamily: {
