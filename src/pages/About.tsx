@@ -2,33 +2,47 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { CheckCircle, Rocket, Users, Target, Lightbulb, Award, Code, Brain, Zap, Palette } from "lucide-react";
+import { useState } from "react";
 
 const About = () => {
+  const [activeTimelineItem, setActiveTimelineItem] = useState(2);
+
   const timeline = [
     {
       year: "2023",
       title: "Founded",
-      description: "xNerds Solutions was established in Lahore with a vision to empower businesses through innovative technology solutions."
+      description: "xNerds Solutions was established in Lahore with a vision to empower businesses through innovative technology solutions.",
+      icon: Rocket,
+      color: "from-blue-500 to-cyan-500"
     },
     {
       year: "2023",
       title: "First Projects",
-      description: "Successfully delivered our first web development and mobile app projects, establishing our reputation for quality."
+      description: "Successfully delivered our first web development and mobile app projects, establishing our reputation for quality.",
+      icon: Code,
+      color: "from-green-500 to-emerald-500"
     },
     {
       year: "2024",
       title: "AI Integration",
-      description: "Expanded our services to include AI and machine learning solutions, helping clients automate and optimize their operations."
+      description: "Expanded our services to include AI and machine learning solutions, helping clients automate and optimize their operations.",
+      icon: Brain,
+      color: "from-purple-500 to-pink-500"
     },
     {
       year: "2024",
       title: "Growth",
-      description: "Reached 30+ satisfied clients and 50+ completed projects, building a strong portfolio across multiple industries."
+      description: "Reached 30+ satisfied clients and 50+ completed projects, building a strong portfolio across multiple industries.",
+      icon: Users,
+      color: "from-orange-500 to-red-500"
     },
     {
       year: "2025",
       title: "Innovation",
-      description: "Continuing to push boundaries with cutting-edge solutions in AI, cloud computing, and digital transformation."
+      description: "Continuing to push boundaries with cutting-edge solutions in AI, cloud computing, and digital transformation.",
+      icon: Zap,
+      color: "from-indigo-500 to-purple-500"
     }
   ];
 
@@ -36,26 +50,26 @@ const About = () => {
     {
       title: "Innovation",
       description: "We stay ahead of technology trends to provide cutting-edge solutions that give our clients a competitive advantage.",
-      icon: "💡",
-      gradient: "from-blue-500 to-cyan-500"
+      icon: Lightbulb,
+      gradient: "from-blue-500 via-blue-600 to-cyan-500"
     },
     {
       title: "Quality",
       description: "Every project is crafted with attention to detail and rigorous testing to ensure exceptional performance and reliability.",
-      icon: "⭐",
-      gradient: "from-purple-500 to-pink-500"
+      icon: Award,
+      gradient: "from-purple-500 via-purple-600 to-pink-500"
     },
     {
       title: "Collaboration",
       description: "We work closely with our clients as partners, understanding their vision and translating it into successful digital solutions.",
-      icon: "🤝",
-      gradient: "from-green-500 to-emerald-500"
+      icon: Users,
+      gradient: "from-green-500 via-green-600 to-emerald-500"
     },
     {
       title: "Growth",
       description: "We're committed to continuous learning and improvement, always expanding our skills and knowledge to serve you better.",
-      icon: "📈",
-      gradient: "from-orange-500 to-red-500"
+      icon: Target,
+      gradient: "from-orange-500 via-orange-600 to-red-500"
     }
   ];
 
@@ -64,38 +78,44 @@ const About = () => {
       name: "Development Team",
       role: "Full-Stack Developers",
       description: "Expert developers specializing in modern web and mobile technologies.",
-      avatar: "👨‍💻"
+      icon: Code
     },
     {
       name: "AI Specialists",
       role: "Machine Learning Engineers",
       description: "Data scientists and AI engineers creating intelligent solutions.",
-      avatar: "🤖"
+      icon: Brain
     },
     {
       name: "DevOps Team",
       role: "Cloud Engineers",
       description: "Infrastructure experts ensuring scalable and secure deployments.",
-      avatar: "☁️"
+      icon: Zap
     },
     {
       name: "Design Team",
       role: "UI/UX Designers",
       description: "Creative designers crafting beautiful and intuitive user experiences.",
-      avatar: "🎨"
+      icon: Palette
     }
   ];
 
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary-light/10">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-primary-light/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 mb-6">
               About xNerds Solutions
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
               A passionate team of technology enthusiasts dedicated to empowering businesses 
               through innovative AI solutions and exceptional software services since 2023.
             </p>
@@ -110,8 +130,9 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-8">
               Our Mission
             </h2>
-            <div className="bg-gradient-to-r from-primary to-primary-light p-8 rounded-2xl text-white">
-              <p className="text-xl leading-relaxed">
+            <div className="bg-gradient-to-r from-primary to-primary-light p-8 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+              <p className="text-xl leading-relaxed relative z-10 font-medium">
                 "To empower businesses through innovative AI solutions and exceptional software services, 
                 helping them thrive in the digital age while maintaining the highest standards of quality and customer satisfaction."
               </p>
@@ -120,8 +141,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Interactive Timeline Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
@@ -132,37 +153,57 @@ const About = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
+            {/* Interactive Timeline */}
             <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-primary/20"></div>
+              {/* Central Timeline Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-primary-light"></div>
               
               {timeline.map((item, index) => (
                 <div
                   key={item.year}
-                  className={`relative flex items-center mb-12 animate-fade-in-up ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  className={`relative flex items-center mb-16 cursor-pointer transition-all duration-500 ${
+                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                   }`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                  onClick={() => setActiveTimelineItem(index)}
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
+                  {/* Timeline Node */}
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full border-4 border-white shadow-xl z-20 transition-all duration-500 ${
+                    activeTimelineItem === index 
+                      ? `bg-gradient-to-r ${item.color} scale-125` 
+                      : 'bg-white hover:scale-110'
+                  }`}>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <item.icon className={`w-6 h-6 transition-colors duration-300 ${
+                        activeTimelineItem === index ? 'text-white' : 'text-primary'
+                      }`} />
+                    </div>
+                  </div>
                   
-                  {/* Content */}
-                  <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                    <Card className="border-0 shadow-lg rounded-2xl bg-white">
-                      <CardContent className="p-6">
-                        <div className="flex items-center space-x-4 mb-3">
-                          <span className="text-2xl font-heading font-bold text-primary">
+                  {/* Content Card */}
+                  <div className={`flex-1 ${index % 2 === 0 ? "pr-12" : "pl-12"}`}>
+                    <Card className={`border-0 shadow-lg rounded-3xl overflow-hidden transition-all duration-500 transform hover:scale-105 ${
+                      activeTimelineItem === index 
+                        ? 'shadow-2xl bg-gradient-to-br from-white to-blue-50' 
+                        : 'bg-white hover:shadow-xl'
+                    }`}>
+                      <CardContent className="p-8">
+                        <div className="flex items-center space-x-4 mb-4">
+                          <span className={`text-3xl font-heading font-bold transition-colors duration-300 ${
+                            activeTimelineItem === index ? 'text-primary' : 'text-gray-400'
+                          }`}>
                             {item.year}
                           </span>
-                          <h3 className="text-xl font-heading font-semibold text-gray-900">
+                          <h3 className="text-2xl font-heading font-bold text-gray-900">
                             {item.title}
                           </h3>
                         </div>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 leading-relaxed text-lg">
                           {item.description}
                         </p>
+                        {activeTimelineItem === index && (
+                          <div className={`w-full h-1 bg-gradient-to-r ${item.color} mt-4 rounded-full animate-fade-in`}></div>
+                        )}
                       </CardContent>
                     </Card>
                   </div>
@@ -174,7 +215,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20">
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
@@ -189,14 +230,20 @@ const About = () => {
             {values.map((value, index) => (
               <Card
                 key={value.title}
-                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 bg-white rounded-2xl animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-0 rounded-3xl animate-fade-in-up relative overflow-hidden"
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%)'
+                }}
               >
-                <CardContent className="p-6 text-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${value.gradient} rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    {value.icon}
+                {/* Glow Effect */}
+                <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${value.gradient} blur-xl`}></div>
+                
+                <CardContent className="p-6 text-center relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${value.gradient} rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                    <value.icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-gray-900 mb-3">
+                  <h3 className="text-xl font-heading font-bold text-gray-900 mb-3">
                     {value.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
@@ -210,7 +257,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">
@@ -225,17 +272,20 @@ const About = () => {
             {team.map((member, index) => (
               <Card
                 key={member.name}
-                className="group hover:shadow-lg transition-all duration-300 border-0 bg-white rounded-2xl animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group hover:shadow-xl transition-all duration-500 border-0 rounded-3xl animate-fade-in-up relative overflow-hidden"
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%)'
+                }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                    {member.avatar}
+                  <div className="w-20 h-20 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-r group-hover:from-primary/20 group-hover:to-primary-light/20 transition-all duration-500 shadow-lg">
+                    <member.icon className="h-10 w-10 text-primary group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <h3 className="text-lg font-heading font-semibold text-gray-900 mb-1">
+                  <h3 className="text-lg font-heading font-bold text-gray-900 mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-primary font-medium mb-3">
+                  <p className="text-primary font-semibold mb-3">
                     {member.role}
                   </p>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -258,10 +308,11 @@ const About = () => {
             <p className="text-xl text-gray-600 mb-8">
               Proudly serving clients locally and globally from the heart of Pakistan's technology hub
             </p>
-            <Card className="border-0 shadow-lg rounded-2xl bg-gradient-to-r from-primary/5 to-primary-light/5">
-              <CardContent className="p-8">
-                <div className="text-6xl mb-4">🏢</div>
-                <p className="text-lg text-gray-700">
+            <Card className="border-0 shadow-2xl rounded-3xl overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary-light/5"></div>
+              <CardContent className="p-8 relative z-10">
+                <div className="text-6xl mb-6">🏢</div>
+                <p className="text-lg text-gray-700 leading-relaxed">
                   Our headquarters in Lahore puts us at the center of Pakistan's thriving tech ecosystem, 
                   allowing us to attract top talent and stay connected with the latest industry trends.
                 </p>
@@ -272,8 +323,15 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary-light">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-20 bg-gradient-to-r from-primary via-primary-light to-primary relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, white 2px, transparent 2px)`,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Want to Join Our Success Story?
@@ -285,7 +343,7 @@ const About = () => {
               asChild
               size="lg"
               variant="outline"
-              className="bg-white text-primary border-white hover:bg-gray-100 rounded-full px-8"
+              className="bg-white text-primary border-white hover:bg-gray-50 rounded-2xl px-8 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <Link to="/contact">Get in Touch</Link>
             </Button>
