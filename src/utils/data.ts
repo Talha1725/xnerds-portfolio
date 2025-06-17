@@ -58,42 +58,48 @@ export const services: Service[] = [
     description: "Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.",
     icon: Code,
     features: ["Web Applications", "API Development", "System Integration"],
-    gradient: "from-blue-500 to-purple-600"
+    gradient: "from-blue-500 to-purple-600",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2ViJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8fDA%3D"
   },
   {
     title: "Mobile App Development", 
     description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
     icon: Smartphone,
     features: ["iOS & Android", "React Native", "Flutter"],
-    gradient: "from-teal-500 to-cyan-600"
+    gradient: "from-teal-500 to-cyan-600",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwYXBwfGVufDB8fDB8fHww"
   },
   {
     title: "Enterprise Solutions",
     description: "Comprehensive business solutions including ERP, CRM, and POS systems with full compliance and integration.",
     icon: ShoppingCart,
     features: ["ERP Systems", "CRM Solutions", "POS Integration"],
-    gradient: "from-purple-500 to-pink-600"
+    gradient: "from-purple-500 to-pink-600",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dWklMjBkZXNpZ258ZW58MHx8MHx8fDA%3D"
   },
   {
     title: "Cloud & DevOps",
     description: "Scalable cloud infrastructure and automated deployment solutions for modern businesses.",
     icon: Cloud,
     features: ["AWS/Azure", "CI/CD", "Infrastructure as Code"],
-    gradient: "from-indigo-500 to-blue-600"
+    gradient: "from-indigo-500 to-blue-600",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWQlMjBjb21wdXRpbmd8ZW58MHx8MHx8fDA%3D"
   },
   {
     title: "AI & Data Analytics",
     description: "Intelligent solutions powered by machine learning and advanced analytics to drive business insights.",
     icon: Brain,
     features: ["Machine Learning", "Data Visualization", "Predictive Analytics"],
-    gradient: "from-green-500 to-teal-600"
+    gradient: "from-green-500 to-teal-600",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0aWZpY2lhbCUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     title: "Staff Augmentation",
     description: "Extend your team with top-tier engineers, AI specialists, and developers — without the hiring overhead. We help you scale fast and smart.",
     icon: Rocket,
     features: ["Vetted Tech Talent", "On-Demand Scaling", "Seamless Team Integration"],
-    gradient: "from-orange-500 to-red-600"
+    gradient: "from-orange-500 to-red-600",
+    image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvY2tjaGFpbnxlbnwwfHwwfHx8MA%3D%3D"
   }
 ];
 

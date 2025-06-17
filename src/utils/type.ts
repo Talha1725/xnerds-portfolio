@@ -12,10 +12,10 @@ export interface Project {
   export interface Service {
     title: string;
     description: string;
-    icon: LucideIcon;
     features: string[];
+    image: string;
+    icon: LucideIcon;
     gradient: string;
-    technologies?: string[];
   }
   
   export interface Stat {

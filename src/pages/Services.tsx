@@ -80,17 +80,6 @@ const Services = () => {
                       </div>
                     ))}
                   </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies?.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Service Visual */}
@@ -98,8 +87,12 @@ const Services = () => {
                   <Card className="relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-slate-800/50 shadow-lg hover:shadow-2xl transition-all duration-500 group">
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <CardContent className="p-8 relative z-10">
-                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10">
-                        <service.icon className="h-16 w-16 text-slate-300" />
+                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10 overflow-hidden">
+                        <img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </CardContent>
                   </Card>
