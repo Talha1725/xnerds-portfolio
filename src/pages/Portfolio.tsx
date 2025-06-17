@@ -2,59 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { projects } from "@/utils/data";
 
 const Portfolio = () => {
-  const projects = [
-    {
-      title: "ACTFlow",
-      description: "A comprehensive process automation platform that streamlines business workflows and increases operational efficiency.",
-      image: "/act.png",
-      tags: ["Process Automation", "React", "Node.js", "MongoDB"],
-      category: "Web Application",
-      url: "https://www.actflow.ai/"
-    },
-    {
-      title: "Antaragame",
-      description: "AI-powered gaming platform that creates personalized gaming experiences using machine learning algorithms.",
-      image: "/antaragame.png",
-      tags: ["AI Gaming", "Machine Learning", "Unity", "Python"],
-      category: "AI Platform",
-      url:"http://antaragame.io/"
-    },
-    {
-      title: "Bitlenz",
-      description: "Advanced data analytics dashboard providing real-time insights and business intelligence for enterprise clients.",
-      image: "/bitlenz.png",
-      tags: ["Data Analytics", "Business Intelligence", "Vue.js", "D3.js"],
-      category: "Analytics Dashboard",
-      url: "https://www.bitlenz.com/"
-    },
-    {
-      title: "BasedAgent",
-      description: "Intelligent virtual AI assistant that helps businesses automate customer service and support operations.",
-      image: "/basedagent.png",
-      tags: ["AI Assistant", "NLP", "Chatbot", "OpenAI"],
-      category: "AI Solution",
-      url: "https://basedagent.co/"
-    },
-    {
-      title: "FIGMENT",
-      description: "Robust fintech trading backend system handling high-frequency transactions with enterprise-grade security.",
-      image: "/figment.png",
-      tags: ["Fintech", "Trading", "Backend", "Microservices"],
-      category: "Backend System",
-      url: "https://figment.trade/"
-    },
-    {
-      title: "Smart POS Pro",
-      description: "FBR-compliant point-of-sale system with inventory management and real-time sales analytics for retail businesses.",
-      image: "/pos.jpg",
-      tags: ["POS System", "FBR Compliant", "Inventory"],
-      category: "Mobile App",
-      url: ""
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
       {/* Hero Section */}
@@ -84,7 +34,7 @@ const Portfolio = () => {
               Our Portfolio
             </h1>
             <p className="text-sm lg:text-xl text-slate-300 max-w-3xl mx-auto">
-            At xNerds, we don’t just deliver software — we create digital ecosystems tailored to solve specific problems across industries. Our project portfolio reflects our ability to adapt, innovate, and deliver value under varying constraints. From high-frequency crypto platforms to blockchain-based games and intelligent educational tools, we’ve partnered with startups, scaleups, and enterprise clients alike.
+            At xNerds, we don't just deliver software — we create digital ecosystems tailored to solve specific problems across industries. Our project portfolio reflects our ability to adapt, innovate, and deliver value under varying constraints. From high-frequency crypto platforms to blockchain-based games and intelligent educational tools, we've partnered with startups, scaleups, and enterprise clients alike.
             </p>
           </div>
         </div>

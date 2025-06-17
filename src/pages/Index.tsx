@@ -1,85 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code, Smartphone, ShoppingCart, Cloud, Brain, Rocket, CheckCircle, Users, Award, Star, TrendingUp, Shield, Zap, Play } from "lucide-react";
+import { ArrowRight, CheckCircle, Play } from "lucide-react";
+import { services, stats, features } from "@/utils/data";
 
 const Index = () => {
-  const services = [
-    {
-      title: "Custom Software Development",
-      description: "Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.",
-      icon: Code,
-      features: ["Web Applications", "API Development", "System Integration"],
-      gradient: "from-blue-500 to-purple-600"
-    },
-    {
-      title: "Mobile App Development", 
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
-      icon: Smartphone,
-      features: ["iOS & Android", "React Native", "Flutter"],
-      gradient: "from-teal-500 to-cyan-600"
-    },
-    {
-      title: "Enterprise Solutions",
-      description: "Comprehensive business solutions including ERP, CRM, and POS systems with full compliance and integration.",
-      icon: ShoppingCart,
-      features: ["ERP Systems", "CRM Solutions", "POS Integration"],
-      gradient: "from-purple-500 to-pink-600"
-    },
-    {
-      title: "Cloud & DevOps",
-      description: "Scalable cloud infrastructure and automated deployment solutions for modern businesses.",
-      icon: Cloud,
-      features: ["AWS/Azure", "CI/CD", "Infrastructure as Code"],
-      gradient: "from-indigo-500 to-blue-600"
-    },
-    {
-      title: "AI & Data Analytics",
-      description: "Intelligent solutions powered by machine learning and advanced analytics to drive business insights.",
-      icon: Brain,
-      features: ["Machine Learning", "Data Visualization", "Predictive Analytics"],
-      gradient: "from-green-500 to-teal-600"
-    },
-    {
-      title: "Staff Augmentation",
-      description: "Extend your team with top-tier engineers, AI specialists, and developers — without the hiring overhead. We help you scale fast and smart.",
-      icon: Rocket,
-      features: ["Vetted Tech Talent", "On-Demand Scaling", "Seamless Team Integration"],
-      gradient: "from-orange-500 to-red-600"
-    }
-  ];
-
-  const stats = [
-    { number: "50+", label: "Projects Delivered", icon: TrendingUp, color: "text-blue-400" },
-    { number: "50+", label: "Happy Clients", icon: Users, color: "text-purple-400" },
-    { number: "7+", label: "Years of Excellence", icon: Award, color: "text-teal-400" },
-    { number: "100%", label: "Client Satisfaction", icon: Star, color: "text-yellow-400" }
-  ];
-
-  const features = [
-    {
-      title: "Expert Team",
-      description: "Seasoned professionals with deep expertise in modern technologies and industry best practices.",
-      icon: Users,
-      gradient: "from-blue-500/20 to-purple-500/20",
-      iconColor: "text-blue-400"
-    },
-    {
-      title: "Quality Assurance",
-      description: "Rigorous testing protocols and quality control measures to ensure flawless delivery.",
-      icon: Shield,
-      gradient: "from-green-500/20 to-teal-500/20",
-      iconColor: "text-green-400"
-    },
-    {
-      title: "Agile Delivery",
-      description: "Fast, iterative development process with transparent communication and on-time delivery.",
-      icon: Zap,
-      gradient: "from-yellow-500/20 to-orange-500/20",
-      iconColor: "text-yellow-400"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-slate-900 overflow-hidden">
       {/* Hero Section */}
