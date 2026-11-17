@@ -23,8 +23,8 @@ const detail = [
   },
   {
     title: "Mobile apps",
-    body: "iOS and Android apps, built native or cross-platform, with the backend they depend on.",
-    covers: ["iOS & Android", "React Native", "Flutter"],
+    body: "iOS and Android apps, built native or cross-platform with React Native and Expo, with the backend they depend on.",
+    covers: ["iOS & Android", "React Native & Expo", "Flutter"],
     work: ["TrainHub", "Quran AI", "Smart POS Pro"].map(byTitle),
   },
   {
@@ -35,9 +35,9 @@ const detail = [
   },
   {
     title: "Cloud & DevOps",
-    body: "Cloud infrastructure, deployment pipelines and environments defined as code, so releases are repeatable.",
-    covers: ["AWS / Azure", "CI/CD", "Infrastructure as code"],
-    work: ["NexCore VPS", "FIGMENT"].map(byTitle),
+    body: "AWS infrastructure (EC2, S3, RDS), Docker deployments, CI/CD pipelines and environments defined as code, so releases are repeatable.",
+    covers: ["AWS (EC2, S3, RDS)", "Docker", "CI/CD", "Infrastructure as code"],
+    work: ["NexCore VPS", "OpenReal", "BlueRock Markets", "URFX"].map(byTitle),
   },
   {
     title: "AI & data",

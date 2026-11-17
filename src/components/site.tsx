@@ -158,9 +158,9 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
 
 export const services = [
   { title: "Custom software", body: "Web applications, APIs, and integrations with the systems you already run.", line: "Web applications · API development · System integration" },
-  { title: "Mobile apps", body: "iOS and Android apps, built native or cross-platform.", line: "iOS · Android · React Native · Flutter" },
+  { title: "Mobile apps", body: "iOS and Android apps, built native or cross-platform.", line: "iOS · Android · React Native · Expo · Flutter" },
   { title: "Enterprise systems", body: "ERP, CRM and POS systems, including FBR-compliant point of sale for retail in Pakistan.", line: "ERP · CRM · POS" },
-  { title: "Cloud & DevOps", body: "Infrastructure, deployment pipelines and environments defined as code.", line: "AWS · Azure · CI/CD · Infrastructure as code" },
+  { title: "Cloud & DevOps", body: "AWS infrastructure, Docker deployments, pipelines and environments defined as code.", line: "AWS · Docker · CI/CD · Infrastructure as code" },
   { title: "AI & data", body: "Machine learning, analytics and dashboards built into your product.", line: "Machine learning · Data visualization · Predictive analytics" },
   { title: "Trading systems & automation", body: "MetaTrader EAs, copy trading and risk engines, prop firm and brokerage platforms, and signal services.", line: "MQL5 · MetaTrader 4/5 · TradingView · Exchange APIs" },
   { title: "AI assistants & bots", body: "Chat, voice and Telegram assistants that answer customers, guide sales and deliver signals.", line: "OpenAI · Deepgram · Telegram bots" },

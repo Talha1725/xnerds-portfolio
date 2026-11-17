@@ -75,6 +75,52 @@ export const expertise: { group: string; intro: string; items: Capability[] }[] 
       },
     ],
   },
+  {
+    group: "Platforms & infrastructure",
+    intro: "The parts every serious product needs and many teams get wrong: money, identity, live data and scale.",
+    items: [
+      {
+        title: "Payments & subscriptions",
+        body: "Stripe billing, memberships and paid tiers, plus referral and affiliate programs, wired into the product rather than bolted on.",
+        proof: ["BudSignal", "Headwater Production", "TrainHub", "NexCore VPS"],
+      },
+      {
+        title: "KYC, compliance & security",
+        body: "Identity verification with Sumsub, two-factor authentication, role-based access, audit logs and tenant-isolated data.",
+        proof: ["BlueRock Markets", "OpenReal", "Calvoro Funding", "LV8"],
+      },
+      {
+        title: "Real-time systems",
+        body: "Live market feeds, streaming updates and in-app chat over WebSockets, server-sent events and WebRTC.",
+        proof: ["TradeMate", "Sentinel", "Chart Guardian", "Cockpit"],
+      },
+      {
+        title: "Marketplaces & multi-role SaaS",
+        body: "Products with several sides to them: customers, partners, staff and admins, each with their own portal and permissions.",
+        proof: ["PropFirm Labs", "SmartBite", "Headwater Production", "TrainHub"],
+      },
+      {
+        title: "Multilingual products",
+        body: "Interfaces built for more than English, including right-to-left Arabic and Cantonese for Hong Kong.",
+        proof: ["SmartBite", "Cockpit", "NewBieTrade AI"],
+      },
+      {
+        title: "Data pipelines & automation",
+        body: "Scraping, scheduled jobs, background queues and sync with tools like Google Sheets, running unattended in production.",
+        proof: ["PropFirm Reviews", "NewBieTrade AI", "LeadSync CRM", "OpenReal"],
+      },
+      {
+        title: "Tokenised assets & Web3",
+        body: "Issuing, investing in and transferring tokenised real-world assets, and on-chain marketplaces for AI and human work.",
+        proof: ["OpenReal", "ACTFlow"],
+      },
+      {
+        title: "Healthcare software",
+        body: "Patient records, appointments and medical documents in one secure system, with AI-powered document search.",
+        proof: ["LV8"],
+      },
+    ],
+  },
 ];
 
 export const integrations = [
@@ -87,9 +133,20 @@ export const integrations = [
   "Telegram bots",
   "OpenAI",
   "Deepgram",
+  "Google Vertex AI",
   "Stripe",
   "Sumsub KYC",
+  "AWS",
+  "Docker",
+  "Redis",
   "Supabase",
+  "Prisma",
+  "NestJS",
+  "FastAPI",
+  "Python",
+  "Vue",
+  "Playwright",
+  "Vitest",
 ];
 
 function ProofLinks({ names }: { names: string[] }) {
@@ -129,7 +186,7 @@ export function Expertise() {
         <Reveal className="max-w-3xl">
           <SectionTitle>Where we go deepest</SectionTitle>
           <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-fg-muted">
-            Anyone can say they do trading and AI. Every line below links to something we shipped.
+            Anyone can list technologies. Every line below links to something we shipped.
           </p>
         </Reveal>
 
