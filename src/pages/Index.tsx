@@ -21,9 +21,9 @@ const byTitle = (t: string) => projects.find((p) => p.title === t)!;
 /* ---------- hero ---------- */
 
 const mosaic = [
-  { project: byTitle("Bitlenz"), pos: "left-0 top-[4%] w-[60%]", d: 380 },
-  { project: byTitle("FIGMENT"), pos: "right-0 top-0 w-[56%]", d: 480 },
-  { project: byTitle("ACTFlow"), pos: "left-[16%] top-[40%] w-[70%]", d: 600 },
+  { project: byTitle("URFX"), pos: "left-0 top-[4%] w-[60%]", d: 380 },
+  { project: byTitle("FXEE"), pos: "right-0 top-0 w-[56%]", d: 480 },
+  { project: byTitle("BudSignal"), pos: "left-[16%] top-[40%] w-[70%]", d: 600 },
 ];
 
 function HeroMosaic() {
