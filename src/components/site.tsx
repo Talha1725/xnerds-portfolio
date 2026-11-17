@@ -162,6 +162,8 @@ export const services = [
   { title: "Enterprise systems", body: "ERP, CRM and POS systems, including FBR-compliant point of sale for retail in Pakistan.", line: "ERP · CRM · POS" },
   { title: "Cloud & DevOps", body: "Infrastructure, deployment pipelines and environments defined as code.", line: "AWS · Azure · CI/CD · Infrastructure as code" },
   { title: "AI & data", body: "Machine learning, analytics and dashboards built into your product.", line: "Machine learning · Data visualization · Predictive analytics" },
+  { title: "Trading systems & automation", body: "MetaTrader EAs, copy trading and risk engines, prop firm and brokerage platforms, and signal services.", line: "MQL5 · MetaTrader 4/5 · TradingView · Exchange APIs" },
+  { title: "AI assistants & bots", body: "Chat, voice and Telegram assistants that answer customers, guide sales and deliver signals.", line: "OpenAI · Deepgram · Telegram bots" },
   { title: "Staff augmentation", body: "Vetted engineers and AI specialists who join your team and work inside your process.", line: "Vetted engineers · On-demand scaling · Team integration" },
 ];
 

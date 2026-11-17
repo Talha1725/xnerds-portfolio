@@ -46,6 +46,18 @@ const detail = [
     work: ["NewBieTrade AI", "AdGPT", "FXEE", "BudSignal"].map(byTitle),
   },
   {
+    title: "Trading systems & automation",
+    body: "Expert Advisors for MetaTrader with risk rules enforced in code, copy trading across many accounts, prop firm and brokerage platforms, and signal engines on live market data.",
+    covers: ["MQL5 Expert Advisors", "Copy trading & risk engines", "Prop firm & brokerage platforms", "Signals & alerts"],
+    work: ["LotBot", "Forex Trade Automation", "Calvoro Funding", "BlueRock Markets", "BudSignal"].map(byTitle),
+  },
+  {
+    title: "AI assistants & bots",
+    body: "Assistants that do a job inside the product: answering customers, guiding sales replies in Telegram, holding voice conversations and delivering trade signals.",
+    covers: ["Chat & support assistants", "Voice AI", "Telegram bots", "Trading assistants"],
+    work: ["BasedAgent", "AI Voice Assistant", "LeadSync CRM", "FXEE"].map(byTitle),
+  },
+  {
     title: "Staff augmentation",
     body: "Vetted engineers and AI specialists who join your team and work inside your process, without the hiring overhead.",
     covers: ["Vetted tech talent", "On-demand scaling", "Seamless team integration"],
