@@ -1,292 +1,492 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Play } from "lucide-react";
-import { services, stats, features } from "@/utils/data";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { projects } from "@/utils/data";
+import type { Project } from "@/utils/type";
+import { EMAIL, EMAIL_URL, WHATSAPP_URL, hostOf } from "@/lib/contact";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
-const Index = () => {
+const byTitle = (t: string) => projects.find((p) => p.title === t)!;
+
+/* ---------- shared pieces ---------- */
+
+const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
+
+function Reveal({
+  children,
+  className,
+  clip = false,
+  d = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  clip?: boolean;
+  d?: number;
+}) {
+  const ref = useReveal<HTMLDivElement>();
   return (
-    <div className="min-h-screen bg-slate-900 overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-40 right-1/3 w-40 h-40 bg-pink-500/25 rounded-full blur-xl animate-float" style={{ animationDelay: '6s' }}></div>
-        </div>
-
-        {/* Grid Pattern Background */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10 pt-10">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Animated Badge */}
-            <div className="mb-8 animate-fade-in-up">
-              <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-blue-300 font-semibold text-sm mb-6 backdrop-blur-sm border border-blue-500/20 hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg">
-                <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
-                Welcome to the Future of Technology
-              </div>
-            </div>
-
-            {/* Main Heading */}
-            <div className="mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-slate-100 mb-6 leading-tight tracking-tight">
-              Innovation {" "}
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
-                Engineered
-                </span>{" "}
-                , Solution Delivered
-              </h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-4xl mx-auto leading-relaxed font-medium">
-              We craft intelligent, future-ready software and AI solutions that power business growth, streamline operations, and enable digital transformation.
-              </p>
-              <p className="text-base text-slate-400 max-w-3xl mx-auto font-normal">
-              From custom apps to enterprise AI, we engineer tech that moves business forward.</p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full px-12 py-6 text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105"
-              >
-                <Link to="/contact" className="flex items-center gap-3">
-                  Get Started Today
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-                <Link to="/portfolio" className="flex items-center gap-3">
-                  <Play className="h-5 w-5 group-hover:scale-125 transition-transform duration-300" />
-                  View Our Work
-                </Link>
-              </Button>
-            </div>
-
-            {/* Animated Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              {stats.map((stat, index) => (
-                <div key={stat.label} className="text-center group cursor-pointer">
-                  <div className="w-16 h-16 bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 shadow-xl group-hover:shadow-2xl backdrop-blur-sm border border-slate-600/30">
-                    <stat.icon className={`h-8 w-8 ${stat.color} group-hover:scale-125 transition-transform duration-300`} />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-black text-slate-100 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">{stat.number}</div>
-                  <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
-          onClick={() => {
-            const servicesSection = document.querySelector('section:nth-of-type(2)');
-            servicesSection?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-blue-400/40 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-blue-400/60 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-24 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-full text-teal-300 font-semibold text-sm mb-6 animate-fade-in-up backdrop-blur-sm border border-teal-500/20">
-              Our Expertise
-            </div>
-            <h2 className="text-3xl md:text-5xl font-heading font-black text-slate-100 mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              Solutions That Drive{" "}
-              <span className="bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">
-                Results
-              </span>
-            </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-medium" style={{ animationDelay: '0.2s' }}>
-              From concept to deployment, we deliver comprehensive technology solutions tailored to your business needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {services.map((service, index) => (
-              <Card
-                key={service.title}
-                className="group relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1 animate-fade-in-up cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-all duration-500`}></div>
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-                
-                <CardContent className="p-8 relative z-10">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} bg-opacity-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl backdrop-blur-sm border border-slate-600/30`}>
-                    <service.icon className="h-8 w-8 text-slate-300 group-hover:scale-125 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-black text-slate-100 mb-4 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-300 mb-6 leading-relaxed text-sm font-medium group-hover:text-slate-200 transition-colors duration-300">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-slate-400 group-hover:text-slate-300 transition-colors duration-300 text-sm font-medium" style={{ animationDelay: `${idx * 0.1}s` }}>
-                        <CheckCircle className="h-4 w-4 text-teal-400 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center animate-fade-in-up">
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-              <Link to="/services" className="flex items-center gap-3">
-                Explore All Services
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-green-500/15 to-teal-500/15 rounded-full blur-3xl animate-float"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full text-green-300 font-semibold text-sm mb-6 animate-fade-in-up backdrop-blur-sm border border-green-500/20">
-                Why Choose Us
-              </div>
-              <h2 className="text-3xl md:text-5xl font-heading font-black text-slate-100 mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                Excellence in Every{" "}
-                <span className="bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
-                  Project
-                </span>
-              </h2>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-medium" style={{ animationDelay: '0.2s' }}>
-                We combine technical expertise with business acumen to deliver solutions that drive real results
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className="text-center group cursor-pointer animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div className={`w-20 h-20 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl backdrop-blur-sm border border-slate-600/30`}>
-                    <feature.icon className={`h-10 w-10 ${feature.iconColor} group-hover:scale-125 transition-transform duration-300`} />
-                  </div>
-                  <h3 className="text-xl font-black text-slate-100 mb-4 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-300 leading-relaxed text-sm font-medium group-hover:text-slate-200 transition-colors duration-300">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-56 h-56 bg-purple-500/25 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-500/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-teal-500/15 to-purple-500/15 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.4) 2px, transparent 2px),
-              radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center justify-center px-6 py-3 bg-slate-700/50 rounded-full text-slate-300 font-semibold text-sm mb-8 backdrop-blur-sm animate-fade-in-up border border-slate-600/50">
-              <div className="w-2 h-2 bg-purple-400/80 rounded-full mr-3 animate-pulse"></div>
-              Ready to Get Started?
-            </div>
-            <h2 className="text-3xl md:text-5xl font-heading font-black text-slate-100 mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              Let's Build Something{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Amazing
-              </span>{" "}
-              Together
-            </h2>
-            <p className="text-lg text-slate-300 mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in-up font-medium" style={{ animationDelay: '0.2s' }}>
-              Transform your business with our cutting-edge technology solutions. Get in touch with our experts today to discuss your project requirements.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
-              >
-                <Link to="/contact" className="flex items-center gap-3">
-                  Start Your Project
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-                <Link to="/about">Learn More About Us</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div ref={ref} className={cn("reveal", clip && "reveal-clip", className)} style={delay(d)}>
+      {children}
     </div>
   );
-};
+}
+
+function BrowserFrame({
+  project,
+  className,
+  priority = false,
+  compact = false,
+}: {
+  project: Project;
+  className?: string;
+  priority?: boolean;
+  compact?: boolean;
+}) {
+  const host = hostOf(project.url) || "private deployment";
+  return (
+    <div
+      className={cn(
+        "overflow-hidden rounded-xl border border-ink-strong bg-ink-raised shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_40px_80px_-30px_rgba(0,0,0,0.85),0_12px_24px_-12px_rgba(0,0,0,0.6)]",
+        className
+      )}
+    >
+      <div className="flex h-8 items-center gap-3 border-b border-ink-line px-3">
+        <div className={cn("flex gap-1.5", compact && "hidden xl:flex")} aria-hidden>
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+        </div>
+        <div className="mx-auto max-w-[75%] truncate rounded-md bg-white/[0.05] px-3 py-0.5 font-mono text-[11px] text-fg-faint">
+          {host}
+        </div>
+        <span className={cn("w-[42px]", compact && "hidden xl:block")} aria-hidden />
+      </div>
+      <img
+        src={project.image}
+        alt={`${project.title} screenshot`}
+        width={1800}
+        height={1013}
+        loading={priority ? "eager" : "lazy"}
+        decoding={priority ? "sync" : "async"}
+        fetchPriority={priority ? "high" : "auto"}
+        className="block aspect-[16/9] w-full object-cover object-top"
+      />
+    </div>
+  );
+}
+
+function PrimaryAction({ className, children = "Message us on WhatsApp" }: { className?: string; children?: ReactNode }) {
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "group inline-flex h-12 items-center gap-2 rounded-full bg-signal pl-6 pr-5 text-[15px] font-medium text-white shadow-[0_8px_24px_-8px_rgba(37,99,235,0.6)] transition-[background-color,box-shadow] duration-300 hover:bg-signal-hover hover:shadow-[0_12px_32px_-8px_rgba(37,99,235,0.75)]",
+        className
+      )}
+    >
+      {children}
+      <ArrowUpRight
+        className="h-4 w-4 transition-transform duration-300 ease-out-expo group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        aria-hidden
+      />
+    </a>
+  );
+}
+
+/* ---------- hero ---------- */
+
+const mosaic = [
+  { project: byTitle("Bitlenz"), pos: "left-0 top-[4%] w-[60%]", d: 380 },
+  { project: byTitle("FIGMENT"), pos: "right-0 top-0 w-[56%]", d: 480 },
+  { project: byTitle("ACTFlow"), pos: "left-[16%] top-[40%] w-[70%]", d: 600 },
+];
+
+function HeroMosaic() {
+  const [active, setActive] = useState(2);
+
+  return (
+    <div
+      className="relative mx-auto aspect-[1/0.78] w-full max-w-[640px] lg:max-w-none"
+      onMouseLeave={() => setActive(2)}
+    >
+      {mosaic.map(({ project, pos, d }, i) => {
+        const isActive = active === i;
+        return (
+          <a
+            key={project.title}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title}, live at ${hostOf(project.url)}`}
+            onMouseEnter={() => setActive(i)}
+            onFocus={() => setActive(i)}
+            className={cn("frame-in absolute block focus-visible:outline-offset-4", pos)}
+            style={{ ...delay(d), zIndex: isActive ? 30 : 10 + i }}
+          >
+            <div
+              className={cn(
+                "transition-[transform,opacity,filter] duration-700 ease-out-expo",
+                isActive ? "-translate-y-2 scale-[1.015] opacity-100" : "lg:opacity-60 lg:saturate-50"
+              )}
+            >
+              <BrowserFrame project={project} priority compact />
+              <div
+                className={cn(
+                  "absolute -bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-ink-strong bg-ink/90 px-3 py-1.5 text-[12px] backdrop-blur transition-[opacity,transform] duration-500 ease-out-expo",
+                  isActive ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+                )}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-signal-soft" aria-hidden />
+                <span className="font-medium text-fg">{project.title}</span>
+                <span className="font-mono text-fg-muted">{hostOf(project.url)}</span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative flex flex-col overflow-hidden lg:min-h-[min(100svh,960px)]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(70% 55% at 72% -8%, rgba(61,126,242,0.20) 0%, rgba(61,126,242,0.06) 45%, transparent 75%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid w-full max-w-[1240px] flex-1 items-center gap-14 px-5 pb-16 pt-32 md:px-8 lg:grid-cols-12 lg:gap-10 lg:pb-12 lg:pt-24">
+        <div className="lg:col-span-7">
+          <h1
+            className="load-in text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg [text-wrap:wrap]"
+            style={delay(0)}
+          >
+            <span className="lg:whitespace-nowrap">Product engineering</span>{" "}
+            <br className="hidden lg:block" />
+            <span className="lg:whitespace-nowrap">for ambitious founders.</span>
+          </h1>
+          <p
+            className="load-in mt-7 max-w-[34rem] text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-fg-muted"
+            style={delay(120)}
+          >
+            xNerds is a senior engineering team in Lahore. We design, build and scale web, mobile and AI
+            products, and we have shipped <span className="text-fg">70+ projects</span> since 2023.
+          </p>
+          <div className="load-in mt-10 flex flex-wrap items-center gap-3" style={delay(220)}>
+            <PrimaryAction />
+            <a
+              href="#work"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
+            >
+              See our work
+            </a>
+          </div>
+          <p className="load-in mt-6 text-[14px] text-fg-faint" style={delay(300)}>
+            Prefer email?{" "}
+            <a href={EMAIL_URL} className="text-fg-muted underline decoration-white/20 hover:text-fg hover:decoration-white/60">
+              {EMAIL}
+            </a>
+          </p>
+        </div>
+
+        <div className="lg:col-span-5">
+          <HeroMosaic />
+        </div>
+      </div>
+
+      <div className="relative border-y border-ink-line">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:gap-10 md:px-8">
+          <p className="shrink-0 text-[13px] text-fg-faint">Shipped and running</p>
+          <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            {projects.map((p) => (
+              <li key={p.title} className="text-[15px] font-medium tracking-[-0.01em] text-fg-muted">
+                {p.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- work ---------- */
+
+function ProjectMeta({ project, large = false }: { project: Project; large?: boolean }) {
+  const host = hostOf(project.url);
+  return (
+    <div>
+      <h3
+        className={cn(
+          "font-semibold tracking-[-0.03em] text-fg",
+          large ? "text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05]" : "text-[22px] leading-tight"
+        )}
+      >
+        {project.title}
+      </h3>
+      <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[15px]")}>
+        {project.description}
+      </p>
+      <p className="mt-4 text-[13px] text-fg-faint">{[project.category, ...project.tags].join("  ·  ")}</p>
+      {host ? (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal-soft hover:text-white"
+        >
+          <span className="font-mono">{host}</span>
+          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+        </a>
+      ) : (
+        <p className="mt-5 text-[14px] text-fg-faint">Private client deployment</p>
+      )}
+    </div>
+  );
+}
+
+function Work() {
+  const featured = [byTitle("ACTFlow"), byTitle("FIGMENT")];
+  const rest = projects.filter((p) => !featured.includes(p));
+
+  return (
+    <section id="work" className="scroll-mt-20 py-28 md:py-36">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8">
+        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <h2 className="max-w-2xl text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-fg">
+            Products we built that are live in production today.
+          </h2>
+          <Link
+            to="/portfolio"
+            className="group inline-flex shrink-0 items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
+          >
+            All work
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+          </Link>
+        </Reveal>
+
+        <div className="mt-16 space-y-24 md:mt-20 md:space-y-32">
+          {featured.map((p, i) => (
+            <div key={p.title} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <Reveal clip className={cn("lg:col-span-8", i % 2 === 1 && "lg:order-2")}>
+                <BrowserFrame project={p} />
+              </Reveal>
+              <Reveal d={120} className={cn("lg:col-span-4", i % 2 === 1 && "lg:order-1")}>
+                <ProjectMeta project={p} large />
+              </Reveal>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-24 grid gap-x-10 gap-y-20 md:mt-32 md:grid-cols-2">
+          {rest.map((p, i) => (
+            <Reveal key={p.title} d={(i % 2) * 120}>
+              <BrowserFrame project={p} />
+              <div className="mt-8">
+                <ProjectMeta project={p} />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- services ---------- */
+
+const services = [
+  { title: "Custom software", body: "Web applications, APIs, and integrations with the systems you already run.", line: "Web applications · API development · System integration" },
+  { title: "Mobile apps", body: "iOS and Android apps, built native or cross-platform.", line: "iOS · Android · React Native · Flutter" },
+  { title: "Enterprise systems", body: "ERP, CRM and POS systems, including FBR-compliant point of sale for retail in Pakistan.", line: "ERP · CRM · POS" },
+  { title: "Cloud & DevOps", body: "Infrastructure, deployment pipelines and environments defined as code.", line: "AWS · Azure · CI/CD · Infrastructure as code" },
+  { title: "AI & data", body: "Machine learning, analytics and dashboards built into your product.", line: "Machine learning · Data visualization · Predictive analytics" },
+  { title: "Staff augmentation", body: "Vetted engineers and AI specialists who join your team and work inside your process.", line: "Vetted engineers · On-demand scaling · Team integration" },
+];
+
+function Services() {
+  return (
+    <section className="border-t border-ink-line py-28 md:py-36">
+      <div className="mx-auto grid max-w-[1240px] gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-28">
+            <Reveal>
+              <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-fg">
+                What we build
+              </h2>
+              <p className="mt-5 max-w-sm text-[17px] leading-relaxed text-fg-muted">
+                One team across the stack, from the first prototype to the infrastructure it runs on.
+              </p>
+              <Link
+                to="/services"
+                className="group mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
+              >
+                Service details
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+
+        <ul className="border-t border-ink-line lg:col-span-8">
+          {services.map((s, i) => (
+            <li key={s.title} className="border-b border-ink-line">
+              <Reveal d={i * 40} className="grid gap-4 py-9 md:grid-cols-[1fr_1.1fr] md:gap-10">
+                <h3 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{s.title}</h3>
+                <div>
+                  <p className="text-[15px] leading-relaxed text-fg-muted">{s.body}</p>
+                  <p className="mt-3 text-[13px] text-fg-faint">{s.line}</p>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- engagement ---------- */
+
+const models = [
+  {
+    title: "We build it",
+    body: "Hand us the product. We take it from scope to launch as your engineering team, covering web, mobile, AI and the cloud it runs on.",
+    points: ["Web applications and APIs", "iOS and Android apps", "AI and data features", "Cloud, CI/CD and infrastructure"],
+  },
+  {
+    title: "We join your team",
+    body: "Add vetted engineers and AI specialists to the team you already have, without the hiring overhead.",
+    points: ["Vetted tech talent", "On-demand scaling", "Seamless team integration"],
+  },
+];
+
+function Engagement() {
+  return (
+    <section className="border-t border-ink-line py-28 md:py-36">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8">
+        <Reveal>
+          <h2 className="max-w-2xl text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-fg">
+            Two ways to work with us
+          </h2>
+        </Reveal>
+        <div className="mt-14 grid overflow-hidden rounded-2xl border border-ink-line md:grid-cols-2">
+          {models.map((m, i) => (
+            <Reveal
+              key={m.title}
+              d={i * 120}
+              className={cn(
+                "relative bg-ink-raised/60 p-8 md:p-12",
+                i === 1 && "border-t border-ink-line md:border-l md:border-t-0"
+              )}
+            >
+              <h3 className="text-[26px] font-semibold tracking-[-0.03em] text-fg">{m.title}</h3>
+              <p className="mt-4 max-w-md text-[16px] leading-relaxed text-fg-muted">{m.body}</p>
+              <ul className="mt-8 space-y-3">
+                {m.points.map((pt) => (
+                  <li key={pt} className="flex items-center gap-3 text-[15px] text-fg">
+                    <span className="h-px w-4 bg-signal-soft" aria-hidden />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- record ---------- */
+
+function Record() {
+  return (
+    <section className="border-t border-ink-line py-28 md:py-40">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8">
+        <Reveal>
+          <p className="max-w-[22ch] text-[clamp(1.9rem,4.4vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.035em] text-fg-faint sm:max-w-[26ch]">
+            Since <span className="text-fg">2023</span>, we have shipped{" "}
+            <span className="text-fg">70+ projects</span> for <span className="text-fg">50+ clients</span>, led by
+            engineers with <span className="text-fg">7+ years</span> of experience.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- close ---------- */
+
+function useLahoreTime() {
+  const fmt = () =>
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Karachi",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date());
+  const [time, setTime] = useState(fmt);
+  useEffect(() => {
+    const id = window.setInterval(() => setTime(fmt()), 30_000);
+    return () => window.clearInterval(id);
+  }, []);
+  return time;
+}
+
+function Close() {
+  const time = useLahoreTime();
+  return (
+    <section className="relative overflow-hidden border-t border-ink-line">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(55% 80% at 50% 120%, rgba(61,126,242,0.22), transparent 70%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-[1240px] px-5 py-28 text-center md:px-8 md:py-40">
+        <Reveal>
+          <h2 className="mx-auto max-w-3xl text-[clamp(2.25rem,5vw,4rem)] font-semibold leading-[1] tracking-[-0.04em] text-fg">
+            Have a product to build? Tell us about it.
+          </h2>
+          <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-fg-muted">
+            Message us on WhatsApp or send an email with what you're building, and we'll take it from there.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <PrimaryAction />
+            <a
+              href={EMAIL_URL}
+              className="inline-flex h-12 items-center rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
+            >
+              {EMAIL}
+            </a>
+          </div>
+          <p className="mt-8 text-[13px] text-fg-faint">
+            Lahore, Pakistan · <span className="font-mono">{time}</span> PKT
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const Index = () => (
+  <main>
+    <Hero />
+    <Work />
+    <Services />
+    <Engagement />
+    <Record />
+    <Close />
+  </main>
+);
 
 export default Index;

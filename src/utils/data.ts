@@ -5,7 +5,7 @@ export const projects: Project[] = [
   {
     title: "ACTFlow",
     description: "A comprehensive process automation platform that streamlines business workflows and increases operational efficiency.",
-    image: "/act.png",
+    image: "/work/act.webp",
     tags: ["Process Automation", "React", "Node.js", "MongoDB"],
     category: "Web Application",
     url: "https://www.actflow.ai/"
@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "Antaragame",
     description: "AI-powered gaming platform that creates personalized gaming experiences using machine learning algorithms.",
-    image: "/antaragame.png",
+    image: "/work/antaragame.webp",
     tags: ["AI Gaming", "Machine Learning", "Unity", "Python"],
     category: "AI Platform",
     url:"http://antaragame.io/"
@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     title: "Bitlenz",
     description: "Advanced data analytics dashboard providing real-time insights and business intelligence for enterprise clients.",
-    image: "/bitlenz.png",
+    image: "/work/bitlenz.webp",
     tags: ["Data Analytics", "Business Intelligence", "Vue.js", "D3.js"],
     category: "Analytics Dashboard",
     url: "https://www.bitlenz.com/"
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     title: "BasedAgent",
     description: "Intelligent virtual AI assistant that helps businesses automate customer service and support operations.",
-    image: "/basedagent.png",
+    image: "/work/basedagent.webp",
     tags: ["AI Assistant", "NLP", "Chatbot", "OpenAI"],
     category: "AI Solution",
     url: "https://basedagent.co/"
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     title: "FIGMENT",
     description: "Robust fintech trading backend system handling high-frequency transactions with enterprise-grade security.",
-    image: "/figment.png",
+    image: "/work/figment.webp",
     tags: ["Fintech", "Trading", "Backend", "Microservices"],
     category: "Backend System",
     url: "https://figment.trade/"
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   {
     title: "Smart POS Pro",
     description: "FBR-compliant point-of-sale system with inventory management and real-time sales analytics for retail businesses.",
-    image: "/pos.jpg",
+    image: "/work/pos.webp",
     tags: ["POS System", "FBR Compliant", "Inventory"],
     category: "Mobile App",
     url: ""
@@ -104,9 +104,9 @@ export const services: Service[] = [
 ];
 
 export const stats: Stat[] = [
-  { number: "50+", label: "Projects Delivered", icon: TrendingUp, color: "text-blue-400" },
+  { number: "70+", label: "Projects Delivered", icon: TrendingUp, color: "text-blue-400" },
   { number: "50+", label: "Happy Clients", icon: Users, color: "text-purple-400" },
-  { number: "7+", label: "Years of Excellence", icon: Award, color: "text-teal-400" },
+  { number: "7+", label: "Years of Team Experience", icon: Award, color: "text-teal-400" },
   { number: "100%", label: "Client Satisfaction", icon: Star, color: "text-yellow-400" }
 ];
 

@@ -115,9 +115,9 @@ const Portfolio = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: "50+", label: "Projects Completed" },
-              { number: "30+", label: "Happy Clients" },
-              { number: "2+", label: "Years Experience" },
+              { number: "70+", label: "Projects Completed" },
+              { number: "50+", label: "Happy Clients" },
+              { number: "7+", label: "Years Team Experience" },
               { number: "100%", label: "Client Satisfaction" }
             ].map((stat, index) => (
               <div

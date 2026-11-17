@@ -64,6 +64,22 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				ink: {
+					DEFAULT: '#0A0B0E',
+					raised: '#111318',
+					line: 'rgba(255,255,255,0.08)',
+					strong: 'rgba(255,255,255,0.14)'
+				},
+				fg: {
+					DEFAULT: '#EDEEF1',
+					muted: '#9A9FAB',
+					faint: '#80869A'
+				},
+				signal: {
+					DEFAULT: '#2563EB',
+					hover: '#1D4ED8',
+					soft: '#84BFEA'
+				},
 				// Modern Dark Accents Color Scheme
 				'surface': {
 					light: '#F8FAFC',
@@ -77,8 +93,9 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+				sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+				heading: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+				mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

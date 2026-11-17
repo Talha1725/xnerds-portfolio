@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
@@ -23,7 +22,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-ink text-fg">
           <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
@@ -34,7 +33,6 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-          <ChatBot />
         </div>
       </BrowserRouter>
     </TooltipProvider>

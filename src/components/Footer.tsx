@@ -1,84 +1,91 @@
-
 import { Link } from "react-router-dom";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { EMAIL, EMAIL_URL, GITHUB_URL, LINKEDIN_URL, PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/contact";
+
+const columns = [
+  {
+    title: "Company",
+    links: [
+      { name: "Work", to: "/portfolio" },
+      { name: "Services", to: "/services" },
+      { name: "About", to: "/about" },
+      { name: "Contact", to: "/contact" },
+    ],
+  },
+];
+
+const external = [
+  { name: "WhatsApp", href: WHATSAPP_URL },
+  { name: "LinkedIn", href: LINKEDIN_URL },
+  { name: "GitHub", href: GITHUB_URL },
+];
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.png" alt="Logo" className="w-[50px] h-[50px]" />
-            </div>
-            <p className="text-gray-400 mb-6 max-w-md">
-            xNerds is a forward-thinking company dedicated to delivering innovative technology solutions and exceptional service to drive your success.</p>
-            <div className="bg-gradient-to-r from-primary to-primary-light p-4 rounded-lg">
-              <p className="font-semibold text-white">Let's build something great together.</p>
-            </div>
-          </div>
+    <footer className="border-t border-ink-line bg-ink">
+      <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 md:grid-cols-12 md:px-8">
+        <div className="md:col-span-5">
+          <Link to="/" className="flex items-center gap-2.5" aria-label="xNerds home">
+            <img src="/mark.png" alt="" width={28} height={28} className="h-7 w-7" />
+            <span className="text-[17px] font-semibold tracking-[-0.02em] text-fg">xNerds</span>
+          </Link>
+          <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-fg-muted">
+            Software and AI engineering from Lahore, Pakistan, for founders and teams worldwide.
+          </p>
+        </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Services", path: "/services" },
-                { name: "Portfolio", path: "/portfolio" },
-                { name: "About", path: "/about" },
-                { name: "Contact", path: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    to={item.path}
-                    className="text-gray-400 hover:text-primary-light transition-colors duration-200"
-                  >
-                    {item.name}
+        {columns.map((col) => (
+          <div key={col.title} className="md:col-span-2">
+            <h2 className="text-[13px] font-medium text-fg">{col.title}</h2>
+            <ul className="mt-4 space-y-3">
+              {col.links.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="text-[14px] text-fg-muted transition-colors hover:text-fg">
+                    {l.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+        ))}
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Contact</h3>
-            <div className="space-y-3">
-              <a
-                href="mailto:info@xnerds.com"
-                className="flex items-center space-x-2 text-gray-400 hover:text-primary-light transition-colors duration-200"
-              >
-                <Mail className="h-4 w-4" />
-                <span>info@xnerds.com</span>
-              </a>
-              <p className="text-gray-400">+92-323-4314748</p>
-              <p className="text-gray-400">Lahore, Pakistan</p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex space-x-4 mt-6">
-              {[
-                { icon: Github, href: "https://github.com/XnerdsORG", label: "GitHub" },
-                { icon: Linkedin, href: "https://www.linkedin.com/company/xnerds-solutions/posts/", label: "LinkedIn" },
-              ].map((social) => (
+        <div className="md:col-span-2">
+          <h2 className="text-[13px] font-medium text-fg">Elsewhere</h2>
+          <ul className="mt-4 space-y-3">
+            {external.map((l) => (
+              <li key={l.name}>
                 <a
-                  key={social.label}
-                  href={social.href}
+                  href={l.href}
                   target="_blank"
-                  className="text-gray-400 hover:text-primary-light transition-all duration-200 transform hover:scale-110"
-                  aria-label={social.label}
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1 text-[14px] text-fg-muted transition-colors hover:text-fg"
                 >
-                  <social.icon className="h-5 w-5" />
+                  {l.name}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
                 </a>
-              ))}
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 xNerds Solutions. All rights reserved.</p>
+        <div className="md:col-span-3">
+          <h2 className="text-[13px] font-medium text-fg">Get in touch</h2>
+          <ul className="mt-4 space-y-3 text-[14px] text-fg-muted">
+            <li>
+              <a href={EMAIL_URL} className="transition-colors hover:text-fg">
+                {EMAIL}
+              </a>
+            </li>
+            <li className="tabular">{PHONE_DISPLAY}</li>
+            <li>Lahore, Pakistan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-ink-line">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-6 text-[13px] text-fg-faint sm:flex-row sm:items-center sm:justify-between md:px-8">
+          <p>© {new Date().getFullYear()} xNerds Solutions. All rights reserved.</p>
+          <p>Building since 2023</p>
         </div>
       </div>
     </footer>

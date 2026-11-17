@@ -1,117 +1,122 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/contact";
+import { cn } from "@/lib/utils";
+
+const navItems = [
+  { name: "Work", path: "/portfolio" },
+  { name: "Services", path: "/services" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
 
 export const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-  ];
+  useEffect(() => setOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-surface-light/5 backdrop-blur-md shadow-lg border-b border-primary/10"
-          : "bg-transparent"
-      }`}
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
+        scrolled || open
+          ? "border-b border-ink-line bg-ink/80 backdrop-blur-xl backdrop-saturate-150"
+          : "border-b border-transparent bg-transparent"
+      )}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-[90px]">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img src="/logo.png" alt="Logo" className="w-[60px] h-[60px]" />
-          </Link>
+      <nav className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 md:px-8" aria-label="Main">
+        <Link to="/" className="group flex items-center gap-2.5" aria-label="xNerds home">
+          <img src="/mark.png" alt="" width={28} height={28} className="h-7 w-7" />
+          <span className="text-[17px] font-semibold tracking-[-0.02em] text-fg">xNerds</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`font-medium transition-colors duration-200 hover:text-primary ${
-                  location.pathname === item.path
-                    ? "text-primary-light"
-                    : isScrolled 
-                      ? "text-white hover:text-primary" 
-                      : "text-slate-light hover:text-primary-light"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Button
-              asChild
-              className="bg-gradient-to-r from-primary to-primary-light hover:from-primary/90 hover:to-primary-light/90 text-white rounded-full px-6 shadow-lg hover:shadow-xl transition-all duration-300"
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                cn(
+                  "rounded-full px-3.5 py-2 text-[14px] transition-colors duration-200",
+                  isActive ? "text-fg" : "text-fg-muted hover:text-fg"
+                )
+              }
             >
-              <Link to="/contact">Let's Talk</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className={`md:hidden transition-colors duration-200 ${
-              isScrolled ? "text-surface-dark hover:text-primary" : "text-white hover:text-primary-light"
-            }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </Button>
+              {item.name}
+            </NavLink>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-surface-light/95 backdrop-blur-md border-t border-primary/10 animate-fade-in rounded-b-2xl shadow-lg">
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
+        <div className="flex items-center gap-2">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden h-9 items-center gap-1.5 rounded-full bg-fg px-4 text-[14px] font-medium text-ink transition-colors duration-200 hover:bg-white sm:inline-flex"
+          >
+            Let's talk
+            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-fg md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {open && (
+        <div id="mobile-menu" className="h-[calc(100dvh-4rem)] border-t border-ink-line bg-ink px-5 pb-8 pt-4 md:hidden">
+          <ul className="flex flex-col">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <NavLink
                   to={item.path}
-                  className={`block font-medium transition-colors duration-200 hover:text-primary ${
-                    location.pathname === item.path
-                      ? "text-primary"
-                      : "text-slate-dark"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center justify-between border-b border-ink-line py-4 text-2xl font-medium tracking-[-0.02em]",
+                      isActive ? "text-fg" : "text-fg-muted"
+                    )
+                  }
                 >
                   {item.name}
-                </Link>
-              ))}
-              <Button
-                asChild
-                className="w-full bg-gradient-to-r from-primary to-primary-light hover:from-primary/90 hover:to-primary-light/90 text-white rounded-full shadow-lg"
-              >
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Let's Talk
-                </Link>
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 flex h-12 items-center justify-center gap-2 rounded-full bg-signal text-[15px] font-medium text-white"
+          >
+            Message us on WhatsApp
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </a>
+        </div>
+      )}
+    </header>
   );
 };
