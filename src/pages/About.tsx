@@ -1,275 +1,98 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { useState } from "react";
 import { timeline, values, team } from "@/utils/data";
+import { Close, Container, PageHeader, Record, Reveal, SectionTitle } from "@/components/site";
 
 const About = () => {
-  const [activeTimelineItem, setActiveTimelineItem] = useState(2);
-
   return (
-    <div className="min-h-screen bg-slate-900 overflow-hidden">
-      {/* Hero Section */}
-      <section className="py-20 h-[80vh] lg:h-[70vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-40 right-1/3 w-40 h-40 bg-pink-500/25 rounded-full blur-xl animate-float" style={{ animationDelay: '6s' }}></div>
-        </div>
+    <main>
+      <PageHeader
+        title="A senior engineering team that ships products."
+        lead="xNerds Solutions was founded in 2023 to build software and AI products for businesses around the world. The team brings 7+ years of engineering experience to every project."
+      />
 
-        {/* Grid Pattern Background */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
-              About xNerds Solutions
-            </h1>
-            <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            xNerds has been providing top-notch Digital solutions to its clients globally. With Us, you find solutions to your digital business needs such as mobile app development, website design and development, and digital marketing needs. Our creative designers, competent developers, and immaculate marketers provide appropriate and value-driven solutions that help clients stand out in the digital space. Your success is our focus!
+      {/* Mission */}
+      <section className="border-t border-ink-line py-24 md:py-32">
+        <Container className="grid gap-8 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <h2 className="text-[15px] font-medium text-fg">Our mission</h2>
+          </Reveal>
+          <Reveal d={100} className="lg:col-span-8">
+            <p className="text-[clamp(1.6rem,3.2vw,2.6rem)] font-medium leading-[1.15] tracking-[-0.03em] text-fg">
+              To help businesses grow through AI and well-engineered software, while holding every project to the
+              highest standard of quality.
             </p>
-          </div>
-        </div>
+          </Reveal>
+        </Container>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-10 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Background Animation */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-8">
-              Our Mission
-            </h2>
-            <div className="bg-gradient-to-r from-primary to-primary-light p-8 rounded-3xl text-white shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-              <p className="text-xl leading-relaxed relative z-10 font-medium">
-                "To empower businesses through innovative AI solutions and exceptional software services, 
-                helping them thrive in the digital age while maintaining the highest standards of quality and customer satisfaction."
-              </p>
+      {/* Journey */}
+      <section className="border-t border-ink-line py-24 md:py-32">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <SectionTitle>How we got here</SectionTitle>
             </div>
-          </div>
-        </div>
+          </Reveal>
+          <ol className="lg:col-span-8">
+            {timeline.map((e, i) => (
+              <li key={`${e.year}-${e.title}`} className="border-b border-ink-line first:border-t">
+                <Reveal d={i * 50} className="grid gap-3 py-8 sm:grid-cols-[96px_1fr] sm:gap-8">
+                  <span className="font-mono text-[14px] text-signal-soft">{e.year}</span>
+                  <div>
+                    <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">{e.title}</h3>
+                    <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-fg-muted">{e.description}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </Container>
       </section>
 
-      {/* Interactive Timeline Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        <div className="absolute inset-0">
-          <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-green-500/15 to-teal-500/15 rounded-full blur-3xl animate-float"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Our Journey
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              From startup to success story - here's how we've grown and evolved
-            </p>
-          </div>
-
-          <div className="max-w-6xl mx-auto">
-            {/* Interactive Timeline */}
-            <div className="relative">
-              {/* Central Timeline Line */}
-              <div className="lg:block hidden absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-primary-light"></div>
-              {/* Timeline Events */}
-              {timeline.map((event, index) => (
-                <div
-                  key={event.year}
-                  className={`relative mb-12 ${
-                    index % 2 === 0 ? "lg:ml-auto lg:mr-[55%] lg:pl-8" : "lg:mr-auto lg:ml-[55%] lg:pr-8"
-                  }`}
-                >
-                  <div  className={`absolute transform top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full ${
-                    index % 2 === 0 ? "right-[-12.7%]" : "left-[-12.7%]"
-                  }`}></div>
-                  <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 shadow-xl">
-                    <div className="text-primary font-bold mb-2">{event.year}</div>
-                    <h3 className="text-xl font-bold text-slate-100 mb-2">{event.title}</h3>
-                    <p className="text-slate-300">{event.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Background Animation */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Our Values
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card
-                key={value.title}
-                className="group hover:shadow-2xl transition-all duration-500 transform rounded-3xl animate-fade-in-up relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700/50"
-                style={{ 
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                {/* Glow Effect */}
-                <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${value.gradient} blur-xl`}></div>
-                
-                <CardContent className="p-6 text-center relative z-10">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${value.gradient} rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                    <value.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-heading font-bold text-slate-100 mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-slate-300 leading-relaxed text-sm">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+      {/* Values */}
+      <section className="border-t border-ink-line py-24 md:py-32">
+        <Container>
+          <Reveal>
+            <SectionTitle>What we hold ourselves to</SectionTitle>
+          </Reveal>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line md:grid-cols-2">
+            {values.map((v, i) => (
+              <Reveal key={v.title} d={(i % 2) * 100} className="bg-ink p-8 md:p-10">
+                <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">{v.title}</h3>
+                <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-fg-muted">{v.description}</p>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        <div className="absolute inset-0">
-          <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-green-500/15 to-teal-500/15 rounded-full blur-3xl animate-float"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Our Team
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Meet the talented professionals who make it all happen
+      {/* Team */}
+      <section className="border-t border-ink-line py-24 md:py-32">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <SectionTitle>Who you work with</SectionTitle>
+            <p className="mt-5 max-w-sm text-[17px] leading-relaxed text-fg-muted">
+              One team that covers the whole stack, so nothing gets lost between vendors.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card
-                key={member.name}
-                className="group hover:shadow-xl transition-all duration-500 rounded-3xl animate-fade-in-up relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700/50"
-                style={{ 
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary/20 to-primary-light/20 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                    <member.icon className="h-8 w-8 text-primary" />
+          </Reveal>
+          <ul className="lg:col-span-8">
+            {team.map((m, i) => (
+              <li key={m.name} className="border-b border-ink-line first:border-t">
+                <Reveal d={i * 50} className="grid gap-2 py-7 sm:grid-cols-[1fr_1.2fr] sm:gap-8">
+                  <div>
+                    <h3 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">{m.name}</h3>
+                    <p className="mt-1 text-[14px] text-fg-faint">{m.role}</p>
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-slate-100 mb-2">
-                    {member.name}
-                  </h3>
-                  <div className="text-primary font-medium mb-3">
-                    {member.role}
-                  </div>
-                  <p className="text-slate-300 text-sm">
-                    {member.description}
-                  </p>
-                </CardContent>
-              </Card>
+                  <p className="text-[15px] leading-relaxed text-fg-muted">{m.description}</p>
+                </Reveal>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </Container>
       </section>
 
-      {/* Location Section */}
-      <section className="py-20 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Background Animation */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-8">
-              Based in Lahore, Pakistan
-            </h2>
-            <p className="text-xl text-slate-300 mb-8">
-              Proudly serving clients locally and globally from the heart of Pakistan's technology hub
-            </p>
-            <Card className="shadow-2xl rounded-3xl overflow-hidden relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary-light/5"></div>
-              <CardContent className="p-8 relative z-10">
-                <div className="text-6xl mb-6">🏢</div>
-                <p className="text-lg text-white leading-relaxed">
-                  Our headquarters in Lahore puts us at the center of Pakistan's thriving tech ecosystem, 
-                  allowing us to attract top talent and stay connected with the latest industry trends.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-56 h-56 bg-purple-500/25 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-500/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Want to Join Our Success Story?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Let's work together to create something amazing. Get in touch and see how we can help your business grow.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
-              >
-                <Link to="/contact" className="flex items-center gap-3">
-                  Get in Touch
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-                <Link to="/services">Our Services</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <Record />
+      <Close />
+    </main>
   );
 };
 

@@ -1,6 +1,6 @@
 ---
 name: xNerds
-description: Product engineering for ambitious founders. A senior Lahore team whose shipped products are the proof.
+description: Product engineering for ambitious founders. A senior engineering team whose shipped products are the proof.
 colors:
   ink: "#0A0B0E"
   ink-raised: "#111318"
@@ -59,6 +59,11 @@ typography:
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.625
+  small:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.5
   label:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "13px"
@@ -141,7 +146,7 @@ Density is low and confident. Sections breathe on tall vertical rhythm (112 to 1
 
 The system rejects the gradient-blob, neon-badge "AI agency" template the site carried before. No glow loops, no floating blobs, no slate-and-gradient cards.
 
-**Rollout status.** Only the homepage, navigation and footer are built on this system. Services, Portfolio, About, Contact and 404 still carry the previous gradient/slate design and are pending migration onto it; treat this file, not those pages, as the reference for them. Legacy tokens still present in `tailwind.config.ts` (`primary` #0047AB, `surface`, `slate`, the shadcn HSL variables, and the `glow`, `pulse-glow`, `float` and `shimmer` animations) belong to the old design and are not part of this system.
+**Rollout status.** Every route (Home, Services, Portfolio, About, Contact, 404) plus the navigation and footer is built on this system. Shared building blocks live in `src/components/site.tsx` (PageHeader, Container, SectionTitle, Reveal, BrowserFrame, ProjectMeta, PrimaryAction, SecondaryAction, Engagement, Record, Close). The legacy gradient tokens and animations were removed from `tailwind.config.ts`; `primary` and the shadcn HSL variables remain only for the unused `components/ui` primitives. The `small` step (14px) is used for navigation, footer links and inline links.
 
 **Key Characteristics:**
 - Near-black ink ground with hairline borders, no grid overlay.
@@ -190,7 +195,7 @@ A cool, near-monochrome dark palette with a single disciplined blue.
 - **Lead** (400, clamp 1.05rem to 1.2rem, 1.625): the hero subcopy, max 34rem.
 - **Body Large / Body** (400, 17px / 15px, 1.625): section intros and descriptive copy, in Muted Grey, held to roughly max-w-md / max-w-lg.
 - **Label** (400 or 500, 13px): metadata lines joined with spaced middots, footer column headings (500, Paper White), row labels like "Shipped and running". Sentence case, no tracking, no uppercase.
-- **Mono** (400, 11px in URL bars, 12 to 14px for domains and the live Lahore time).
+- **Mono** (400, 11px in URL bars, 12 to 14px for domains and years).
 
 ### Named Rules
 **The Tight Display Rule.** Anything 22px and up is semibold with negative tracking (-0.02em to -0.04em, tighter as it grows). Body sizes keep default tracking.

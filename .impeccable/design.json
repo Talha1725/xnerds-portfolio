@@ -4,51 +4,299 @@
   "title": "Design System: xNerds",
   "extensions": {
     "colorMeta": {
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0A0B0E", "tonalRamp": ["#050608", "#0A0B0E", "#111318", "#1A1D24", "#2A2E37", "#3A3F4B", "#5A606E", "#80869A"] },
-      "ink-raised": { "role": "neutral", "displayName": "Raised Ink", "canonical": "#111318", "tonalRamp": ["#0A0B0E", "#111318", "#181B22", "#21252E", "#2E333E", "#424855", "#626977", "#8A90A0"] },
-      "ink-line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255,255,255,0.08)", "tonalRamp": ["rgba(255,255,255,0.03)", "rgba(255,255,255,0.05)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.11)", "rgba(255,255,255,0.14)", "rgba(255,255,255,0.20)", "rgba(255,255,255,0.30)", "rgba(255,255,255,0.45)"] },
-      "ink-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgba(255,255,255,0.14)", "tonalRamp": ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.11)", "rgba(255,255,255,0.14)", "rgba(255,255,255,0.20)", "rgba(255,255,255,0.30)", "rgba(255,255,255,0.45)", "rgba(255,255,255,0.60)"] },
-      "fg": { "role": "neutral", "displayName": "Paper White", "canonical": "#EDEEF1", "tonalRamp": ["#3A3F4B", "#5A606E", "#80869A", "#9A9FAB", "#B8BCC6", "#D4D7DE", "#EDEEF1", "#FFFFFF"] },
-      "fg-muted": { "role": "neutral", "displayName": "Muted Grey", "canonical": "#9A9FAB", "tonalRamp": ["#2A2E37", "#454A56", "#646A78", "#80869A", "#9A9FAB", "#B8BCC6", "#D4D7DE", "#EDEEF1"] },
-      "fg-faint": { "role": "neutral", "displayName": "Faint Grey", "canonical": "#80869A", "tonalRamp": ["#22252D", "#3A3F4B", "#5A606E", "#80869A", "#9A9FAB", "#B8BCC6", "#D4D7DE", "#EDEEF1"] },
-      "signal": { "role": "primary", "displayName": "Action Blue", "canonical": "#2563EB", "tonalRamp": ["#0F1E4A", "#162D72", "#1D4ED8", "#2563EB", "#3D7EF2", "#6B9EF6", "#A6C4FA", "#DCE8FD"] },
-      "signal-hover": { "role": "primary", "displayName": "Pressed Blue", "canonical": "#1D4ED8", "tonalRamp": ["#0C1840", "#132A6B", "#1A3FA8", "#1D4ED8", "#2563EB", "#5B8CF3", "#9DBBF8", "#D6E3FC"] },
-      "signal-soft": { "role": "primary", "displayName": "Sky Signal", "canonical": "#84BFEA", "tonalRamp": ["#123048", "#1C4A6E", "#2D6B98", "#4F93C6", "#84BFEA", "#A6D1F0", "#C9E3F6", "#EAF4FC"] },
-      "signal-light": { "role": "primary", "displayName": "Hero Light", "canonical": "#3D7EF2", "tonalRamp": ["#10224A", "#183577", "#2456BE", "#3D7EF2", "#6699F5", "#8FB4F8", "#BBD1FB", "#E3ECFE"] }
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0A0B0E",
+        "tonalRamp": [
+          "#050608",
+          "#0A0B0E",
+          "#111318",
+          "#1A1D24",
+          "#2A2E37",
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A"
+        ]
+      },
+      "ink-raised": {
+        "role": "neutral",
+        "displayName": "Raised Ink",
+        "canonical": "#111318",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#111318",
+          "#181B22",
+          "#21252E",
+          "#2E333E",
+          "#424855",
+          "#626977",
+          "#8A90A0"
+        ]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(255,255,255,0.08)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.03)",
+          "rgba(255,255,255,0.05)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.11)",
+          "rgba(255,255,255,0.14)",
+          "rgba(255,255,255,0.20)",
+          "rgba(255,255,255,0.30)",
+          "rgba(255,255,255,0.45)"
+        ]
+      },
+      "ink-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "rgba(255,255,255,0.14)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.05)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.11)",
+          "rgba(255,255,255,0.14)",
+          "rgba(255,255,255,0.20)",
+          "rgba(255,255,255,0.30)",
+          "rgba(255,255,255,0.45)",
+          "rgba(255,255,255,0.60)"
+        ]
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#EDEEF1",
+        "tonalRamp": [
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1",
+          "#FFFFFF"
+        ]
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Muted Grey",
+        "canonical": "#9A9FAB",
+        "tonalRamp": [
+          "#2A2E37",
+          "#454A56",
+          "#646A78",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1"
+        ]
+      },
+      "fg-faint": {
+        "role": "neutral",
+        "displayName": "Faint Grey",
+        "canonical": "#80869A",
+        "tonalRamp": [
+          "#22252D",
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Action Blue",
+        "canonical": "#2563EB",
+        "tonalRamp": [
+          "#0F1E4A",
+          "#162D72",
+          "#1D4ED8",
+          "#2563EB",
+          "#3D7EF2",
+          "#6B9EF6",
+          "#A6C4FA",
+          "#DCE8FD"
+        ]
+      },
+      "signal-hover": {
+        "role": "primary",
+        "displayName": "Pressed Blue",
+        "canonical": "#1D4ED8",
+        "tonalRamp": [
+          "#0C1840",
+          "#132A6B",
+          "#1A3FA8",
+          "#1D4ED8",
+          "#2563EB",
+          "#5B8CF3",
+          "#9DBBF8",
+          "#D6E3FC"
+        ]
+      },
+      "signal-soft": {
+        "role": "primary",
+        "displayName": "Sky Signal",
+        "canonical": "#84BFEA",
+        "tonalRamp": [
+          "#123048",
+          "#1C4A6E",
+          "#2D6B98",
+          "#4F93C6",
+          "#84BFEA",
+          "#A6D1F0",
+          "#C9E3F6",
+          "#EAF4FC"
+        ]
+      },
+      "signal-light": {
+        "role": "primary",
+        "displayName": "Hero Light",
+        "canonical": "#3D7EF2",
+        "tonalRamp": [
+          "#10224A",
+          "#183577",
+          "#2456BE",
+          "#3D7EF2",
+          "#6699F5",
+          "#8FB4F8",
+          "#BBD1FB",
+          "#E3ECFE"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero headline only; explicit phrase breaks at lg." },
-      "headline": { "displayName": "Headline", "purpose": "Section headings; the closing CTA steps up to clamp(2.25rem,5vw,4rem), 1.0, -0.04em." },
-      "statement": { "displayName": "Statement", "purpose": "Large proof sentence in Faint Grey with confirmed facts in Paper White." },
-      "title-lg": { "displayName": "Title Large", "purpose": "Featured project names." },
-      "title": { "displayName": "Title", "purpose": "Service names, secondary project names; engagement titles at 26px." },
-      "lead": { "displayName": "Lead", "purpose": "Hero subcopy, max 34rem." },
-      "body-lg": { "displayName": "Body Large", "purpose": "Section intros and closing copy." },
-      "body": { "displayName": "Body", "purpose": "Descriptive copy, buttons, list items." },
-      "label": { "displayName": "Label", "purpose": "Metadata lines, row labels, footer headings; sentence case, no tracking." },
-      "mono": { "displayName": "Mono", "purpose": "Domains, URLs and the live Lahore clock only." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; explicit phrase breaks at lg."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings; the closing CTA steps up to clamp(2.25rem,5vw,4rem), 1.0, -0.04em."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Large proof sentence in Faint Grey with confirmed facts in Paper White."
+      },
+      "title-lg": {
+        "displayName": "Title Large",
+        "purpose": "Featured project names."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, secondary project names; engagement titles step up to clamp(1.5rem,2.4vw,1.75rem)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero subcopy, max 34rem."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Section intros and closing copy."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptive copy, buttons, list items."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata lines, row labels, footer headings; sentence case, no tracking."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Domains, URLs and the live Lahore clock only."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "14px: navigation, footer links, inline links and the WhatsApp/Let's talk pill text."
+      }
     },
     "shadows": [
-      { "name": "frame-lift", "value": "inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 80px -30px rgba(0,0,0,0.85), 0 12px 24px -12px rgba(0,0,0,0.6)", "purpose": "Every browser frame: inner top highlight plus long soft drop." },
-      { "name": "action-glow", "value": "0 8px 24px -8px rgba(37,99,235,0.6)", "purpose": "Primary blue button at rest." },
-      { "name": "action-glow-hover", "value": "0 12px 32px -8px rgba(37,99,235,0.75)", "purpose": "Primary blue button on hover." }
+      {
+        "name": "frame-lift",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 80px -30px rgba(0,0,0,0.85), 0 12px 24px -12px rgba(0,0,0,0.6)",
+        "purpose": "Every browser frame: inner top highlight plus long soft drop."
+      },
+      {
+        "name": "action-glow",
+        "value": "0 8px 24px -8px rgba(37,99,235,0.6)",
+        "purpose": "Primary blue button at rest."
+      },
+      {
+        "name": "action-glow-hover",
+        "value": "0 12px 32px -8px rgba(37,99,235,0.75)",
+        "purpose": "Primary blue button on hover."
+      }
     ],
     "motion": [
-      { "name": "ease-site", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "The one ease for every transition and animation on the site." },
-      { "name": "load-in", "value": "900ms; from opacity 0, translateY(14px), blur(6px); delay via --d (0-300ms)", "purpose": "Hero copy load sequence." },
-      { "name": "frame-in", "value": "1200ms; from opacity 0, translateY(40px) scale(.97); delay via --d (380-600ms)", "purpose": "Hero frames settling in after the copy." },
-      { "name": "reveal", "value": "opacity/transform 900ms, translateY(16px); delay via --d (40-120ms stagger)", "purpose": "One-time scroll reveal for blocks below the hero." },
-      { "name": "reveal-clip", "value": "clip-path inset(12% 0 0 0 round 16px) to inset(0 round 16px), 1100ms", "purpose": "Added to media reveals." },
-      { "name": "state-standard", "value": "300ms", "purpose": "Button fill, border and nav background transitions." },
-      { "name": "mosaic-active", "value": "700ms; translateY(-8px) scale(1.015)", "purpose": "Active hero frame lift." },
-      { "name": "background-wash-hero", "value": "radial-gradient(70% 55% at 72% -8%, rgba(61,126,242,0.20) 0%, rgba(61,126,242,0.06) 45%, transparent 75%)", "purpose": "The single soft light at the top of the hero." },
-      { "name": "background-wash-close", "value": "radial-gradient(55% 80% at 50% 120%, rgba(61,126,242,0.22), transparent 70%)", "purpose": "The light rising behind the closing call to action." }
+      {
+        "name": "ease-site",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The one ease for every transition and animation on the site."
+      },
+      {
+        "name": "load-in",
+        "value": "900ms; from opacity 0, translateY(14px), blur(6px); delay via --d (0-300ms)",
+        "purpose": "Hero copy load sequence."
+      },
+      {
+        "name": "frame-in",
+        "value": "1200ms; from opacity 0, translateY(40px) scale(.97); delay via --d (380-600ms)",
+        "purpose": "Hero frames settling in after the copy."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity/transform 900ms, translateY(16px); delay via --d (40-120ms stagger)",
+        "purpose": "One-time scroll reveal for blocks below the hero."
+      },
+      {
+        "name": "reveal-clip",
+        "value": "clip-path inset(12% 0 0 0 round 16px) to inset(0 round 16px), 1100ms",
+        "purpose": "Added to media reveals."
+      },
+      {
+        "name": "state-standard",
+        "value": "300ms",
+        "purpose": "Button fill, border and nav background transitions."
+      },
+      {
+        "name": "mosaic-active",
+        "value": "700ms; translateY(-8px) scale(1.015)",
+        "purpose": "Active hero frame lift."
+      },
+      {
+        "name": "background-wash-hero",
+        "value": "radial-gradient(70% 55% at 72% -8%, rgba(61,126,242,0.20) 0%, rgba(61,126,242,0.06) 45%, transparent 75%)",
+        "purpose": "The single soft light at the top of the hero."
+      },
+      {
+        "name": "background-wash-close",
+        "value": "radial-gradient(55% 80% at 50% 120%, rgba(61,126,242,0.22), transparent 70%)",
+        "purpose": "The light rising behind the closing call to action."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "xl", "value": "1280px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
     ]
   },
   "components": [
@@ -128,11 +376,31 @@
       "One ease for every motion, one orchestrated load in the hero, one quiet reveal per section below."
     ],
     "rules": [
-      { "name": "The Blue Means Act Rule", "body": "Action Blue fills only things the visitor can press to start a conversation. It never colors a heading, an icon decoration, a background panel or a badge.", "section": "colors" },
-      { "name": "The One Light Rule", "body": "A section gets at most one soft radial wash of Hero Light, anchored off-edge (top of the hero, bottom of the close). Washes never animate, never stack, and never become blobs.", "section": "colors" },
-      { "name": "The Tight Display Rule", "body": "Anything 22px and up is semibold with negative tracking (-0.02em to -0.04em, tighter as it grows). Body sizes keep default tracking.", "section": "typography" },
-      { "name": "The Machine Text Rule", "body": "Geist Mono appears only for domains, URLs, and live clock readouts. Never for labels, numbers in prose, or decoration.", "section": "typography" },
-      { "name": "The Only Frames Float Rule", "body": "Shadows belong to product frames and the primary action. Panels, cards, list rows and nav sit flat on hairlines.", "section": "elevation" }
+      {
+        "name": "The Blue Means Act Rule",
+        "body": "Action Blue fills only things the visitor can press to start a conversation. It never colors a heading, an icon decoration, a background panel or a badge.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Light Rule",
+        "body": "A section gets at most one soft radial wash of Hero Light, anchored off-edge (top of the hero, bottom of the close). Washes never animate, never stack, and never become blobs.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Anything 22px and up is semibold with negative tracking (-0.02em to -0.04em, tighter as it grows). Body sizes keep default tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Machine Text Rule",
+        "body": "Geist Mono appears only for domains, URLs, and live clock readouts. Never for labels, numbers in prose, or decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Frames Float Rule",
+        "body": "Shadows belong to product frames and the primary action. Panels, cards, list rows and nav sit flat on hairlines.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do let real product screenshots in browser frames carry each page's visual weight; every frame links to its live domain when one exists.",

@@ -5,6 +5,7 @@ import { WHATSAPP_URL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { name: "Home", path: "/" },
   { name: "Work", path: "/portfolio" },
   { name: "Services", path: "/services" },
   { name: "About", path: "/about" },
@@ -52,6 +53,7 @@ export const Navigation = () => {
             <NavLink
               key={item.path}
               to={item.path}
+              end={item.path === "/"}
               className={({ isActive }) =>
                 cn(
                   "rounded-full px-3.5 py-2 text-[14px] transition-colors duration-200",
@@ -94,6 +96,7 @@ export const Navigation = () => {
               <li key={item.path}>
                 <NavLink
                   to={item.path}
+              end={item.path === "/"}
                   className={({ isActive }) =>
                     cn(
                       "flex items-center justify-between border-b border-ink-line py-4 text-2xl font-medium tracking-[-0.02em]",

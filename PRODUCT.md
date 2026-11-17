@@ -36,6 +36,7 @@ Visitors arrive from referrals, LinkedIn and outreach, and check the portfolio a
 
 - Name: xNerds / xNerds Solutions.
 - The logo (`public/logo.png`, an X built from light and dark blue chevrons with small code-bracket marks) is fixed and stays as it is. `public/mark.png` is a tight crop of it for the nav and footer.
+- The location (Lahore, Pakistan) appears only in the footer. Page copy, headings and CTAs never mention it (user decision, November 2026).
 - Visual register, chosen by the user in November 2026: the premium software-company standard, done straight. The craft bar is Linear, Vercel and Stripe.
 
 ## Evidence on Hand

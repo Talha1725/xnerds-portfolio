@@ -30,7 +30,7 @@ export const Footer = () => {
             <span className="text-[17px] font-semibold tracking-[-0.02em] text-fg">xNerds</span>
           </Link>
           <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-fg-muted">
-            Software and AI engineering from Lahore, Pakistan, for founders and teams worldwide.
+            Software and AI engineering for founders and teams worldwide.
           </p>
         </div>
 

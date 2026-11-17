@@ -138,7 +138,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "2023",
     title: "Founded",
-    description: "xNerds Solutions was established in Lahore with a vision to empower businesses through innovative technology solutions.",
+    description: "xNerds Solutions was established with a vision to empower businesses through innovative technology solutions.",
     icon: Rocket,
     color: "from-blue-500 to-cyan-500"
   },
@@ -166,7 +166,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "2025",
     title: "Innovation",
-    description: "Continuing to push boundaries with cutting-edge solutions in AI, cloud computing, and digital transformation.",
+    description: "Shipping AI, cloud and product work for clients worldwide.",
     icon: Zap,
     color: "from-indigo-500 to-purple-500"
   }
@@ -203,7 +203,7 @@ export const team: TeamMember[] = [
   {
     name: "Development Team",
     role: "Full-Stack Developers",
-    description: "Expert developers specializing in modern web and mobile technologies.",
+    description: "Developers working across modern web and mobile stacks.",
     icon: Code
   },
   {
@@ -221,7 +221,7 @@ export const team: TeamMember[] = [
   {
     name: "Design Team",
     role: "UI/UX Designers",
-    description: "Creative designers crafting beautiful and intuitive user experiences.",
+    description: "Designers who shape the product's interface and user experience.",
     icon: Palette
   }
 ]; 

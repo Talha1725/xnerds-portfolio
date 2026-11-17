@@ -1,149 +1,157 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { services } from "@/utils/data";
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/utils/data";
+import { EMAIL, EMAIL_URL, hostOf } from "@/lib/contact";
+import {
+  Close,
+  Container,
+  Engagement,
+  PageHeader,
+  PrimaryAction,
+  Reveal,
+  SecondaryAction,
+  SectionTitle,
+} from "@/components/site";
 
-const Services = () => {
-  return (
-    <div className="min-h-screen bg-slate-900 overflow-hidden">
-      {/* Hero Section */}
-      <section className="py-20 h-[70vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-40 right-1/3 w-40 h-40 bg-pink-500/25 rounded-full blur-xl animate-float" style={{ animationDelay: '6s' }}></div>
-        </div>
+const byTitle = (t: string) => projects.find((p) => p.title === t)!;
 
-        {/* Grid Pattern Background */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
+const detail = [
+  {
+    title: "Custom software",
+    body: "Web applications, APIs, and integrations with the systems you already run. We build the product end to end, from the data model to the interface.",
+    covers: ["Web applications", "API development", "System integration"],
+    work: [byTitle("ACTFlow"), byTitle("Bitlenz")],
+  },
+  {
+    title: "Mobile apps",
+    body: "iOS and Android apps, built native or cross-platform, with the backend they depend on.",
+    covers: ["iOS & Android", "React Native", "Flutter"],
+    work: [byTitle("Smart POS Pro")],
+  },
+  {
+    title: "Enterprise systems",
+    body: "ERP, CRM and POS systems with full compliance and integration, including FBR-compliant point of sale for retail in Pakistan.",
+    covers: ["ERP systems", "CRM solutions", "POS integration"],
+    work: [byTitle("Smart POS Pro")],
+  },
+  {
+    title: "Cloud & DevOps",
+    body: "Cloud infrastructure, deployment pipelines and environments defined as code, so releases are repeatable.",
+    covers: ["AWS / Azure", "CI/CD", "Infrastructure as code"],
+    work: [byTitle("FIGMENT")],
+  },
+  {
+    title: "AI & data",
+    body: "Machine learning, analytics and dashboards built into your product rather than bolted on.",
+    covers: ["Machine learning", "Data visualization", "Predictive analytics"],
+    work: [byTitle("BasedAgent"), byTitle("Antaragame"), byTitle("Bitlenz")],
+  },
+  {
+    title: "Staff augmentation",
+    body: "Vetted engineers and AI specialists who join your team and work inside your process, without the hiring overhead.",
+    covers: ["Vetted tech talent", "On-demand scaling", "Seamless team integration"],
+    work: [],
+  },
+];
 
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
-              Our Services
-            </h1>
-            <p className="text-sm lg:text-xl text-slate-300 max-w-3xl mx-auto">
-            At xNerds, we partner with clients at various stages — from product ideation to scaling production systems — and bring cross-functional expertise across design, engineering, AI, and DevOps. Our focus is on delivering software that is not only technically robust but also elegant in user experience and aligned with business KPIs. Each engagement is tailored, iterative, and backed by clear communication and modern development practices.
-            </p>
-          </div>
-        </div>
-      </section>
+const Services = () => (
+  <main>
+    <PageHeader
+      title="Everything it takes to ship a product."
+      lead="We work with teams from the first idea to production scale, across design, engineering, AI and DevOps. Every engagement is iterative, with clear communication and modern engineering practice."
+    >
+      <div className="flex flex-wrap items-center gap-3">
+        <PrimaryAction />
+        <SecondaryAction href={EMAIL_URL}>{EMAIL}</SecondaryAction>
+      </div>
+    </PageHeader>
 
-      {/* Services Grid */}
-      <section className="py-10 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } lg:items-center gap-12 animate-fade-in-up`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Service Content */}
-                <div className="flex-1 space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl flex items-center justify-center text-2xl border border-primary/10">
-                      <service.icon className="h-8 w-8 text-slate-300" />
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100">
-                      {service.title}
-                    </h2>
-                  </div>
-                  
-                  <p className="text-lg text-slate-300 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-slate-300">{feature}</span>
-                      </div>
+    <section className="border-t border-ink-line py-20 md:py-28">
+      <Container>
+        <ul>
+          {detail.map((s, i) => (
+            <li key={s.title} className="border-b border-ink-line first:border-t">
+              <Reveal d={i * 40} className="grid gap-6 py-12 md:py-14 lg:grid-cols-12 lg:gap-10">
+                <h2 className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg lg:col-span-4">
+                  {s.title}
+                </h2>
+                <div className="lg:col-span-5">
+                  <p className="max-w-[60ch] text-[17px] leading-relaxed text-fg-muted">{s.body}</p>
+                  <ul className="mt-6 space-y-2.5">
+                    {s.covers.map((c) => (
+                      <li key={c} className="flex items-center gap-3 text-[15px] text-fg">
+                        <span className="h-px w-4 bg-signal-soft" aria-hidden />
+                        {c}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
+                <div className="lg:col-span-3">
+                  {s.work.length > 0 ? (
+                    <>
+                      <p className="text-[13px] text-fg-faint">Shipped in this area</p>
+                      <ul className="mt-3 space-y-2">
+                        {s.work.map((p) => {
+                          const host = hostOf(p.url);
+                          return (
+                            <li key={p.title}>
+                              {host ? (
+                                <a
+                                  href={p.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="group inline-flex items-center gap-1.5 text-[15px] font-medium text-fg hover:text-signal-soft"
+                                >
+                                  {p.title}
+                                  <ArrowUpRight
+                                    className="h-3.5 w-3.5 text-fg-faint transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal-soft"
+                                    aria-hidden
+                                  />
+                                </a>
+                              ) : (
+                                <span className="text-[15px] font-medium text-fg">{p.title}</span>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <p className="text-[13px] text-fg-faint">Engineers placed inside client teams</p>
+                  )}
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
 
-                {/* Service Visual */}
-                <div className="flex-1">
-                  <Card className="relative overflow-hidden border-0 rounded-3xl backdrop-blur-lg bg-slate-800/50 shadow-lg hover:shadow-2xl transition-all duration-500 group">
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <CardContent className="p-8 relative z-10">
-                      <div className="w-full h-64 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-xl flex items-center justify-center text-6xl border border-primary/10 overflow-hidden">
-                        <img 
-                          src={service.image} 
-                          alt={service.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+    <Engagement />
+
+    <section className="border-t border-ink-line py-20 md:py-28">
+      <Container className="grid gap-10 lg:grid-cols-12">
+        <Reveal className="lg:col-span-5">
+          <SectionTitle>How a project starts</SectionTitle>
+        </Reveal>
+        <Reveal d={120} className="lg:col-span-7">
+          <ol className="grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line sm:grid-cols-3">
+            {[
+              { t: "Conversation", b: "Tell us what you're building on WhatsApp or by email." },
+              { t: "Scope", b: "We agree on what ships first, the stack and how we'll work." },
+              { t: "Build", b: "Iterative delivery with regular, visible progress." },
+            ].map((step) => (
+              <li key={step.t} className="bg-ink p-7">
+                <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-fg">{step.t}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-fg-muted">{step.b}</p>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ol>
+        </Reveal>
+      </Container>
+    </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-56 h-56 bg-purple-500/25 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-500/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Let's discuss which services are right for your project and how we can help you achieve your goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
-              >
-                <Link to="/contact" className="flex items-center gap-3">
-                  Get Started
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-                <Link to="/portfolio">View Our Work</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+    <Close title="Not sure which service fits? Ask us." />
+  </main>
+);
 
 export default Services;
