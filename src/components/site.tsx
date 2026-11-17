@@ -58,16 +58,43 @@ export function BrowserFrame({
         </div>
         <span className={cn("w-[42px]", compact && "hidden xl:block")} aria-hidden />
       </div>
-      <img
-        src={project.image}
-        alt={`${project.title} screenshot`}
-        width={1800}
-        height={1013}
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
-        fetchPriority={priority ? "high" : "auto"}
-        className="block aspect-[16/9] w-full object-cover object-top"
+      {project.image ? (
+        <img
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          width={1800}
+          height={1013}
+          loading={priority ? "eager" : "lazy"}
+          decoding={priority ? "sync" : "async"}
+          fetchPriority={priority ? "high" : "auto"}
+          className="block aspect-[16/9] w-full object-cover object-top"
+        />
+      ) : (
+        <NameplateBody project={project} />
+      )}
+    </div>
+  );
+}
+
+/**
+ * Stands in for a screenshot when no clean public capture exists (private builds,
+ * login-only apps). It sets the product's own name in the frame rather than faking a UI.
+ */
+function NameplateBody({ project }: { project: Project }) {
+  return (
+    <div className="relative flex aspect-[16/9] w-full flex-col justify-end overflow-hidden p-[6%]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(80% 90% at 85% 0%, rgba(61,126,242,0.14), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%)",
+        }}
       />
+      <p className="relative text-[13px] text-fg-faint">{project.category}</p>
+      <p className="relative mt-1 text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-[1] tracking-[-0.04em] text-fg">
+        {project.title}
+      </p>
     </div>
   );
 }
@@ -104,10 +131,14 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
       >
         {project.title}
       </h3>
-      <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[15px]")}>
-        {project.description}
+      {project.description && (
+        <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[15px]")}>
+          {project.description}
+        </p>
+      )}
+      <p className={cn("text-[13px] text-fg-faint", project.description ? "mt-4" : "mt-2")}>
+        {[project.category, ...project.tags].join("  ·  ")}
       </p>
-      <p className="mt-4 text-[13px] text-fg-faint">{[project.category, ...project.tags].join("  ·  ")}</p>
       {host ? (
         <a
           href={project.url}

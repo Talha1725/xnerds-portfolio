@@ -128,11 +128,16 @@ function Hero() {
         <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:gap-10 md:px-8">
           <p className="shrink-0 text-[13px] text-fg-faint">Shipped and running</p>
           <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            {projects.map((p) => (
+            {shippedRow.map((p) => (
               <li key={p.title} className="text-[15px] font-medium tracking-[-0.01em] text-fg-muted">
                 {p.title}
               </li>
             ))}
+            <li>
+              <Link to="/portfolio" className="text-[15px] font-medium text-signal-soft hover:text-white">
+                +{projects.length - shippedRow.length} more
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -142,9 +147,11 @@ function Hero() {
 
 /* ---------- work ---------- */
 
+const shippedRow = projects.filter((p) => p.url && p.image).slice(0, 6);
+
 function Work() {
   const featured = [byTitle("ACTFlow"), byTitle("FIGMENT")];
-  const rest = projects.filter((p) => !featured.includes(p));
+  const rest = ["OpenReal", "BudSignal", "Chart Guardian", "BlueRock Markets"].map(byTitle);
 
   return (
     <section id="work" className="scroll-mt-20 py-28 md:py-36">
@@ -157,7 +164,7 @@ function Work() {
             to="/portfolio"
             className="group inline-flex shrink-0 items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
           >
-            All work
+            All {projects.length} projects
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
           </Link>
         </Reveal>

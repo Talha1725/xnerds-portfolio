@@ -45,13 +45,7 @@ Confirmed facts:
 - xNerds was founded in 2023, and the team has 7+ years of experience.
 - 50+ clients, 70+ projects.
 
-Shipped work, with screenshots in `public/work/*.webp` (originals in `public/`):
-- ACTFlow (actflow.ai): process automation
-- Antaragame (antaragame.io): AI gaming
-- Bitlenz (bitlenz.com): analytics dashboard
-- BasedAgent (basedagent.co): AI assistant
-- FIGMENT (figment.trade): fintech trading backend
-- Smart POS Pro (`work/pos.webp`, no public URL): FBR-compliant POS
+Shipped work: 32 projects in `src/utils/data.ts`, sourced from the user's project sheet ("Projects Details - Sheet1.csv", November 2026) plus the five original portfolio entries (ACTFlow, Antaragame, Bitlenz, BasedAgent, Smart POS Pro). The sectors are Trading & fintech, Prop firms, AI products and Business platforms. Screenshots in `public/work/*.webp` were captured from the live sites. Projects without a clean public capture (private builds, login-only apps, sites that didn't load) show a nameplate tile, never a fake UI. The sheet's first column names team members and is not published. "Customer Support Console" is left out because the sheet only has Loom links for it.
 
 Not on hand, so never invent: testimonials, client logos, named team members, case-study metrics, awards, "100% satisfaction" claims, or pricing.
 
