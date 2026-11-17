@@ -19,6 +19,55 @@ import { Expertise } from "@/components/expertise";
 
 const byTitle = (t: string) => projects.find((p) => p.title === t)!;
 
+/* ---------- project marquee ---------- */
+
+function MarqueeRow({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+      {projects.map((p) => (
+        <li key={p.title} className="flex items-center">
+          {p.url ? (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={hidden ? -1 : undefined}
+              className="whitespace-nowrap px-7 text-[15px] font-medium tracking-[-0.01em] text-fg-muted transition-colors duration-300 hover:text-fg"
+            >
+              {p.title}
+            </a>
+          ) : (
+            <span className="whitespace-nowrap px-7 text-[15px] font-medium tracking-[-0.01em] text-fg-faint">
+              {p.title}
+            </span>
+          )}
+          <span className="h-1 w-1 rounded-full bg-fg-faint/60" aria-hidden />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ProjectMarquee() {
+  return (
+    <div className="relative border-y border-ink-line">
+      <h2 className="sr-only">Projects we have shipped</h2>
+      <div
+        className="marquee group flex overflow-hidden py-6"
+        style={{
+          maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+        }}
+      >
+        <div className="marquee-track flex">
+          <MarqueeRow />
+          <MarqueeRow hidden />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- hero ---------- */
 
 const mosaic = [
@@ -125,30 +174,12 @@ function Hero() {
         </div>
       </div>
 
-      <div className="relative border-y border-ink-line">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:gap-10 md:px-8">
-          <p className="shrink-0 text-[13px] text-fg-faint">Shipped and running</p>
-          <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            {shippedRow.map((p) => (
-              <li key={p.title} className="text-[15px] font-medium tracking-[-0.01em] text-fg-muted">
-                {p.title}
-              </li>
-            ))}
-            <li>
-              <Link to="/portfolio" className="text-[15px] font-medium text-signal-soft hover:text-white">
-                +{projects.length - shippedRow.length} more
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <ProjectMarquee />
     </section>
   );
 }
 
 /* ---------- work ---------- */
-
-const shippedRow = projects.filter((p) => p.url && p.image).slice(0, 6);
 
 function Work() {
   const featured = [byTitle("ACTFlow"), byTitle("FIGMENT")];
