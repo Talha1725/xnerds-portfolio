@@ -169,6 +169,7 @@ export const projects: Project[] = [
   },
   {
     title: "Cockpit",
+    image: "/work/cockpit.webp",
     description: "A Cantonese-language AI investing cockpit for Hong Kong retail investors: what to research, when to enter and exit, how much to size, and a members' community.",
     tags: ["React", "tRPC", "Supabase", "Stripe"],
     category: "Wealth-management SaaS",
@@ -185,6 +186,7 @@ export const projects: Project[] = [
   },
   {
     title: "URFX",
+    image: "/work/urfx.webp",
     description: "A prop firm where traders buy one-phase, two-phase or instant-funding challenges and receive payouts once they pass.",
     tags: ["React", "Node.js", "PostgreSQL", "AWS"],
     category: "Prop firm",
@@ -234,9 +236,10 @@ export const projects: Project[] = [
   {
     title: "TradeMate",
     description: "A simulated brokerage and MetaTrader-style terminal with live market data, plus admin tools for trade editing, injection and audit logs.",
+    image: "/work/trademate.webp",
     tags: ["Next.js", "TradingView", "WebSocket"],
     category: "Trading terminal",
-    url: "",
+    url: "https://trademate.urfx.io",
     sector: "Trading & fintech",
   },
   {

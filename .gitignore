@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Unredacted source images (contain personal data, never deploy)
+.private/
