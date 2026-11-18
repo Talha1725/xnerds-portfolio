@@ -126,8 +126,8 @@ function HeroMosaic() {
           >
             <div
               className={cn(
-                "transition-[transform,opacity,filter] duration-700 ease-out-expo",
-                isActive ? "-translate-y-2 scale-[1.015] opacity-100" : "lg:opacity-60 lg:saturate-50"
+                "transition-transform duration-700 ease-out-expo [&_img]:transition-[filter,transform] [&_img]:duration-700",
+                isActive ? "-translate-y-2 scale-[1.015]" : "lg:[&_img]:brightness-[.5] lg:[&_img]:saturate-50"
               )}
             >
               <BrowserFrame project={project} priority compact />
