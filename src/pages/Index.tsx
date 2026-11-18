@@ -164,7 +164,7 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-[1240px] flex-1 items-center gap-14 px-5 pb-16 pt-32 md:px-8 lg:grid-cols-12 lg:gap-10 lg:pb-12 lg:pt-24">
         <div className="lg:col-span-7">
           <h1
-            className="load-in text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg [text-wrap:wrap]"
+            className="load-in text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg [text-wrap:balance] lg:[text-wrap:wrap]"
             style={delay(0)}
           >
             <span className="lg:whitespace-nowrap">Product engineering</span>{" "}
@@ -176,7 +176,7 @@ function Hero() {
             style={delay(120)}
           >
             xNerds is a senior engineering team. We design, build and scale web, mobile and AI
-            products, and we have shipped <span className="text-fg">70+ projects</span> since 2023.
+            products, and we have shipped <span className="whitespace-nowrap text-fg">70+ projects</span> since 2023.
           </p>
           <div className="load-in mt-10 flex flex-wrap items-center gap-3" style={delay(220)}>
             <PrimaryAction />

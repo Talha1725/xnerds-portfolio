@@ -80,11 +80,11 @@ const Services = () => {
       </div>
     </PageHeader>
 
-    <section className="border-t border-ink-line py-20 md:py-28">
+    <section className="border-t border-ink-line pb-20 pt-4 md:pb-28 md:pt-6">
       <Container>
         <ul>
           {detail.map((s, i) => (
-            <li key={s.title} className="border-b border-ink-line first:border-t">
+            <li key={s.title} className="border-b border-ink-line last:border-b-0">
               <Reveal d={i * 40} className="grid gap-6 py-12 md:py-14 lg:grid-cols-12 lg:gap-10">
                 <h2 className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg lg:col-span-4">
                   {s.title}

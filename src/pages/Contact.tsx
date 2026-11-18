@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 const budgets = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "Over $50,000"];
 
 const field =
-  "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[15px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none";
+  "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[15px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none [&:user-invalid]:border-danger [&:user-invalid]:ring-danger/20";
 
 function Field({ id, label, hint, children }: { id: string; label: string; hint?: string; children: ReactNode }) {
   return (
@@ -115,7 +115,7 @@ const Contact = () => {
               <iframe
                 title="xNerds office location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.1130927899044!2d74.26498137629807!3d31.521053674213658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919031d26c1a607%3A0x12265c8b47c7643c!2sISOSS%20House!5e0!3m2!1sen!2s!4v1750163847712!5m2!1sen!2s"
-                className="block aspect-[4/3] w-full [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.6)_brightness(0.95)]"
+                className="block aspect-[16/9] w-full lg:aspect-[4/3] [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.6)_brightness(0.95)]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

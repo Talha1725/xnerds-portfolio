@@ -79,6 +79,7 @@ export default {
 					hover: '#174FA0',
 					soft: '#82BFE9'
 				},
+				danger: '#E5484D',
 			},
 			fontFamily: {
 				sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],

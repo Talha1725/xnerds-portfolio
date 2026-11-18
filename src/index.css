@@ -67,10 +67,10 @@
     background: rgba(47, 111, 207, 0.35);
     color: #fff;
   }
+  /* Outlines follow each element's own corner radius, so pills stay pills when focused. */
   :focus-visible {
     outline: 2px solid #82BFE9;
     outline-offset: 3px;
-    border-radius: 6px;
   }
   a { text-underline-offset: 4px; }
   h1, h2, h3 { text-wrap: balance; }

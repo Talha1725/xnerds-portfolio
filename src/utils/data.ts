@@ -6,7 +6,7 @@ export const projects: Project[] = [
     description: "An on-chain marketplace where AI agents and people create, verify and monetise tasks, with full transparency.",
     image: "/work/act.webp",
     tags: ["Web3", "AI agents", "React", "Node.js", "MongoDB"],
-    category: "Web Application",
+    category: "Web application",
     url: "https://www.actflow.ai/",
     sector: "AI products",
     featured: true,
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     description: "A crypto market-intelligence dashboard tracking market cap, volume, social mentions and moving-average trends across tracked tokens.",
     image: "/work/bitlenz.webp",
     tags: ["Data analytics", "Crypto", "Vue.js", "D3.js"],
-    category: "Analytics Dashboard",
+    category: "Analytics dashboard",
     url: "https://www.bitlenz.com/",
     sector: "Trading & fintech",
   },
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     description: "Intelligent virtual AI assistant that helps businesses automate customer service and support operations.",
     image: "/work/basedagent.webp",
     tags: ["AI Assistant", "NLP", "Chatbot", "OpenAI"],
-    category: "AI Solution",
+    category: "AI assistant",
     url: "https://basedagent.co/",
     sector: "AI products",
   },
@@ -154,7 +154,7 @@ export const projects: Project[] = [
     description: "AI-powered gaming platform that creates personalized gaming experiences using machine learning algorithms.",
     image: "/work/antaragame.webp",
     tags: ["AI Gaming", "Machine Learning", "Unity", "Python"],
-    category: "AI Platform",
+    category: "AI platform",
     url: "http://antaragame.io/",
     sector: "AI products",
   },
@@ -278,7 +278,7 @@ export const projects: Project[] = [
     description: "FBR-compliant point-of-sale system with inventory management and real-time sales analytics for retail businesses.",
     image: "/work/pos.webp",
     tags: ["POS System", "FBR Compliant", "Inventory"],
-    category: "Mobile App",
+    category: "Mobile app",
     url: "",
     sector: "Business platforms",
   }
@@ -292,12 +292,12 @@ export const timeline: TimelineItem[] = [
   },
   {
     year: "2023",
-    title: "First Projects",
+    title: "First projects",
     description: "Successfully delivered our first web development and mobile app projects, establishing our reputation for quality.",
   },
   {
     year: "2024",
-    title: "AI Integration",
+    title: "AI integration",
     description: "Expanded our services to include AI and machine learning solutions, helping clients automate and optimize their operations.",
   },
   {
@@ -333,23 +333,23 @@ export const values: Value[] = [
 
 export const team: TeamMember[] = [
   {
-    name: "Development Team",
-    role: "Full-Stack Developers",
+    name: "Development team",
+    role: "Full-stack developers",
     description: "Developers working across modern web and mobile stacks.",
   },
   {
-    name: "AI Specialists",
-    role: "Machine Learning Engineers",
+    name: "AI specialists",
+    role: "Machine learning engineers",
     description: "Data scientists and AI engineers creating intelligent solutions.",
   },
   {
-    name: "DevOps Team",
-    role: "Cloud Engineers",
+    name: "DevOps team",
+    role: "Cloud engineers",
     description: "Infrastructure experts ensuring scalable and secure deployments.",
   },
   {
-    name: "Design Team",
-    role: "UI/UX Designers",
+    name: "Design team",
+    role: "UI/UX designers",
     description: "Designers who shape the product's interface and user experience.",
   }
 ]; 
