@@ -86,7 +86,7 @@ export const expertise: { group: string; intro: string; items: Capability[] }[] 
       },
       {
         title: "KYC, compliance & security",
-        body: "Identity verification with Sumsub, two-factor authentication, role-based access, audit logs and tenant-isolated data.",
+        body: "Individual KYC and company KYB with Sumsub, two-factor authentication, role-based access, audit logs and tenant-isolated data.",
         proof: ["BlueRock Markets", "OpenReal", "Calvoro Funding", "LV8"],
       },
       {
@@ -130,6 +130,8 @@ export const integrations = [
   "TradeLocker",
   "TradingView",
   "Binance API",
+  "Synth API",
+  "Hyblock API",
   "Telegram bots",
   "OpenAI",
   "Deepgram",

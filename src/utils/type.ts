@@ -6,6 +6,8 @@ export interface Project {
     description: string;
     /** Screenshot of the live product; omitted when no clean public capture exists. */
     image?: string;
+    /** Short capability points shown under the description (3–5, each a few words). */
+    highlights?: string[];
     tags: string[];
     category: string;
     /** Public URL; empty for private deployments. */

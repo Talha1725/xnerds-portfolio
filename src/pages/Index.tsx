@@ -208,8 +208,8 @@ function Hero() {
 /* ---------- work ---------- */
 
 function Work() {
-  const featured = [byTitle("ACTFlow"), byTitle("FIGMENT")];
-  const rest = ["OpenReal", "BudSignal", "Chart Guardian", "BlueRock Markets"].map(byTitle);
+  const featured = [byTitle("URFX"), byTitle("BlueRock Markets")];
+  const rest = ["TradeMate", "Cockpit", "OpenReal", "BudSignal"].map(byTitle);
 
   return (
     <section id="work" className="scroll-mt-20 py-28 md:py-36">

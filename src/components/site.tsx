@@ -172,7 +172,17 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
           {project.description}
         </p>
       )}
-      <p className={cn("text-[13px] text-fg-faint", project.description ? "mt-4" : "mt-2")}>
+      {project.highlights && project.highlights.length > 0 && (
+        <ul className={cn("mt-5 space-y-2", large ? "max-w-md" : "")}>
+          {project.highlights.map((h) => (
+            <li key={h} className="flex gap-3 text-[14px] leading-snug text-fg">
+              <span className="mt-[0.6em] h-px w-3 shrink-0 bg-signal-soft" aria-hidden />
+              {h}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className={cn("text-[13px] text-fg-faint", project.description || project.highlights ? "mt-5" : "mt-2")}>
         {[project.category, ...project.tags].join("  ·  ")}
       </p>
       {host ? (
