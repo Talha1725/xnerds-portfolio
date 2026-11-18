@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { BackToTop } from "@/components/BackToTop";
 
 /** Everything inside the router; shared by the browser entry and the build-time prerender. */
 export const AppRoutes = () => (
@@ -24,6 +25,7 @@ export const AppRoutes = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <BackToTop />
     </div>
   </>
 );

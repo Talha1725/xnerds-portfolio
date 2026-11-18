@@ -146,7 +146,7 @@ Density is low and confident. Sections breathe on tall vertical rhythm (112 to 1
 
 The system rejects the gradient-blob, neon-badge "AI agency" template the site carried before. No glow loops, no floating blobs, no slate-and-gradient cards.
 
-**Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly five places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), and the Contact form panel over its blue glow. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
+**Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly six places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), the Contact form panel over its blue glow, and the floating back-to-top button, whose ring traces scroll progress. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
 
 **Action blue comes from the logo.** The logo uses #174FA0 (cobalt) and #82BFE9 (sky). Buttons use #1D5FC0, the logo cobalt lifted for the dark ground, which passes AA with white. Hover uses the exact logo cobalt, and links and live dots use the exact logo sky.
 
