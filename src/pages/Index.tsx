@@ -21,10 +21,23 @@ const byTitle = (t: string) => projects.find((p) => p.title === t)!;
 
 /* ---------- project marquee ---------- */
 
+const marqueeProjects = [
+  "BudSignal",
+  "BlueRock Markets",
+  "PropFirm Labs",
+  "FXEE",
+  "NexCore VPS",
+  "SmartBite",
+  "Bitlenz",
+  "URFX",
+  "TrainHub",
+  "TradeMate",
+].map(byTitle);
+
 function MarqueeRow({ hidden = false }: { hidden?: boolean }) {
   return (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {projects.map((p) => (
+      {marqueeProjects.map((p) => (
         <li key={p.title} className="flex items-center">
           {p.url ? (
             <a
@@ -131,7 +144,7 @@ function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(70% 55% at 72% -8%, rgba(61,126,242,0.20) 0%, rgba(61,126,242,0.06) 45%, transparent 75%)",
+            "radial-gradient(70% 55% at 72% -8%, rgba(47,111,207,0.20) 0%, rgba(47,111,207,0.06) 45%, transparent 75%)",
         }}
       />
 
@@ -205,7 +218,7 @@ function Work() {
           {featured.map((p, i) => (
             <div key={p.title} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
               <Reveal clip className={cn("lg:col-span-8", i % 2 === 1 && "lg:order-2")}>
-                <BrowserFrame project={p} />
+                <BrowserFrame project={p} link />
               </Reveal>
               <Reveal d={120} className={cn("lg:col-span-4", i % 2 === 1 && "lg:order-1")}>
                 <ProjectMeta project={p} large />
@@ -217,7 +230,7 @@ function Work() {
         <div className="mt-24 grid gap-x-10 gap-y-20 md:mt-32 md:grid-cols-2">
           {rest.map((p, i) => (
             <Reveal key={p.title} d={(i % 2) * 120}>
-              <BrowserFrame project={p} />
+              <BrowserFrame project={p} link />
               <div className="mt-8">
                 <ProjectMeta project={p} />
               </div>

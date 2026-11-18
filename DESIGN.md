@@ -9,10 +9,10 @@ colors:
   fg: "#EDEEF1"
   fg-muted: "#9A9FAB"
   fg-faint: "#80869A"
-  signal: "#2563EB"
-  signal-hover: "#1D4ED8"
-  signal-soft: "#84BFEA"
-  signal-light: "#3D7EF2"
+  signal: "#1D5FC0"
+  signal-hover: "#174FA0"
+  signal-soft: "#82BFE9"
+  signal-light: "#2F6FCF"
 typography:
   display:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
@@ -146,6 +146,10 @@ Density is low and confident. Sections breathe on tall vertical rhythm (112 to 1
 
 The system rejects the gradient-blob, neon-badge "AI agency" template the site carried before. No glow loops, no floating blobs, no slate-and-gradient cards.
 
+**Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly five places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), and the Contact form panel over its blue glow. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
+
+**Action blue comes from the logo.** The logo uses #174FA0 (cobalt) and #82BFE9 (sky). Buttons use #1D5FC0, the logo cobalt lifted for the dark ground, which passes AA with white. Hover uses the exact logo cobalt, and links and live dots use the exact logo sky.
+
 **Rollout status.** Every route (Home, Services, Portfolio, About, Contact, 404) plus the navigation and footer is built on this system. Shared building blocks live in `src/components/site.tsx` (PageHeader, Container, SectionTitle, Reveal, BrowserFrame, ProjectMeta, PrimaryAction, SecondaryAction, Engagement, Record, Close). The legacy gradient tokens and animations were removed from `tailwind.config.ts`; `primary` and the shadcn HSL variables remain only for the unused `components/ui` primitives. The `small` step (14px) is used for navigation, footer links and inline links.
 
 **Key Characteristics:**
@@ -218,7 +222,7 @@ Flat ink by default, with depth reserved for product frames and the primary acti
 
 ### Shadow Vocabulary
 - **Frame lift** (`box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 80px -30px rgba(0,0,0,0.85), 0 12px 24px -12px rgba(0,0,0,0.6)`): every browser frame.
-- **Action glow** (`box-shadow: 0 8px 24px -8px rgba(37,99,235,0.6)`, hover `0 12px 32px -8px rgba(37,99,235,0.75)`): the primary blue button only.
+- **Action glow** (`box-shadow: 0 8px 24px -8px rgba(29,95,192,0.6)`, hover `0 12px 32px -8px rgba(29,95,192,0.75)`): the primary blue button only.
 
 ### Named Rules
 **The Only Frames Float Rule.** Shadows belong to product frames and the primary action. Panels, cards, list rows and nav sit flat on hairlines.
@@ -268,7 +272,7 @@ Ink ground under a Hairline. Mark and one-line description (5 cols), then link c
 
 ### Do:
 - **Do** let real product screenshots in browser frames carry each page's visual weight; every frame links to its live domain when one exists.
-- **Do** reserve Action Blue (#2563EB) for the actions that start a conversation, and keep it to one or two per viewport.
+- **Do** reserve Action Blue (#1D5FC0) for the actions that start a conversation, and keep it to one or two per viewport.
 - **Do** separate sections with a single 8% white hairline and generous vertical padding (112px, 144px from md) instead of background bands.
 - **Do** set every heading in Hanken Grotesk semibold with negative tracking, and keep body copy in Muted Grey at 15 to 17px.
 - **Do** run all motion on cubic-bezier(.16,1,.3,1), reveal each block once, and show everything immediately under reduced motion.

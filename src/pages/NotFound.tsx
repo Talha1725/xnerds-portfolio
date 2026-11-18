@@ -11,7 +11,7 @@ const NotFound = () => {
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          background: "radial-gradient(60% 60% at 50% -10%, rgba(61,126,242,0.16), transparent 70%)",
+          background: "radial-gradient(60% 60% at 50% -10%, rgba(47,111,207,0.16), transparent 70%)",
         }}
       />
       <Container className="relative py-32">

@@ -33,13 +33,30 @@ export function BrowserFrame({
   className,
   priority = false,
   compact = false,
+  link = false,
 }: {
   project: Project;
   className?: string;
   priority?: boolean;
   compact?: boolean;
+  /** Make the screenshot itself a link to the live product, with a frosted "visit" label on hover. */
+  link?: boolean;
 }) {
   const host = hostOf(project.url) || "private deployment";
+  const body = project.image ? (
+    <img
+      src={project.image}
+      alt={`${project.title} screenshot`}
+      width={1800}
+      height={1013}
+      loading={priority ? "eager" : "lazy"}
+      decoding={priority ? "sync" : "async"}
+      fetchPriority={priority ? "high" : "auto"}
+      className="block aspect-[16/9] w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover/frame:scale-[1.015]"
+    />
+  ) : (
+    <NameplateBody project={project} />
+  );
   return (
     <div
       className={cn(
@@ -58,19 +75,25 @@ export function BrowserFrame({
         </div>
         <span className={cn("w-[42px]", compact && "hidden xl:block")} aria-hidden />
       </div>
-      {project.image ? (
-        <img
-          src={project.image}
-          alt={`${project.title} screenshot`}
-          width={1800}
-          height={1013}
-          loading={priority ? "eager" : "lazy"}
-          decoding={priority ? "sync" : "async"}
-          fetchPriority={priority ? "high" : "auto"}
-          className="block aspect-[16/9] w-full object-cover object-top"
-        />
+      {link && project.url ? (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${project.title} at ${host}`}
+          className="group/frame relative block overflow-hidden focus-visible:outline-offset-[-3px]"
+        >
+          {body}
+          <span
+            className="pointer-events-none absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink/35 px-3.5 py-1.5 text-[13px] text-fg opacity-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_24px_-8px_rgba(0,0,0,0.6)] backdrop-blur-xl backdrop-saturate-150 transition-[opacity,transform] duration-500 ease-out-expo [transform:translateY(6px)] group-hover/frame:opacity-100 group-hover/frame:[transform:none] group-focus-visible/frame:opacity-100 group-focus-visible/frame:[transform:none]"
+            aria-hidden
+          >
+            Visit <span className="font-mono text-fg-muted">{host}</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </span>
+        </a>
       ) : (
-        <NameplateBody project={project} />
+        body
       )}
     </div>
   );
@@ -88,7 +111,7 @@ function NameplateBody({ project }: { project: Project }) {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(80% 90% at 85% 0%, rgba(61,126,242,0.14), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%)",
+            "radial-gradient(80% 90% at 85% 0%, rgba(47,111,207,0.14), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%)",
         }}
       />
       <p className="relative text-[13px] text-fg-faint">{project.category}</p>
@@ -106,7 +129,7 @@ export function PrimaryAction({ className, children = "Message us on WhatsApp" }
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group inline-flex h-12 items-center gap-2 rounded-full bg-signal pl-6 pr-5 text-[15px] font-medium text-white shadow-[0_8px_24px_-8px_rgba(37,99,235,0.6)] transition-[background-color,box-shadow] duration-300 hover:bg-signal-hover hover:shadow-[0_12px_32px_-8px_rgba(37,99,235,0.75)]",
+        "group inline-flex h-12 items-center gap-2 rounded-full bg-signal pl-6 pr-5 text-[15px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-8px_rgba(29,95,192,0.6)] transition-[background-color,box-shadow] duration-300 hover:bg-signal-hover hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_12px_32px_-8px_rgba(29,95,192,0.75)]",
         className
       )}
     >
@@ -252,7 +275,7 @@ export function Close({
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          background: "radial-gradient(55% 80% at 50% 120%, rgba(61,126,242,0.22), transparent 70%)",
+          background: "radial-gradient(55% 80% at 50% 120%, rgba(47,111,207,0.22), transparent 70%)",
         }}
       />
       <div className="relative mx-auto max-w-[1240px] px-5 py-28 text-center md:px-8 md:py-40">
@@ -302,7 +325,7 @@ export function PageHeader({ title, lead, children }: { title: ReactNode; lead?:
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 70% at 70% -20%, rgba(61,126,242,0.16) 0%, rgba(61,126,242,0.05) 45%, transparent 75%)",
+            "radial-gradient(60% 70% at 70% -20%, rgba(47,111,207,0.16) 0%, rgba(47,111,207,0.05) 45%, transparent 75%)",
         }}
       />
       <Container className="relative pb-16 pt-36 md:pb-24 md:pt-44">

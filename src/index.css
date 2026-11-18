@@ -118,11 +118,11 @@
     font-feature-settings: "kern";
   }
   ::selection {
-    background: rgba(61, 126, 242, 0.35);
+    background: rgba(47, 111, 207, 0.35);
     color: #fff;
   }
   :focus-visible {
-    outline: 2px solid #84BFEA;
+    outline: 2px solid #82BFE9;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -175,7 +175,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .marquee-track {
-    animation: marquee 80s linear infinite;
+    animation: marquee 28s linear infinite;
   }
   .marquee:hover .marquee-track,
   .marquee:focus-within .marquee-track {

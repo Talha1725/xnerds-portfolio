@@ -76,9 +76,9 @@ export default {
 					faint: '#80869A'
 				},
 				signal: {
-					DEFAULT: '#2563EB',
-					hover: '#1D4ED8',
-					soft: '#84BFEA'
+					DEFAULT: '#1D5FC0',
+					hover: '#174FA0',
+					soft: '#82BFE9'
 				},
 			},
 			fontFamily: {

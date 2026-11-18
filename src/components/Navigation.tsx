@@ -37,9 +37,11 @@ export const Navigation = () => {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
-        scrolled || open
-          ? "border-b border-ink-line bg-ink/80 backdrop-blur-xl backdrop-saturate-150"
-          : "border-b border-transparent bg-transparent"
+        open
+          ? "border-b border-ink-line bg-ink/60 backdrop-blur-2xl backdrop-saturate-150"
+          : scrolled
+            ? "border-b border-ink-line bg-ink/80 backdrop-blur-xl backdrop-saturate-150"
+            : "border-b border-transparent bg-transparent"
       )}
     >
       <nav className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 md:px-8" aria-label="Main">
@@ -90,7 +92,7 @@ export const Navigation = () => {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="h-[calc(100dvh-4rem)] border-t border-ink-line bg-ink px-5 pb-8 pt-4 md:hidden">
+        <div id="mobile-menu" className="h-[calc(100dvh-4rem)] border-t border-white/10 px-5 pb-8 pt-4 md:hidden">
           <ul className="flex flex-col">
             {navItems.map((item) => (
               <li key={item.path}>

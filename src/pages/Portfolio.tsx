@@ -71,7 +71,7 @@ const Portfolio = () => {
               {featured.map((p, i) => (
                 <li key={p.title} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
                   <Reveal clip className={cn("lg:col-span-8", i % 2 === 1 && "lg:order-2")}>
-                    <BrowserFrame project={p} priority={i === 0} />
+                    <BrowserFrame project={p} priority={i === 0} link />
                   </Reveal>
                   <Reveal d={120} className={cn("lg:col-span-4", i % 2 === 1 && "lg:order-1")}>
                     <ProjectMeta project={p} large />
@@ -94,7 +94,7 @@ const Portfolio = () => {
             {grid.map((p, i) => (
               <li key={p.title}>
                 <Reveal d={(i % 2) * 100}>
-                  <BrowserFrame project={p} />
+                  <BrowserFrame project={p} link />
                   <div className="mt-7">
                     <ProjectMeta project={p} />
                   </div>

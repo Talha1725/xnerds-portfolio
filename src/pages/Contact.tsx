@@ -120,10 +120,18 @@ const Contact = () => {
             </div>
           </Reveal>
 
-          <Reveal d={120} className="lg:col-span-7">
+          <Reveal d={120} className="relative lg:col-span-7">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-0"
+              style={{
+                background:
+                  "radial-gradient(45% 50% at 70% 30%, rgba(47,111,207,0.28), transparent 70%), radial-gradient(35% 40% at 20% 85%, rgba(130,191,233,0.12), transparent 70%)",
+              }}
+            />
             <form
               onSubmit={onSubmit}
-              className="rounded-2xl border border-ink-line bg-ink-raised/60 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-10"
+              className="relative rounded-2xl border border-white/10 bg-white/[0.035] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-30px_rgba(0,0,0,0.7)] backdrop-blur-2xl backdrop-saturate-150 sm:p-10"
             >
               <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">Project details</h2>
               <p className="mt-2 text-[15px] text-fg-muted">
@@ -203,7 +211,7 @@ const Contact = () => {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-signal px-6 text-[15px] font-medium text-white shadow-[0_8px_24px_-8px_rgba(37,99,235,0.6)] transition-colors duration-300 hover:bg-signal-hover"
+                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-signal px-6 text-[15px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-8px_rgba(29,95,192,0.6)] transition-colors duration-300 hover:bg-signal-hover"
                 >
                   Send via email
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
