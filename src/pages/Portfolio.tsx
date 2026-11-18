@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearchParams } from "react-router-dom";
 import { projects } from "@/utils/data";
 import type { Sector } from "@/utils/type";
@@ -40,6 +41,7 @@ function FilterBar({ active, onChange }: { active: Sector | null; onChange: (s: 
 }
 
 const Portfolio = () => {
+  usePageMeta("Work — xNerds", "Trading platforms, prop firm systems, AI products and SaaS we have built and shipped to production.", "/portfolio");
   const [params, setParams] = useSearchParams();
   const active = sectors.find((s) => slug(s) === params.get("sector")) ?? null;
 
@@ -66,6 +68,8 @@ const Portfolio = () => {
             <FilterBar active={active} onChange={setActive} />
           </div>
 
+          {featured.length > 0 && <h2 className="sr-only">Featured projects</h2>}
+          {active && <h2 className="sr-only">{active} projects</h2>}
           {featured.length > 0 && (
             <ul className="mt-16 space-y-24 md:mt-20 md:space-y-32">
               {featured.map((p, i) => (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/contact";
@@ -16,6 +16,8 @@ export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -28,7 +30,33 @@ export const Navigation = () => {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    // Move focus into the menu, close on Escape, keep Tab inside while it covers the page.
+    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !menuRef.current) return;
+      const items = [toggleRef.current, ...menuRef.current.querySelectorAll<HTMLElement>("a")].filter(
+        Boolean
+      ) as HTMLElement[];
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
     return () => {
+      document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -79,6 +107,7 @@ export const Navigation = () => {
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
           </a>
           <button
+            ref={toggleRef}
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full text-fg md:hidden"
             onClick={() => setOpen((v) => !v)}
@@ -92,7 +121,7 @@ export const Navigation = () => {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="h-[calc(100dvh-4rem)] border-t border-white/10 px-5 pb-8 pt-4 md:hidden">
+        <div ref={menuRef} id="mobile-menu" className="h-[calc(100dvh-4rem)] border-t border-white/10 px-5 pb-8 pt-4 md:hidden">
           <ul className="flex flex-col">
             {navItems.map((item) => (
               <li key={item.path}>

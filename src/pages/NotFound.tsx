@@ -1,9 +1,11 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Container, PrimaryAction } from "@/components/site";
 
 const NotFound = () => {
   const { pathname } = useLocation();
+  usePageMeta("Page not found — xNerds");
 
   return (
     <main className="relative flex min-h-[100svh] items-center overflow-hidden">

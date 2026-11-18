@@ -71,7 +71,7 @@ typography:
     lineHeight: 1.5
   mono:
     fontFamily: "Geist Mono, ui-monospace, monospace"
-    fontSize: "11px"
+    fontSize: "12px"
     fontWeight: 400
     lineHeight: 1.5
 rounded:
@@ -199,7 +199,7 @@ A cool, near-monochrome dark palette with a single disciplined blue.
 - **Lead** (400, clamp 1.05rem to 1.2rem, 1.625): the hero subcopy, max 34rem.
 - **Body Large / Body** (400, 17px / 15px, 1.625): section intros and descriptive copy, in Muted Grey, held to roughly max-w-md / max-w-lg.
 - **Label** (400 or 500, 13px): metadata lines joined with spaced middots, footer column headings (500, Paper White), row labels like "Shipped and running". Sentence case, no tracking, no uppercase.
-- **Mono** (400, 11px in URL bars, 12 to 14px for domains and years).
+- **Mono** (400, 12px in URL bars, 12 to 14px for domains and years).
 
 ### Named Rules
 **The Tight Display Rule.** Anything 22px and up is semibold with negative tracking (-0.02em to -0.04em, tighter as it grows). Body sizes keep default tracking.

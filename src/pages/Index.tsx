@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Pause, Play } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/utils/data";
@@ -62,14 +64,16 @@ function MarqueeRow({ hidden = false }: { hidden?: boolean }) {
 }
 
 function ProjectMarquee() {
+  const [paused, setPaused] = useState(false);
   return (
     <div className="relative border-y border-ink-line">
       <h2 className="sr-only">Projects we have shipped</h2>
       <div
+        data-paused={paused}
         className="marquee group flex overflow-hidden py-6"
         style={{
-          maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+          maskImage: "linear-gradient(90deg, transparent, black 10%, black 82%, transparent 95%)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 82%, transparent 95%)",
         }}
       >
         <div className="marquee-track flex">
@@ -77,6 +81,15 @@ function ProjectMarquee() {
           <MarqueeRow hidden />
         </div>
       </div>
+      <button
+        type="button"
+        onClick={() => setPaused((p) => !p)}
+        aria-pressed={paused}
+        aria-label={paused ? "Play project list" : "Pause project list"}
+        className="marquee-toggle absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink/50 text-fg-muted backdrop-blur-xl transition-colors hover:text-fg md:right-6"
+      >
+        {paused ? <Play className="h-3.5 w-3.5" aria-hidden /> : <Pause className="h-3.5 w-3.5" aria-hidden />}
+      </button>
     </div>
   );
 }
@@ -286,7 +299,13 @@ function Services() {
   );
 }
 
-const Index = () => (
+const Index = () => {
+  usePageMeta(
+    "xNerds — Product engineering for ambitious founders",
+    "xNerds is a senior software and AI engineering team. We build trading platforms, AI products and SaaS for founders, with 70+ projects shipped since 2023.",
+    "/"
+  );
+  return (
   <main>
     <Hero />
     <Work />
@@ -296,6 +315,7 @@ const Index = () => (
     <Record />
     <Close />
   </main>
-);
+  );
+};
 
 export default Index;

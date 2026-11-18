@@ -1,70 +1,40 @@
-# Welcome to your Lovable project
+# xNerds website
 
-## Project info
+Marketing site for xNerds Solutions: product engineering for ambitious founders.
 
-**URL**: https://lovable.dev/projects/4c373593-da01-449c-a2b6-ab914cb379ba
+**Live:** https://xnerds.co
 
-## How can I edit this code?
+## Stack
 
-There are several ways of editing your application.
+Vite, React 18, TypeScript and Tailwind CSS, deployed on Vercel. `vercel.json` rewrites every route to the SPA.
 
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Develop
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev      # http://localhost:8080
+npm run build    # production build in dist/
+npm run preview  # serve the build locally
 ```
 
-**Edit a file directly in GitHub**
+## Where things live
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| What | Where |
+|---|---|
+| Pages | `src/pages/` (Home, Services, Work, About, Contact, 404) |
+| Shared building blocks | `src/components/site.tsx`, `src/components/expertise.tsx` |
+| Project list (Work page, hero, skills) | `src/utils/data.ts` |
+| Contact details (WhatsApp, email, socials) | `src/lib/contact.ts` |
+| Project screenshots | `public/work/*.webp` |
+| Share image and icons | `public/og-image.jpg`, `public/favicon.ico`, `public/icon-*.png`, `public/apple-touch-icon.png` |
 
-**Use GitHub Codespaces**
+## Design system
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- `DESIGN.md` holds the visual rules: colour, type, spacing, motion and where glass is allowed. Read it before changing the look.
+- `PRODUCT.md` holds the product facts: who the site is for, the confirmed numbers, and what must never be invented.
 
-## What technologies are used for this project?
+## Adding a project
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4c373593-da01-449c-a2b6-ab914cb379ba) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Save a 16:9 screenshot to `public/work/<name>.webp`, about 1800px wide.
+2. Add an entry to `projects` in `src/utils/data.ts` with a title, description, category, url, sector and tags.
+3. Never publish screenshots that show a real person's name or account details. Blur them first, and keep unredacted originals in `.private/`, which is gitignored.

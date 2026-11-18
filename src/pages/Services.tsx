@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/utils/data";
 import { EMAIL, EMAIL_URL, hostOf } from "@/lib/contact";
@@ -65,7 +66,9 @@ const detail = [
   },
 ];
 
-const Services = () => (
+const Services = () => {
+  usePageMeta("Services — xNerds", "Custom software, mobile apps, trading systems, AI assistants, cloud and DevOps, and staff augmentation from a senior engineering team.", "/services");
+  return (
   <main>
     <PageHeader
       title="Everything it takes to ship a product."
@@ -164,6 +167,7 @@ const Services = () => (
 
     <Close title="Not sure which service fits? Ask us." />
   </main>
-);
+  );
+};
 
 export default Services;

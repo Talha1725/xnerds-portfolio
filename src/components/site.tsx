@@ -70,7 +70,7 @@ export function BrowserFrame({
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
           <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
         </div>
-        <div className="mx-auto max-w-[75%] truncate rounded-md bg-white/[0.05] px-3 py-0.5 font-mono text-[11px] text-fg-faint">
+        <div className="mx-auto max-w-[75%] truncate rounded-md bg-white/[0.05] px-3 py-0.5 font-mono text-[12px] text-fg-faint">
           {host}
         </div>
         <span className={cn("w-[42px]", compact && "hidden xl:block")} aria-hidden />

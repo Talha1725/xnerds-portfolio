@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -41,6 +42,7 @@ function DetailRow({ label, children }: { label: string; children: ReactNode }) 
 const linkCls = "inline-flex items-center gap-1.5 hover:text-signal-soft";
 
 const Contact = () => {
+  usePageMeta("Contact — xNerds", "Tell us what you are building. Message xNerds on WhatsApp or email info@xnerds.com.", "/contact");
   const [form, setForm] = useState({ name: "", email: "", budget: "", details: "" });
   const [opened, setOpened] = useState(false);
 
