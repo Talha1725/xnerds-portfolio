@@ -78,7 +78,7 @@ const Portfolio = () => {
               {featured.map((p, i) => (
                 <li key={p.title} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
                   <Reveal clip className={cn("lg:col-span-8", i % 2 === 1 && "lg:order-2")}>
-                    <BrowserFrame project={p} priority={i === 0} link />
+                    <BrowserFrame project={p} priority={i === 0} link sizes="(min-width: 1024px) 800px, 100vw" />
                   </Reveal>
                   <Reveal d={120} className={cn("lg:col-span-4", i % 2 === 1 && "lg:order-1")}>
                     <ProjectMeta project={p} large />

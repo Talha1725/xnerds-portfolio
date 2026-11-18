@@ -130,7 +130,7 @@ function HeroMosaic() {
                 isActive ? "-translate-y-2 scale-[1.015]" : "lg:[&_img]:brightness-[.5] lg:[&_img]:saturate-50"
               )}
             >
-              <BrowserFrame project={project} priority compact />
+              <BrowserFrame project={project} priority compact sizes="(min-width: 1024px) 400px, 72vw" />
               <div
                 className={cn(
                   "absolute -bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-ink-strong bg-ink/90 px-3 py-1.5 text-[13px] backdrop-blur transition-[opacity,transform] duration-500 ease-out-expo",
@@ -231,7 +231,7 @@ function Work() {
           {featured.map((p, i) => (
             <div key={p.title} className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
               <Reveal clip className={cn("lg:col-span-8", i % 2 === 1 && "lg:order-2")}>
-                <BrowserFrame project={p} link />
+                <BrowserFrame project={p} link sizes="(min-width: 1024px) 800px, 100vw" />
               </Reveal>
               <Reveal d={120} className={cn("lg:col-span-4", i % 2 === 1 && "lg:order-1")}>
                 <ProjectMeta project={p} large />

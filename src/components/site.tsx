@@ -34,6 +34,7 @@ export function BrowserFrame({
   priority = false,
   compact = false,
   link = false,
+  sizes = "(min-width: 768px) 50vw, 100vw",
 }: {
   project: Project;
   className?: string;
@@ -41,11 +42,16 @@ export function BrowserFrame({
   compact?: boolean;
   /** Make the screenshot itself a link to the live product, with a frosted "visit" label on hover. */
   link?: boolean;
+  /** How wide the frame renders, so the browser picks the smallest screenshot that stays sharp. */
+  sizes?: string;
 }) {
   const host = hostOf(project.url) || "private deployment";
+  const srcSet = project.image ? responsiveSrcSet(project.image) : undefined;
   const body = project.image ? (
     <img
       src={project.image}
+      srcSet={srcSet}
+      sizes={srcSet ? sizes : undefined}
       alt={`${project.title} screenshot`}
       width={1800}
       height={1013}
@@ -97,6 +103,13 @@ export function BrowserFrame({
       )}
     </div>
   );
+}
+
+/** Screenshots in /work/ ship at 640w and 1080w next to the full-size original. */
+function responsiveSrcSet(src: string) {
+  const m = src.match(/^(\/work\/[^/]+)\.webp$/);
+  if (!m) return undefined;
+  return `${m[1]}-640w.webp 640w, ${m[1]}-1080w.webp 1080w, ${src} 1800w`;
 }
 
 /**
