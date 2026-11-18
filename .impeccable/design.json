@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T00:00:00Z",
+  "title": "Design System: xNerds",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0A0B0E",
+        "tonalRamp": [
+          "#050608",
+          "#0A0B0E",
+          "#111318",
+          "#1A1D24",
+          "#2A2E37",
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A"
+        ]
+      },
+      "ink-raised": {
+        "role": "neutral",
+        "displayName": "Raised Ink",
+        "canonical": "#111318",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#111318",
+          "#181B22",
+          "#21252E",
+          "#2E333E",
+          "#424855",
+          "#626977",
+          "#8A90A0"
+        ]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(255,255,255,0.08)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.03)",
+          "rgba(255,255,255,0.05)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.11)",
+          "rgba(255,255,255,0.14)",
+          "rgba(255,255,255,0.20)",
+          "rgba(255,255,255,0.30)",
+          "rgba(255,255,255,0.45)"
+        ]
+      },
+      "ink-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "rgba(255,255,255,0.14)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.05)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.11)",
+          "rgba(255,255,255,0.14)",
+          "rgba(255,255,255,0.20)",
+          "rgba(255,255,255,0.30)",
+          "rgba(255,255,255,0.45)",
+          "rgba(255,255,255,0.60)"
+        ]
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#EDEEF1",
+        "tonalRamp": [
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1",
+          "#FFFFFF"
+        ]
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Muted Grey",
+        "canonical": "#9A9FAB",
+        "tonalRamp": [
+          "#2A2E37",
+          "#454A56",
+          "#646A78",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1"
+        ]
+      },
+      "fg-faint": {
+        "role": "neutral",
+        "displayName": "Faint Grey",
+        "canonical": "#80869A",
+        "tonalRamp": [
+          "#22252D",
+          "#3A3F4B",
+          "#5A606E",
+          "#80869A",
+          "#9A9FAB",
+          "#B8BCC6",
+          "#D4D7DE",
+          "#EDEEF1"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Action Blue",
+        "canonical": "#1D5FC0",
+        "tonalRamp": [
+          "#0F1E4A",
+          "#162D72",
+          "#174FA0",
+          "#1D5FC0",
+          "#2F6FCF",
+          "#6B9EF6",
+          "#A6C4FA",
+          "#DCE8FD"
+        ]
+      },
+      "signal-hover": {
+        "role": "primary",
+        "displayName": "Pressed Blue",
+        "canonical": "#174FA0",
+        "tonalRamp": [
+          "#0C1840",
+          "#132A6B",
+          "#1A3FA8",
+          "#174FA0",
+          "#1D5FC0",
+          "#5B8CF3",
+          "#9DBBF8",
+          "#D6E3FC"
+        ]
+      },
+      "signal-soft": {
+        "role": "primary",
+        "displayName": "Sky Signal",
+        "canonical": "#82BFE9",
+        "tonalRamp": [
+          "#123048",
+          "#1C4A6E",
+          "#2D6B98",
+          "#4F93C6",
+          "#82BFE9",
+          "#A6D1F0",
+          "#C9E3F6",
+          "#EAF4FC"
+        ]
+      },
+      "signal-light": {
+        "role": "primary",
+        "displayName": "Hero Light",
+        "canonical": "#2F6FCF",
+        "tonalRamp": [
+          "#10224A",
+          "#183577",
+          "#2456BE",
+          "#2F6FCF",
+          "#6699F5",
+          "#8FB4F8",
+          "#BBD1FB",
+          "#E3ECFE"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; explicit phrase breaks at lg."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings; the closing CTA steps up to clamp(2.25rem,5vw,4rem), 1.0, -0.04em."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Large proof sentence in Faint Grey with confirmed facts in Paper White."
+      },
+      "title-lg": {
+        "displayName": "Title Large",
+        "purpose": "Featured project names."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, secondary project names; engagement titles step up to clamp(1.5rem,2.4vw,1.75rem)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero subcopy, max 34rem."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Section intros and closing copy."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptive copy, buttons, list items."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata lines, row labels, footer headings; sentence case, no tracking."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Domains, URLs and the live Lahore clock only."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "14px: navigation, footer links, inline links and the WhatsApp/Let's talk pill text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "frame-lift",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 80px -30px rgba(0,0,0,0.85), 0 12px 24px -12px rgba(0,0,0,0.6)",
+        "purpose": "Every browser frame: inner top highlight plus long soft drop."
+      },
+      {
+        "name": "action-glow",
+        "value": "0 8px 24px -8px rgba(29,95,192,0.6)",
+        "purpose": "Primary blue button at rest."
+      },
+      {
+        "name": "action-glow-hover",
+        "value": "0 12px 32px -8px rgba(29,95,192,0.75)",
+        "purpose": "Primary blue button on hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-site",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The one ease for every transition and animation on the site."
+      },
+      {
+        "name": "load-in",
+        "value": "900ms; from opacity 0, translateY(14px), blur(6px); delay via --d (0-300ms)",
+        "purpose": "Hero copy load sequence."
+      },
+      {
+        "name": "frame-in",
+        "value": "1200ms; from opacity 0, translateY(40px) scale(.97); delay via --d (380-600ms)",
+        "purpose": "Hero frames settling in after the copy."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity/transform 900ms, translateY(16px); delay via --d (40-120ms stagger)",
+        "purpose": "One-time scroll reveal for blocks below the hero."
+      },
+      {
+        "name": "reveal-clip",
+        "value": "clip-path inset(12% 0 0 0 round 16px) to inset(0 round 16px), 1100ms",
+        "purpose": "Added to media reveals."
+      },
+      {
+        "name": "state-standard",
+        "value": "300ms",
+        "purpose": "Button fill, border and nav background transitions."
+      },
+      {
+        "name": "mosaic-active",
+        "value": "700ms; translateY(-8px) scale(1.015)",
+        "purpose": "Active hero frame lift."
+      },
+      {
+        "name": "background-wash-hero",
+        "value": "radial-gradient(70% 55% at 72% -8%, rgba(47,111,207,0.20) 0%, rgba(47,111,207,0.06) 45%, transparent 75%)",
+        "purpose": "The single soft light at the top of the hero."
+      },
+      {
+        "name": "background-wash-close",
+        "value": "radial-gradient(55% 80% at 50% 120%, rgba(47,111,207,0.22), transparent 70%)",
+        "purpose": "The light rising behind the closing call to action."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action Blue pill for the actions that start a conversation.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Message us on WhatsApp <svg class=\"ds-btn-arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px 0 24px; border-radius: 9999px; background: #1D5FC0; color: #fff; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 8px 24px -8px rgba(29,95,192,0.6); transition: background-color 300ms, box-shadow 300ms; } .ds-btn-primary:hover { background: #174FA0; box-shadow: 0 12px 32px -8px rgba(29,95,192,0.75); } .ds-btn-primary:focus-visible { outline: 2px solid #82BFE9; outline-offset: 3px; } .ds-btn-arrow { transition: transform 300ms cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover .ds-btn-arrow { transform: translate(2px, -2px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline-outlined pill beside the primary action.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">See our work</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.14); background: transparent; color: #EDEEF1; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color 300ms, background-color 300ms; } .ds-btn-secondary:hover { border-color: rgba(255,255,255,0.30); background: rgba(255,255,255,0.04); } .ds-btn-secondary:focus-visible { outline: 2px solid #82BFE9; outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav Action",
+      "kind": "button",
+      "refersTo": "button-nav",
+      "description": "Paper White pill in the nav bar.",
+      "html": "<a class=\"ds-btn-nav\" href=\"#\">Let's talk <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-nav { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: 9999px; background: #EDEEF1; color: #0A0B0E; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; transition: background-color 200ms; } .ds-btn-nav:hover { background: #fff; } .ds-btn-nav:focus-visible { outline: 2px solid #82BFE9; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Scrolled state of the fixed nav: translucent ink, blur, hairline, pill links.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">xNerds</span><div class=\"ds-nav-links\"><a class=\"ds-nav-link is-active\" href=\"#\">Work</a><a class=\"ds-nav-link\" href=\"#\">Services</a><a class=\"ds-nav-link\" href=\"#\">About</a><a class=\"ds-nav-link\" href=\"#\">Contact</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px; background: rgba(10,11,14,0.8); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid rgba(255,255,255,0.08); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: #EDEEF1; } .ds-nav-links { display: flex; gap: 4px; } .ds-nav-link { padding: 8px 14px; border-radius: 9999px; font-size: 14px; color: #9A9FAB; text-decoration: none; transition: color 200ms; } .ds-nav-link:hover, .ds-nav-link.is-active { color: #EDEEF1; } .ds-nav-link:focus-visible { outline: 2px solid #82BFE9; outline-offset: 3px; }"
+    },
+    {
+      "name": "Browser Frame",
+      "kind": "custom",
+      "refersTo": "browser-frame",
+      "description": "Signature unit: a real product screenshot in a raised, hairline-bordered browser frame with a mono URL bar.",
+      "html": "<div class=\"ds-frame\"><div class=\"ds-frame-bar\"><span class=\"ds-frame-dots\"><i></i><i></i><i></i></span><span class=\"ds-frame-url\">actflow.ai</span><span class=\"ds-frame-spacer\"></span></div><div class=\"ds-frame-shot\"></div></div>",
+      "css": ".ds-frame { width: 360px; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: #111318; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 80px -30px rgba(0,0,0,0.85), 0 12px 24px -12px rgba(0,0,0,0.6); transition: transform 700ms cubic-bezier(.16,1,.3,1); } .ds-frame:hover { transform: translateY(-8px) scale(1.015); } .ds-frame-bar { display: flex; align-items: center; gap: 12px; height: 32px; padding: 0 12px; border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-frame-dots { display: flex; gap: 6px; } .ds-frame-dots i { width: 10px; height: 10px; border-radius: 9999px; background: rgba(255,255,255,0.15); } .ds-frame-url { margin: 0 auto; padding: 2px 12px; border-radius: 6px; background: rgba(255,255,255,0.05); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #80869A; } .ds-frame-spacer { width: 42px; } .ds-frame-shot { aspect-ratio: 16 / 9; background: linear-gradient(180deg, #1A1D24, #111318); }"
+    },
+    {
+      "name": "Domain Chip",
+      "kind": "chip",
+      "refersTo": "domain-chip",
+      "description": "Live-product chip shown under the active hero frame.",
+      "html": "<span class=\"ds-chip\"><span class=\"ds-chip-dot\"></span><span class=\"ds-chip-name\">ACTFlow</span><span class=\"ds-chip-host\">actflow.ai</span></span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(10,11,14,0.9); backdrop-filter: blur(8px); font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 12px; } .ds-chip-dot { width: 6px; height: 6px; border-radius: 9999px; background: #82BFE9; } .ds-chip-name { font-weight: 500; color: #EDEEF1; } .ds-chip-host { font-family: 'Geist Mono', ui-monospace, monospace; color: #9A9FAB; }"
+    },
+    {
+      "name": "Engagement Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat raised panel inside a hairline group, with Sky Signal rules leading list points.",
+      "html": "<div class=\"ds-panel\"><h3 class=\"ds-panel-title\">We build it</h3><p class=\"ds-panel-body\">Hand us the product. We take it from scope to launch as your engineering team.</p><ul class=\"ds-panel-list\"><li>Web applications and APIs</li><li>iOS and Android apps</li></ul></div>",
+      "css": ".ds-panel { max-width: 420px; padding: 48px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); background: rgba(17,19,24,0.6); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-panel-title { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; color: #EDEEF1; } .ds-panel-body { margin: 16px 0 0; font-size: 16px; line-height: 1.625; color: #9A9FAB; } .ds-panel-list { margin: 32px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; } .ds-panel-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: #EDEEF1; } .ds-panel-list li::before { content: ''; width: 16px; height: 1px; background: #82BFE9; }"
+    },
+    {
+      "name": "Text Link With Arrow",
+      "kind": "custom",
+      "refersTo": "nav-link",
+      "description": "Muted secondary link whose arrow slides on hover.",
+      "html": "<a class=\"ds-arrow-link\" href=\"#\">All work <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-arrow-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 500; color: #9A9FAB; text-decoration: none; transition: color 200ms; } .ds-arrow-link svg { transition: transform 300ms; } .ds-arrow-link:hover { color: #EDEEF1; } .ds-arrow-link:hover svg { transform: translateX(4px); } .ds-arrow-link:focus-visible { outline: 2px solid #82BFE9; outline-offset: 3px; border-radius: 6px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shipped Product Floor",
+    "overview": "xNerds reads like a premium software company in the Linear, Vercel and Stripe tier, done straight: a near-black ground tinted toward the logo's navy, hairline structure, one action blue, and real products in real browser frames doing the persuading. The work is the hero. Typography is a single grotesk set large and tight, the chrome is quiet, and anything that is not a product, a claim or an action recedes into muted grey.\n\nDensity is low and confident. Sections breathe on tall vertical rhythm (112 to 160px), content sits on a 12-column grid inside a 1240px container, and each section says one thing. Light is used once per moment: a soft blue wash falling from the top of the hero, and a matching one rising behind the closing call to action. Everything else is flat ink separated by 8% white hairlines.\n\nThe system rejects the gradient-blob, neon-badge \"AI agency\" template the site carried before. No glow loops, no floating blobs, no slate-and-gradient cards.",
+    "keyCharacteristics": [
+      "Near-black ink ground with hairline borders, no grid overlay.",
+      "One action blue, reserved for actions; a pale sky blue for live dots and links.",
+      "Hanken Grotesk for every role, with tight negative tracking at display sizes; Geist Mono only for domains, URLs and the live clock.",
+      "Real product screenshots in browser frames as the primary visual material.",
+      "One ease for every motion, one orchestrated load in the hero, one quiet reveal per section below."
+    ],
+    "rules": [
+      {
+        "name": "The Blue Means Act Rule",
+        "body": "Action Blue fills only things the visitor can press to start a conversation. It never colors a heading, an icon decoration, a background panel or a badge.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Light Rule",
+        "body": "A section gets at most one soft radial wash of Hero Light, anchored off-edge (top of the hero, bottom of the close). Washes never animate, never stack, and never become blobs.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Anything 22px and up is semibold with negative tracking (-0.02em to -0.04em, tighter as it grows). Body sizes keep default tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Machine Text Rule",
+        "body": "Geist Mono appears only for domains, URLs, and live clock readouts. Never for labels, numbers in prose, or decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Frames Float Rule",
+        "body": "Shadows belong to product frames and the primary action. Panels, cards, list rows and nav sit flat on hairlines.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do let real product screenshots in browser frames carry each page's visual weight; every frame links to its live domain when one exists.",
+      "Do reserve Action Blue (#1D5FC0) for the actions that start a conversation, and keep it to one or two per viewport.",
+      "Do separate sections with a single 8% white hairline and generous vertical padding (112px, 144px from md) instead of background bands.",
+      "Do set every heading in Hanken Grotesk semibold with negative tracking, and keep body copy in Muted Grey at 15 to 17px.",
+      "Do run all motion on cubic-bezier(.16,1,.3,1), reveal each block once, and show everything immediately under reduced motion.",
+      "Do carry figures inside prose as Paper White against muted surroundings, using only the confirmed numbers."
+    ],
+    "donts": [
+      "Don't bring back the old design's gradients, glow and pulse-glow loops, floating elements, slate cards or the #0047AB primary; they remain in the Tailwind config only until the remaining pages migrate.",
+      "Don't add a second display face, uppercase tracked labels, or eyebrow text above headings.",
+      "Don't use Geist Mono for anything but domains, URLs and live time.",
+      "Don't put shadows on panels, rows or the nav; depth belongs to frames and the primary action.",
+      "Don't add more than one soft radial wash to a section, animate it, or overlay a grid pattern.",
+      "Don't use icon glyphs as decoration; arrows on links and the menu/close controls are the only icons."
+    ]
+  }
+}

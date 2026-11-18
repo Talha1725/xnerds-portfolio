@@ -1,312 +1,232 @@
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
+import { usePageMeta } from "@/hooks/use-page-meta";
+import { useState, type FormEvent, type ReactNode } from "react";
+import { ArrowUpRight } from "lucide-react";
+import {
+  EMAIL,
+  EMAIL_URL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  PHONE_DISPLAY,
+  WHATSAPP_NUMBER,
+  WHATSAPP_URL,
+} from "@/lib/contact";
+import { Container, PageHeader, PrimaryAction, Reveal, SecondaryAction } from "@/components/site";
+import { cn } from "@/lib/utils";
+
+const budgets = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "Over $50,000"];
+
+const field =
+  "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[15px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none [&:user-invalid]:border-danger [&:user-invalid]:ring-danger/20";
+
+function Field({ id, label, hint, children }: { id: string; label: string; hint?: string; children: ReactNode }) {
+  return (
+    <div>
+      <label htmlFor={id} className="flex items-baseline justify-between text-[14px] font-medium text-fg">
+        {label}
+        {hint && <span className="text-[13px] font-normal text-fg-faint">{hint}</span>}
+      </label>
+      <div className="mt-2">{children}</div>
+    </div>
+  );
+}
+
+function DetailRow({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="grid grid-cols-[96px_1fr] gap-4 border-b border-ink-line py-5 first:border-t">
+      <dt className="text-[13px] text-fg-faint">{label}</dt>
+      <dd className="text-[15px] text-fg">{children}</dd>
+    </div>
+  );
+}
+
+const linkCls = "inline-flex items-center gap-1.5 hover:text-signal-soft";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    projectInfo: "",
-    budget: ""
-  });
-  const { toast } = useToast();
+  usePageMeta("/contact");
+  const [form, setForm] = useState({ name: "", email: "", budget: "", details: "" });
+  const [opened, setOpened] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const set = (k: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
+
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", projectInfo: "", budget: "" });
+    const subject = `Project enquiry from ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.budget ? `Budget: ${form.budget}` : null,
+      "",
+      form.details,
+    ]
+      .filter((l) => l !== null)
+      .join("\n");
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      content: "info@xnerds.com",
-      link: "mailto:info@xnerds.com"
-    },
-    {
-      icon: Github,
-      title: "Phone",
-      content: "+92-323-4314748",
-      link: "tel:+923234314748"
-    },
-    {
-      icon: Github,
-      title: "Location",
-      content: "Lahore, Pakistan",
-      link: "#"
-    }
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub", color: "hover:text-gray-900" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-600" },
-  ];
 
   return (
-    <div className="min-h-screen bg-slate-900 overflow-hidden">
-      {/* Hero Section */}
-      <section className="py-20 h-[40vh] lg:h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-40 right-1/3 w-40 h-40 bg-pink-500/25 rounded-full blur-xl animate-float" style={{ animationDelay: '6s' }}></div>
+    <main>
+      <PageHeader
+        title="Tell us what you're building."
+        lead="WhatsApp is the fastest way to reach us. You can also email, call, or fill in the form below."
+      >
+        <div className="flex flex-wrap items-center gap-3">
+          <PrimaryAction />
+          <SecondaryAction href={EMAIL_URL}>{EMAIL}</SecondaryAction>
         </div>
+      </PageHeader>
 
-        {/* Grid Pattern Background */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
+      <section className="border-t border-ink-line py-20 md:py-28">
+        <Container className="grid gap-16 lg:grid-cols-12 lg:gap-12">
+          <Reveal className="lg:col-span-5">
+            <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">Direct contact</h2>
+            <dl className="mt-6">
+              <DetailRow label="WhatsApp">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
+                  {PHONE_DISPLAY}
+                  <ArrowUpRight className="h-3.5 w-3.5 text-fg-faint" aria-hidden />
+                </a>
+              </DetailRow>
+              <DetailRow label="Email">
+                <a href={EMAIL_URL} className={linkCls}>
+                  {EMAIL}
+                </a>
+              </DetailRow>
+              <DetailRow label="Phone">
+                <a href={`tel:+${WHATSAPP_NUMBER}`} className={cn(linkCls, "tabular")}>
+                  {PHONE_DISPLAY}
+                </a>
+              </DetailRow>
+              <DetailRow label="Elsewhere">
+                <span className="flex flex-wrap gap-x-5 gap-y-1">
+                  <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
+                    LinkedIn
+                    <ArrowUpRight className="h-3.5 w-3.5 text-fg-faint" aria-hidden />
+                  </a>
+                  <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
+                    GitHub
+                    <ArrowUpRight className="h-3.5 w-3.5 text-fg-faint" aria-hidden />
+                  </a>
+                </span>
+              </DetailRow>
+            </dl>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-100 mb-6">
-              Let's Build Something Great Together
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Ready to transform your digital presence? Get in touch and let's discuss how we can help bring your vision to life.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="animate-fade-in-up">
-              <Card className="shadow-xl rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-heading font-bold text-slate-100 mb-6">
-                    Get a Free Quote
-                  </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Label htmlFor="name" className="text-slate-100 font-medium">
-                        Name *
-                      </Label>
-                      <Input
-                        id="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
-                        className="mt-2 bg-slate-900/50 border-slate-700 text-slate-100 placeholder:text-slate-400 focus:border-primary rounded-lg"
-                        placeholder="Your full name"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email" className="text-slate-100 font-medium">
-                        Email *
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="mt-2 bg-slate-900/50 border-slate-700 text-slate-100 placeholder:text-slate-400 focus:border-primary rounded-lg"
-                        placeholder="your@email.com"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="budget" className="text-slate-100 font-medium">
-                        Project Budget
-                      </Label>
-                      <Select onValueChange={(value) => handleInputChange("budget", value)}>
-                        <SelectTrigger className="mt-2 bg-slate-900/50 border-slate-700 text-slate-100 focus:border-primary rounded-lg">
-                          <SelectValue placeholder="Select your budget range" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="under-5k">Under $5,000</SelectItem>
-                          <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                          <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                          <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                          <SelectItem value="over-50k">Over $50,000</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="projectInfo" className="text-slate-100 font-medium">
-                        Project Details *
-                      </Label>
-                      <Textarea
-                        id="projectInfo"
-                        value={formData.projectInfo}
-                        onChange={(e) => handleInputChange("projectInfo", e.target.value)}
-                        className="mt-2 bg-slate-900/50 border-slate-700 text-slate-100 placeholder:text-slate-400 focus:border-primary rounded-lg min-h-32"
-                        placeholder="Tell us about your project, goals, and requirements..."
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg py-3 font-semibold"
-                    >
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+            <div className="mt-10 overflow-hidden rounded-xl border border-ink-strong">
+              <iframe
+                title="xNerds office location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.1130927899044!2d74.26498137629807!3d31.521053674213658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919031d26c1a607%3A0x12265c8b47c7643c!2sISOSS%20House!5e0!3m2!1sen!2s!4v1750163847712!5m2!1sen!2s"
+                className="block aspect-[16/9] w-full lg:aspect-[4/3] [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.6)_brightness(0.95)]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
+          </Reveal>
 
-            {/* Contact Information */}
-            <div className="space-y-8 animate-slide-in-right">
-              <div>
-                <h2 className="text-2xl font-heading font-bold text-slate-100 mb-6">
-                  Get in Touch
-                </h2>
-                <p className="text-slate-300 leading-relaxed mb-8">
-                  Have a project in mind? We'd love to hear about it. Contact us today 
-                  and let's discuss how we can help you achieve your digital goals.
+          <Reveal d={120} className="relative lg:col-span-7">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-0"
+              style={{
+                background:
+                  "radial-gradient(45% 50% at 70% 30%, rgba(47,111,207,0.28), transparent 70%), radial-gradient(35% 40% at 20% 85%, rgba(130,191,233,0.12), transparent 70%)",
+              }}
+            />
+            <form
+              onSubmit={onSubmit}
+              className="relative rounded-2xl border border-white/10 bg-white/[0.035] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-30px_rgba(0,0,0,0.7)] backdrop-blur-2xl backdrop-saturate-150 sm:p-10"
+            >
+              <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">Project details</h2>
+              <p className="mt-2 text-[15px] text-fg-muted">
+                Sending opens your email app with everything filled in, ready to send to {EMAIL}.
+              </p>
+
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                <Field id="name" label="Name">
+                  <input
+                    id="name"
+                    required
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={(e) => set("name")(e.target.value)}
+                    className={cn(field, "h-12")}
+                    placeholder="Your full name"
+                  />
+                </Field>
+                <Field id="email" label="Email">
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(e) => set("email")(e.target.value)}
+                    className={cn(field, "h-12")}
+                    placeholder="you@company.com"
+                  />
+                </Field>
+              </div>
+
+              <div className="mt-6">
+                <Field id="budget" label="Budget" hint="Optional">
+                  <select
+                    id="budget"
+                    value={form.budget}
+                    onChange={(e) => set("budget")(e.target.value)}
+                    className={cn(
+                      field,
+                      "h-12 appearance-none pr-10",
+                      !form.budget && "text-fg-faint"
+                    )}
+                    style={{
+                      backgroundColor: "#0A0B0E",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 1rem center",
+                      backgroundSize: "16px",
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239A9FAB' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+                    }}
+                  >
+                    <option value="">Select a range</option>
+                    {budgets.map((b) => (
+                      <option key={b} value={b} className="text-fg">
+                        {b}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+
+              <div className="mt-6">
+                <Field id="details" label="What are you building?">
+                  <textarea
+                    id="details"
+                    required
+                    rows={6}
+                    value={form.details}
+                    onChange={(e) => set("details")(e.target.value)}
+                    className={cn(field, "resize-y py-3 leading-relaxed")}
+                    placeholder="The product, where it stands today, and what you need from us."
+                  />
+                </Field>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-signal px-6 text-[15px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-8px_rgba(29,95,192,0.6)] transition-colors duration-300 hover:bg-signal-hover"
+                >
+                  Send via email
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </button>
+                <p className="text-[13px] text-fg-faint" aria-live="polite">
+                  {opened ? "Your email app should now be open. If it isn't, write to us directly." : "Prefer chat? WhatsApp is faster."}
                 </p>
               </div>
-
-              {/* Contact Info Cards */}
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <Card
-                    key={info.title}
-                    className="shadow-lg rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:shadow-xl transition-shadow duration-300"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                          <info.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-slate-100 mb-1">
-                            {info.title}
-                          </h3>
-                          {info.link !== "#" ? (
-                            <a
-                              href={info.link}
-                              className="text-slate-300 hover:text-primary transition-colors duration-200"
-                            >
-                              {info.content}
-                            </a>
-                          ) : (
-                            <p className="text-slate-300">{info.content}</p>
-                          )}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Social Links */}
-              <div>
-                <h3 className="font-semibold text-slate-100 mb-4">Follow Us</h3>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      className={`w-12 h-12 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg flex items-center justify-center text-slate-300 transition-all duration-200 transform hover:scale-110 ${social.color}`}
-                      aria-label={social.label}
-                    >
-                      <social.icon className="h-5 w-5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Lahore Map/Illustration */}
-              <Card className="shadow-lg rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
-                <CardContent className="p-6">
-                  <div className="aspect-video relative rounded-lg overflow-hidden">
-                   
-                    <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.1130927899044!2d74.26498137629807!3d31.521053674213658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919031d26c1a607%3A0x12265c8b47c7643c!2sISOSS%20House!5e0!3m2!1sen!2s!4v1750163847712!5m2!1sen!2s" 
-                      width="600" 
-                      height="450" 
-                      style={{ border: 0 }} 
-                      allowFullScreen 
-                      loading="lazy" 
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
+            </form>
+          </Reveal>
+        </Container>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-56 h-56 bg-purple-500/25 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-500/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-100 mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Don't wait - your digital transformation journey starts with a single conversation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-full px-12 py-6 text-lg font-black shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110"
-              >
-                <a href="mailto:info@xnerds.com" className="flex items-center gap-3">
-                  Email Us
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group rounded-full bg-transparent text-white hover:bg-blue-500 hover:text-white px-12 py-6 text-lg font-bold border-2 border-blue-500 hover:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform backdrop-blur-sm hover:scale-105"
-              >
-                <a href="tel:+923234314748">Call Now</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 };
 
