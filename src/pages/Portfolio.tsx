@@ -1,5 +1,6 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearchParams } from "react-router-dom";
+import { useHydrated } from "@/hooks/use-hydrated";
 import { projects } from "@/utils/data";
 import type { Sector } from "@/utils/type";
 import { cn } from "@/lib/utils";
@@ -41,9 +42,11 @@ function FilterBar({ active, onChange }: { active: Sector | null; onChange: (s: 
 }
 
 const Portfolio = () => {
-  usePageMeta("Work — xNerds", "Trading platforms, prop firm systems, AI products and SaaS we have built and shipped to production.", "/portfolio");
+  usePageMeta("/portfolio");
   const [params, setParams] = useSearchParams();
-  const active = sectors.find((s) => slug(s) === params.get("sector")) ?? null;
+  const hydrated = useHydrated();
+  // The prerendered page is the unfiltered list; apply ?sector= only once React has taken over.
+  const active = hydrated ? sectors.find((s) => slug(s) === params.get("sector")) ?? null : null;
 
   const setActive = (s: Sector | null) => {
     const next = new URLSearchParams(params);

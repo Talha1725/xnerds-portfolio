@@ -2,10 +2,12 @@ import { usePageMeta } from "@/hooks/use-page-meta";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Container, PrimaryAction } from "@/components/site";
+import { useHydrated } from "@/hooks/use-hydrated";
 
 const NotFound = () => {
   const { pathname } = useLocation();
-  usePageMeta("Page not found — xNerds");
+  const hydrated = useHydrated();
+  usePageMeta("404");
 
   return (
     <main className="relative flex min-h-[100svh] items-center overflow-hidden">
@@ -22,8 +24,14 @@ const NotFound = () => {
           This page doesn't exist.
         </h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-fg-muted">
-          Nothing lives at <span className="break-all font-mono text-[15px] text-fg">{pathname}</span>. It may have
-          moved, or the link may be mistyped.
+          {hydrated ? (
+            <>
+              Nothing lives at <span className="break-all font-mono text-[15px] text-fg">{pathname}</span>. It may
+              have moved, or the link may be mistyped.
+            </>
+          ) : (
+            <>Nothing lives at this address. It may have moved, or the link may be mistyped.</>
+          )}
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <Link

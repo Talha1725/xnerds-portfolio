@@ -51,7 +51,7 @@ export function BrowserFrame({
       height={1013}
       loading={priority ? "eager" : "lazy"}
       decoding={priority ? "sync" : "async"}
-      fetchPriority={priority ? "high" : "auto"}
+      {...({ fetchpriority: priority ? "high" : "auto" } as Record<string, string>)}
       className="block aspect-[16/9] w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover/frame:scale-[1.015]"
     />
   ) : (

@@ -9,8 +9,9 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-const App = () => (
-  <BrowserRouter>
+/** Everything inside the router; shared by the browser entry and the build-time prerender. */
+export const AppRoutes = () => (
+  <>
     <ScrollToTop />
     <div className="min-h-screen bg-ink text-fg">
       <Navigation />
@@ -24,6 +25,12 @@ const App = () => (
       </Routes>
       <Footer />
     </div>
+  </>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <AppRoutes />
   </BrowserRouter>
 );
 

@@ -67,7 +67,7 @@ const detail = [
 ];
 
 const Services = () => {
-  usePageMeta("Services — xNerds", "Custom software, mobile apps, trading systems, AI assistants, cloud and DevOps, and staff augmentation from a senior engineering team.", "/services");
+  usePageMeta("/services");
   return (
   <main>
     <PageHeader

@@ -1,4 +1,7 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
+
+// useLayoutEffect warns during server rendering; fall back to useEffect there.
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /**
  * Marks an element hidden until it scrolls into view, then reveals it once.
@@ -8,7 +11,7 @@ import { useLayoutEffect, useRef } from "react";
 export function useReveal<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

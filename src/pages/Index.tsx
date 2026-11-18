@@ -300,11 +300,7 @@ function Services() {
 }
 
 const Index = () => {
-  usePageMeta(
-    "xNerds — Product engineering for ambitious founders",
-    "xNerds is a senior software and AI engineering team. We build trading platforms, AI products and SaaS for founders, with 70+ projects shipped since 2023.",
-    "/"
-  );
+  usePageMeta("/");
   return (
   <main>
     <Hero />

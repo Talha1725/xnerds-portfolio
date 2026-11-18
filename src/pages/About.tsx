@@ -3,7 +3,7 @@ import { timeline, values, team } from "@/utils/data";
 import { Close, Container, PageHeader, Record, Reveal, SectionTitle } from "@/components/site";
 
 const About = () => {
-  usePageMeta("About — xNerds", "A senior engineering team founded in 2023, building software and AI products for businesses around the world.", "/about");
+  usePageMeta("/about");
   return (
     <main>
       <PageHeader
