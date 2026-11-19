@@ -22,7 +22,7 @@ const external = [
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-ink-line bg-ink">
+    <footer className="border-t border-ink-line bg-ink pb-20 sm:pb-0">
       <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 md:grid-cols-12 md:px-8">
         <div className="md:col-span-5">
           <Link to="/" className="flex items-center gap-2.5" aria-label="xNerds home">
@@ -85,7 +85,7 @@ export const Footer = () => {
       <div className="border-t border-ink-line">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-6 text-[13px] text-fg-faint sm:flex-row sm:items-center sm:justify-between md:px-8">
           <p>© {new Date().getFullYear()} xNerds Solutions. All rights reserved.</p>
-          <p>Building since 2023</p>
+          <p>Team online around the clock</p>
         </div>
       </div>
     </footer>

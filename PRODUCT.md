@@ -47,6 +47,15 @@ Confirmed facts:
 
 Shipped work: 32 projects in `src/utils/data.ts`, sourced from the user's project sheet ("Projects Details - Sheet1.csv", November 2026) plus the five original portfolio entries (ACTFlow, Antaragame, Bitlenz, BasedAgent, Smart POS Pro). The sectors are Trading & fintech, Prop firms, AI products and Business platforms. Screenshots in `public/work/*.webp` were captured from the live sites. Projects without a clean public capture (private builds, login-only apps, sites that didn't load) show a nameplate tile, never a fake UI. The sheet's first column names team members and is not published. "Customer Support Console" is left out because the sheet only has Loom links for it.
 
+Engagement facts confirmed by the user (November 2026):
+- Reply time: within 6 hours.
+- Hours: around the clock. The team works in shifts.
+- Process: the client shares a problem or an idea, xNerds sends a proposal or gets on a call, and work starts right away once the scope is agreed.
+- Paperwork: NDAs are signed; the client owns the code.
+- Contact: clients talk with a project manager or directly with the engineers.
+- Staff augmentation: one-month minimum; engineers start 1–2 days after requirements are agreed.
+- Budget: no budget field or pricing anywhere on the site.
+
 Not on hand, so never invent: testimonials, client logos, named team members, case-study metrics, awards, "100% satisfaction" claims, or pricing.
 
 ## Product Principles
@@ -55,3 +64,7 @@ Not on hand, so never invent: testimonials, client logos, named team members, ca
 2. Every claim must match. One set of numbers and dates across every page.
 3. Talk like engineers to founders: specific, plain and confident, without hype.
 4. Overseas founders come first. Local enterprise work is shown, but secondary.
+
+## Pending
+
+- **People on the site.** The site shows no team names or faces yet, which costs trust with remote buyers. The user plans to add them (founder and team, with photos), so leave space for them; do not invent people in the meantime.

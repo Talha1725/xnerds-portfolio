@@ -15,7 +15,7 @@ import {
   Record,
   Reveal,
   delay,
-  services,
+  Process,
 } from "@/components/site";
 import { Expertise } from "@/components/expertise";
 
@@ -123,7 +123,7 @@ function HeroMosaic() {
             <div
               className={cn(
                 "transition-transform duration-700 ease-out-expo [&_img]:transition-[filter,transform] [&_img]:duration-700",
-                isActive ? "-translate-y-2 scale-[1.015]" : "lg:[&_img]:brightness-[.5] lg:[&_img]:saturate-50"
+                isActive ? "-translate-y-2 scale-[1.015]" : "lg:[&_img]:brightness-[.72] lg:[&_img]:saturate-[.8]"
               )}
             >
               <a
@@ -185,17 +185,23 @@ function Hero() {
             <span className="lg:whitespace-nowrap">for ambitious founders.</span>
           </h1>
           <p
-            className="load-in mt-7 max-w-[34rem] text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-fg-muted"
-            style={delay(120)}
+            className="load-in mt-7 max-w-[34rem] text-[clamp(1.1rem,1.5vw,1.3rem)] font-medium leading-snug tracking-[-0.01em] text-fg"
+            style={delay(100)}
           >
-            xNerds is a senior engineering team. We design, build and scale web, mobile and AI
-            products, and we have shipped <span className="whitespace-nowrap text-fg">70+ projects</span> since 2023.
+            Deepest in trading and fintech: prop firms, brokerages, trading terminals and MetaTrader EAs.
           </p>
-          <div className="load-in mt-10 flex flex-wrap items-center gap-3" style={delay(220)}>
-            <PrimaryAction />
+          <p
+            className="load-in mt-4 max-w-[34rem] text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-fg-muted"
+            style={delay(160)}
+          >
+            xNerds is a senior engineering team that designs, builds and scales web, mobile and AI products, with{" "}
+            <span className="whitespace-nowrap text-fg">70+ projects</span> shipped since 2023.
+          </p>
+          <div className="load-in mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" style={delay(220)}>
+            <PrimaryAction className="justify-center" />
             <a
               href="#work"
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
             >
               See our work
             </a>
@@ -208,7 +214,8 @@ function Hero() {
           </p>
         </div>
 
-        <div className="lg:col-span-5">
+        {/* The mosaic bleeds past the container on desktop so the shipped products get real room. */}
+        <div className="lg:col-span-5 lg:-mr-[14%] xl:-mr-[22%]">
           <HeroMosaic />
         </div>
       </div>
@@ -235,7 +242,7 @@ function Work() {
             to="/portfolio"
             className="group inline-flex shrink-0 items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
           >
-            All {projects.length} projects
+            See all work
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
           </Link>
         </Reveal>
@@ -268,50 +275,6 @@ function Work() {
   );
 }
 
-/* ---------- services ---------- */
-
-function Services() {
-  return (
-    <section className="border-t border-ink-line py-28 md:py-36">
-      <div className="mx-auto grid max-w-[1240px] gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-4">
-          <div className="lg:sticky lg:top-28">
-            <Reveal>
-              <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-fg">
-                What we build
-              </h2>
-              <p className="mt-5 max-w-sm text-[17px] leading-relaxed text-fg-muted">
-                One team across the stack, from the first prototype to the infrastructure it runs on.
-              </p>
-              <Link
-                to="/services"
-                className="group mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
-              >
-                Service details
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-
-        <ul className="border-t border-ink-line lg:col-span-8">
-          {services.map((s, i) => (
-            <li key={s.title} className="border-b border-ink-line">
-              <Reveal d={i * 40} className="grid gap-4 py-9 md:grid-cols-[1fr_1.1fr] md:gap-10">
-                <h3 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{s.title}</h3>
-                <div>
-                  <p className="text-[16px] leading-relaxed text-fg-muted">{s.body}</p>
-                  <p className="mt-3 text-[13px] text-fg-faint">{s.line}</p>
-                </div>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 const Index = () => {
   usePageMeta("/");
   return (
@@ -319,9 +282,9 @@ const Index = () => {
     <Hero />
     <Work />
     <Expertise />
-    <Services />
     <Engagement />
     <Record />
+    <Process />
     <Close />
   </main>
   );

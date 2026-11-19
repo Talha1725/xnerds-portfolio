@@ -1,6 +1,7 @@
 import { type CSSProperties, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/utils/type";
+import { projects } from "@/utils/data";
 import { EMAIL, EMAIL_URL, WHATSAPP_URL, hostOf } from "@/lib/contact";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
@@ -205,17 +206,6 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
   );
 }
 
-export const services = [
-  { title: "Custom software", body: "Web applications, APIs, and integrations with the systems you already run.", line: "Web applications · API development · System integration" },
-  { title: "Mobile apps", body: "iOS and Android apps, built native or cross-platform.", line: "iOS · Android · React Native · Expo · Flutter" },
-  { title: "Enterprise systems", body: "ERP, CRM and POS systems, including FBR-compliant point of sale for retail in Pakistan.", line: "ERP · CRM · POS" },
-  { title: "Cloud & DevOps", body: "AWS infrastructure, Docker deployments, pipelines and environments defined as code.", line: "AWS · Docker · CI/CD · Infrastructure as code" },
-  { title: "AI & data", body: "Machine learning, analytics and dashboards built into your product.", line: "Machine learning · Data visualization · Predictive analytics" },
-  { title: "Trading systems & automation", body: "MetaTrader EAs, copy trading and risk engines, prop firm and brokerage platforms, and signal services.", line: "MQL5 · MetaTrader 4/5 · TradingView · Exchange APIs" },
-  { title: "AI assistants & bots", body: "Chat, voice and Telegram assistants that answer customers, guide sales and deliver signals.", line: "OpenAI · Deepgram · Telegram bots" },
-  { title: "Staff augmentation", body: "Vetted engineers and AI specialists who join your team and work inside your process.", line: "Vetted engineers · On-demand scaling · Team integration" },
-];
-
 /* ---------- engagement ---------- */
 
 export const models = [
@@ -226,8 +216,13 @@ export const models = [
   },
   {
     title: "We join your team",
-    body: "Add vetted engineers and AI specialists to the team you already have, without the hiring overhead.",
-    points: ["Vetted tech talent", "On-demand scaling", "Seamless team integration"],
+    body: "Add engineers and AI specialists to the team you already have, without the hiring overhead.",
+    points: [
+      "Engineers start 1–2 days after requirements are agreed",
+      "One-month minimum engagement",
+      "Shift coverage around the clock",
+      "NDA signed, and you own the code",
+    ],
   },
 ];
 
@@ -271,17 +266,75 @@ export function Engagement() {
 /* ---------- record ---------- */
 
 export function Record() {
+  const tradingCount = projects.filter((p) => p.sector === "Trading & fintech" || p.sector === "Prop firms").length;
   return (
     <section className="border-t border-ink-line py-28 md:py-40">
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <Reveal>
-          <p className="max-w-[22ch] text-[clamp(1.9rem,4.4vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.035em] text-fg-faint sm:max-w-[26ch]">
-            Since <span className="text-fg">2023</span>, we have shipped{" "}
-            <span className="text-fg">70+ projects</span> for <span className="text-fg">50+ clients</span>, led by
-            engineers with <span className="text-fg">7+ years</span> of experience.
+          <p className="max-w-[22ch] text-[clamp(1.9rem,4.4vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.035em] text-fg-faint sm:max-w-[28ch]">
+            <span className="text-fg">70+ projects</span> for <span className="text-fg">50+ clients</span>, including{" "}
+            <span className="text-fg">{tradingCount} trading, prop firm and brokerage systems</span>, built by engineers
+            with <span className="text-fg">7+ years</span> of experience.
           </p>
         </Reveal>
       </div>
+    </section>
+  );
+}
+
+/* ---------- process: answers a remote vendor's risks before the ask ---------- */
+
+const steps = [
+  {
+    title: "Tell us the problem or the idea",
+    body: "Something broken in your product, or something new to build. Message us on WhatsApp or by email; we reply within 6 hours.",
+  },
+  {
+    title: "Proposal or a call",
+    body: "We send a written proposal, or get on a call to work through it together, whichever suits you.",
+  },
+  {
+    title: "Scope agreed, work starts",
+    body: "Once the scope is agreed, work starts right away. Added engineers join within 1–2 days of agreeing the requirements.",
+  },
+];
+
+const assurances = [
+  { label: "Reply", value: "Within 6 hours" },
+  { label: "Hours", value: "Around the clock, in shifts" },
+  { label: "You talk to", value: "A project manager or the engineers" },
+  { label: "Paperwork", value: "NDAs signed; you own the code" },
+];
+
+export function Process() {
+  return (
+    <section className="border-t border-ink-line py-28 md:py-36">
+      <Container>
+        <Reveal>
+          <SectionTitle className="max-w-2xl">What happens after you message</SectionTitle>
+        </Reveal>
+        <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line md:grid-cols-3">
+          {steps.map((step, i) => (
+            <li key={step.title} className="bg-ink p-8 md:p-10">
+              <Reveal d={i * 100}>
+                <span className="font-mono text-[13px] text-signal-soft">{i + 1}</span>
+                <h3 className="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{step.title}</h3>
+                <p className="mt-3 text-[16px] leading-relaxed text-fg-muted">{step.body}</p>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+        <Reveal>
+          <dl className="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+            {assurances.map((a) => (
+              <div key={a.label}>
+                <dt className="text-[13px] text-fg-faint">{a.label}</dt>
+                <dd className="mt-1 text-[16px] text-fg">{a.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      </Container>
     </section>
   );
 }
@@ -312,11 +365,11 @@ export function Close({
           <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-fg-muted">
             {body}
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <PrimaryAction />
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <PrimaryAction className="justify-center" />
             <a
               href={EMAIL_URL}
-              className="inline-flex h-12 items-center rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
             >
               {EMAIL}
             </a>

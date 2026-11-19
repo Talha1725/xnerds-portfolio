@@ -153,7 +153,11 @@ The system rejects the gradient-blob, neon-badge "AI agency" template the site c
 
 **One size per role.** Prose reads at 16px minimum, which makes light-on-dark copy legible, and so do form inputs (anything smaller makes iOS zoom in on focus). Buttons, nav links and list points use the 15px `ui` role. Every title-large element shares one size: featured project names, service and expertise group headings, and the About mission. The closing call to action uses the display size, the same as the page headlines. Titles always set their own line height (1.05–1.25); they never inherit body leading.
 
-**Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly six places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), the Contact form panel over its blue glow, and the floating back-to-top button, whose ring traces scroll progress. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
+**One sanctioned loop.** Below the homepage hero, a strip of selected project names scrolls slowly. It pauses on hover and focus, has a visible pause/play button, and does not move at all for reduced-motion visitors. It is the only continuous motion on the site; no other loops.
+
+**Thumb-reach CTA on phones.** Below the `sm` breakpoint, a WhatsApp pill appears next to the back-to-top button once the hero has scrolled away, and the footer is padded so the pill never covers content.
+
+**Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly six places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), the Contact form panel over a single blue wash (one closest-side radial at ≤0.22 behind the panel, so it never shows a hard edge), and the floating back-to-top button, whose ring traces scroll progress. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
 
 **Action blue comes from the logo.** The logo uses #174FA0 (cobalt) and #82BFE9 (sky). Buttons use #1D5FC0, the logo cobalt lifted for the dark ground, which passes AA with white. Hover uses the exact logo cobalt, and links and live dots use the exact logo sky.
 

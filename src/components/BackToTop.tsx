@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 const R = 21;
@@ -42,6 +43,20 @@ export function BackToTop() {
   };
 
   return (
+    <>
+    {/* Phones only: once the hero's WhatsApp button has scrolled away, keep one within thumb reach. */}
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={!visible}
+      data-visible={visible}
+      className="back-to-top fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-5 right-20 z-40 flex h-12 items-center justify-center gap-2 rounded-full bg-signal text-[15px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_12px_32px_-12px_rgba(0,0,0,0.8)] sm:hidden"
+    >
+      Message us on WhatsApp
+      <ArrowUpRight className="h-4 w-4" aria-hidden />
+    </a>
     <button
       type="button"
       onClick={toTop}
@@ -79,5 +94,6 @@ export function BackToTop() {
         </span>
       </span>
     </button>
+    </>
   );
 }

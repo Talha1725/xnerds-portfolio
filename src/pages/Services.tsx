@@ -10,8 +10,9 @@ import {
   PrimaryAction,
   Reveal,
   SecondaryAction,
-  SectionTitle,
+  Process,
 } from "@/components/site";
+import { Expertise } from "@/components/expertise";
 
 const byTitle = (t: string) => projects.find((p) => p.title === t)!;
 
@@ -143,27 +144,9 @@ const Services = () => {
 
     <Engagement />
 
-    <section className="border-t border-ink-line py-20 md:py-28">
-      <Container className="grid gap-10 lg:grid-cols-12">
-        <Reveal className="lg:col-span-5">
-          <SectionTitle>How a project starts</SectionTitle>
-        </Reveal>
-        <Reveal d={120} className="lg:col-span-7">
-          <ol className="grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line sm:grid-cols-3">
-            {[
-              { t: "Conversation", b: "Tell us what you're building on WhatsApp or by email." },
-              { t: "Scope", b: "We agree on what ships first, the stack and how we'll work." },
-              { t: "Build", b: "Iterative delivery with regular, visible progress." },
-            ].map((step) => (
-              <li key={step.t} className="bg-ink p-7">
-                <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-fg">{step.t}</h3>
-                <p className="mt-2 text-[16px] leading-relaxed text-fg-muted">{step.b}</p>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-      </Container>
-    </section>
+    <Expertise full />
+
+    <Process />
 
     <Close title="Not sure which service fits? Ask us." />
   </main>

@@ -19,8 +19,8 @@ const About = () => {
           </Reveal>
           <Reveal d={100} className="lg:col-span-8">
             <p className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-medium leading-[1.2] tracking-[-0.03em] text-fg">
-              To help businesses grow through AI and well-engineered software, while holding every project to the
-              highest standard of quality.
+              To be the engineering team founders trust with the systems their business runs on, from trading
+              platforms to AI products, shipped to production and fully owned by the client.
             </p>
           </Reveal>
         </Container>

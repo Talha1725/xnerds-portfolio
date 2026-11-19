@@ -1,4 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/utils/data";
 import { hostOf } from "@/lib/contact";
 import { Container, Reveal, SectionTitle } from "@/components/site";
@@ -182,9 +183,15 @@ function ProofLinks({ names }: { names: string[] }) {
   );
 }
 
-export function Expertise() {
+/** Rows shown per group on the homepage; trading is the signature depth and stays complete. */
+const HOME_ROWS = 3;
+
+export function Expertise({ full = false }: { full?: boolean }) {
+  const groups = full
+    ? expertise
+    : expertise.map((g, i) => (i === 0 ? g : { ...g, items: g.items.slice(0, HOME_ROWS) }));
   return (
-    <section className="border-t border-ink-line py-28 md:py-36">
+    <section id={full ? "capabilities" : undefined} className="scroll-mt-20 border-t border-ink-line py-28 md:py-36">
       <Container>
         <Reveal className="max-w-3xl">
           <SectionTitle>Where we go deepest</SectionTitle>
@@ -194,7 +201,7 @@ export function Expertise() {
         </Reveal>
 
         <div className="mt-16 space-y-20 md:mt-20">
-          {expertise.map((g) => (
+          {groups.map((g) => (
             <div key={g.group} className="grid gap-8 lg:grid-cols-12 lg:gap-10">
               <Reveal className="lg:col-span-4">
                 <div className="lg:sticky lg:top-28">
@@ -206,7 +213,7 @@ export function Expertise() {
               </Reveal>
               <ul className="lg:col-span-8">
                 {g.items.map((c, i) => (
-                  <li key={c.title} className="border-b border-ink-line first:border-t">
+                  <li key={c.title} className="border-t border-ink-line">
                     <Reveal d={i * 40} className="grid gap-3 py-8 md:grid-cols-[1fr_1.35fr] md:gap-10">
                       <h4 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{c.title}</h4>
                       <div>
@@ -223,19 +230,31 @@ export function Expertise() {
           ))}
         </div>
 
-        <Reveal className="mt-20 grid gap-6 border-t border-ink-line pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] md:gap-10">
-          <p className="text-[15px] font-medium text-fg">Platforms and APIs in our shipped work</p>
-          <ul className="flex flex-wrap gap-2">
-            {integrations.map((n) => (
-              <li
-                key={n}
-                className="rounded-full border border-ink-line bg-white/[0.02] px-3 py-1.5 text-[14px] text-fg-muted"
-              >
-                {n}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+        {full ? (
+          <Reveal className="mt-20 grid gap-6 border-t border-ink-line pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] md:gap-10">
+            <p className="text-[15px] font-medium text-fg">Platforms and APIs in our shipped work</p>
+            <ul className="flex flex-wrap gap-2">
+              {integrations.map((n) => (
+                <li
+                  key={n}
+                  className="rounded-full border border-ink-line bg-white/[0.02] px-3 py-1.5 text-[14px] text-fg-muted"
+                >
+                  {n}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        ) : (
+          <Reveal className="mt-16">
+            <Link
+              to="/services#capabilities"
+              className="group inline-flex items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
+            >
+              See all capabilities and the platforms we work with
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+            </Link>
+          </Reveal>
+        )}
       </Container>
     </section>
   );

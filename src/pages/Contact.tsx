@@ -1,6 +1,6 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useState, type FormEvent, type ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check, Copy } from "lucide-react";
 import {
   EMAIL,
   EMAIL_URL,
@@ -12,8 +12,6 @@ import {
 } from "@/lib/contact";
 import { Container, PageHeader, PrimaryAction, Reveal, SecondaryAction } from "@/components/site";
 import { cn } from "@/lib/utils";
-
-const budgets = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "Over $50,000"];
 
 const field =
   "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[16px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none [&:user-invalid]:border-danger [&:user-invalid]:ring-danger/20";
@@ -43,25 +41,33 @@ const linkCls = "inline-flex items-center gap-1.5 hover:text-signal-soft";
 
 const Contact = () => {
   usePageMeta("/contact");
-  const [form, setForm] = useState({ name: "", email: "", budget: "", details: "" });
-  const [opened, setOpened] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", details: "" });
+  const [sent, setSent] = useState<null | "whatsapp" | "email">(null);
+  const [copied, setCopied] = useState(false);
 
   const set = (k: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
 
-  const onSubmit = (e: FormEvent) => {
+  const message = [`Hi xNerds, I'm ${form.name} (${form.email}).`, "", form.details].join("\n");
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const emailHref = `mailto:${EMAIL}?subject=${encodeURIComponent(`Project enquiry from ${form.name}`)}&body=${encodeURIComponent(message)}`;
+
+  // Both buttons submit the form, so the browser checks the required fields first.
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = `Project enquiry from ${form.name}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      form.budget ? `Budget: ${form.budget}` : null,
-      "",
-      form.details,
-    ]
-      .filter((l) => l !== null)
-      .join("\n");
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setOpened(true);
+    const via = ((e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null)?.value === "email" ? "email" : "whatsapp";
+    if (via === "whatsapp") window.open(whatsappHref, "_blank", "noopener,noreferrer");
+    else window.location.href = emailHref;
+    setSent(via);
+    setCopied(false);
+  };
+
+  const copyMessage = async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -111,15 +117,13 @@ const Contact = () => {
               </DetailRow>
             </dl>
 
-            <div className="mt-10 overflow-hidden rounded-xl border border-ink-strong">
-              <iframe
-                title="xNerds office location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.1130927899044!2d74.26498137629807!3d31.521053674213658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919031d26c1a607%3A0x12265c8b47c7643c!2sISOSS%20House!5e0!3m2!1sen!2s!4v1750163847712!5m2!1sen!2s"
-                className="block aspect-[16/9] w-full lg:aspect-[4/3] [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.6)_brightness(0.95)]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <h2 className="mt-12 text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">What to expect</h2>
+            <dl className="mt-6">
+              <DetailRow label="Reply">Within 6 hours</DetailRow>
+              <DetailRow label="Hours">Around the clock. The team works in shifts, so someone is always online.</DetailRow>
+              <DetailRow label="You talk to">A project manager or the engineers themselves</DetailRow>
+              <DetailRow label="Paperwork">We sign NDAs, and you own the code</DetailRow>
+            </dl>
           </Reveal>
 
           <Reveal d={120} className="relative lg:col-span-7">
@@ -127,8 +131,7 @@ const Contact = () => {
               aria-hidden
               className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-0"
               style={{
-                background:
-                  "radial-gradient(45% 50% at 70% 30%, rgba(47,111,207,0.28), transparent 70%), radial-gradient(35% 40% at 20% 85%, rgba(130,191,233,0.12), transparent 70%)",
+                background: "radial-gradient(closest-side at 72% 32%, rgba(47,111,207,0.22), transparent)",
               }}
             />
             <form
@@ -137,7 +140,7 @@ const Contact = () => {
             >
               <h2 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">Project details</h2>
               <p className="mt-2 text-[16px] leading-relaxed text-fg-muted">
-                Sending opens your email app with everything filled in, ready to send to {EMAIL}.
+                Write it once, then send it on WhatsApp or by email. We reply within 6 hours.
               </p>
 
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -167,36 +170,6 @@ const Contact = () => {
               </div>
 
               <div className="mt-6">
-                <Field id="budget" label="Budget" hint="Optional">
-                  <select
-                    id="budget"
-                    value={form.budget}
-                    onChange={(e) => set("budget")(e.target.value)}
-                    className={cn(
-                      field,
-                      "h-12 appearance-none pr-10",
-                      !form.budget && "text-fg-faint"
-                    )}
-                    style={{
-                      backgroundColor: "#0A0B0E",
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "right 1rem center",
-                      backgroundSize: "16px",
-                      backgroundImage:
-                        "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239A9FAB' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-                    }}
-                  >
-                    <option value="">Select a range</option>
-                    {budgets.map((b) => (
-                      <option key={b} value={b} className="text-fg">
-                        {b}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-              </div>
-
-              <div className="mt-6">
                 <Field id="details" label="What are you building?">
                   <textarea
                     id="details"
@@ -205,22 +178,70 @@ const Contact = () => {
                     value={form.details}
                     onChange={(e) => set("details")(e.target.value)}
                     className={cn(field, "resize-y py-3 leading-relaxed")}
-                    placeholder="The product, where it stands today, and what you need from us."
+                    placeholder="The problem you're facing or what you want to build, and where it stands today."
                   />
                 </Field>
               </div>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <button
                   type="submit"
+                  value="whatsapp"
                   className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-signal px-6 text-[15px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-8px_rgba(29,95,192,0.6)] transition-colors duration-300 hover:bg-signal-hover"
                 >
-                  Send via email
+                  Send on WhatsApp
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </button>
-                <p className="text-[13px] text-fg-faint" aria-live="polite">
-                  {opened ? "Your email app should now be open. If it isn't, write to us directly." : "Prefer chat? WhatsApp is faster."}
-                </p>
+                <button
+                  type="submit"
+                  value="email"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-ink-strong px-6 text-[15px] font-medium text-fg transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.04]"
+                >
+                  Send by email
+                </button>
+              </div>
+
+              <div aria-live="polite">
+                {sent && (
+                  <div className="mt-6 rounded-xl border border-white/10 bg-ink/60 p-5">
+                    <p className="text-[15px] font-medium text-fg">
+                      {sent === "whatsapp"
+                        ? "WhatsApp should have opened in a new tab with your message."
+                        : "Your email app should have opened with your message."}
+                    </p>
+                    <p className="mt-1 text-[14px] leading-relaxed text-fg-muted">
+                      Nothing opened? Copy the message and send it yourself to {EMAIL}, or try the other option.
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={copyMessage}
+                        className="inline-flex h-10 items-center gap-2 rounded-full border border-ink-strong px-4 text-[14px] font-medium text-fg transition-colors hover:border-white/30"
+                      >
+                        {copied ? <Check className="h-4 w-4 text-signal-soft" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
+                        {copied ? "Copied" : "Copy message"}
+                      </button>
+                      {sent === "email" ? (
+                        <a
+                          href={whatsappHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex h-10 items-center gap-2 rounded-full border border-ink-strong px-4 text-[14px] font-medium text-fg transition-colors hover:border-white/30"
+                        >
+                          Send on WhatsApp instead
+                          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                        </a>
+                      ) : (
+                        <a
+                          href={emailHref}
+                          className="inline-flex h-10 items-center gap-2 rounded-full border border-ink-strong px-4 text-[14px] font-medium text-fg transition-colors hover:border-white/30"
+                        >
+                          Send by email instead
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </form>
           </Reveal>
