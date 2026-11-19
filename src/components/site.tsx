@@ -157,6 +157,8 @@ export function PrimaryAction({ className, children = "Message us on WhatsApp" }
 
 export function ProjectMeta({ project, large = false }: { project: Project; large?: boolean }) {
   const host = hostOf(project.url);
+  // Preview deployments have long machine hostnames; name the action instead of printing them.
+  const isPreviewHost = /\.(vercel|netlify)\.app$/.test(host);
   return (
     <div>
       <h3
@@ -192,7 +194,7 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
           rel="noopener noreferrer"
           className="group mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal-soft hover:text-white"
         >
-          <span className="font-mono">{host}</span>
+          {isPreviewHost ? <span>View live app</span> : <span className="font-mono">{host}</span>}
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
         </a>
       ) : (
