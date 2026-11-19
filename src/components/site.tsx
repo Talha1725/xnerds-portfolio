@@ -38,7 +38,8 @@ export function BrowserFrame({
 }: {
   project: Project;
   className?: string;
-  priority?: boolean;
+  /** true: the page's key image (eager, high fetch priority). "eager": above the fold but not the key image. */
+  priority?: boolean | "eager";
   compact?: boolean;
   /** Make the screenshot itself a link to the live product, with a frosted "visit" label on hover. */
   link?: boolean;
@@ -56,8 +57,8 @@ export function BrowserFrame({
       width={1800}
       height={1013}
       loading={priority ? "eager" : "lazy"}
-      decoding={priority ? "sync" : "async"}
-      {...({ fetchpriority: priority ? "high" : "auto" } as Record<string, string>)}
+      decoding={priority === true ? "sync" : "async"}
+      {...({ fetchpriority: priority === true ? "high" : "auto" } as Record<string, string>)}
       className="block aspect-[16/9] w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover/frame:scale-[1.015]"
     />
   ) : (
@@ -164,13 +165,13 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
       <h3
         className={cn(
           "font-semibold tracking-[-0.03em] text-fg",
-          large ? "text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05]" : "text-[22px] leading-tight"
+          large ? "text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.05]" : "text-[22px] leading-tight"
         )}
       >
         {project.title}
       </h3>
       {project.description && (
-        <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[15px]")}>
+        <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[16px]")}>
           {project.description}
         </p>
       )}
@@ -249,7 +250,7 @@ export function Engagement() {
                 i === 1 && "border-t border-ink-line md:border-l md:border-t-0"
               )}
             >
-              <h3 className="text-[clamp(1.5rem,2.4vw,1.75rem)] font-semibold tracking-[-0.03em] text-fg">{m.title}</h3>
+              <h3 className="text-[clamp(1.5rem,2.4vw,1.75rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-fg">{m.title}</h3>
               <p className="mt-4 max-w-md text-[17px] leading-relaxed text-fg-muted">{m.body}</p>
               <ul className="mt-8 space-y-3">
                 {m.points.map((pt) => (
@@ -305,7 +306,7 @@ export function Close({
       />
       <div className="relative mx-auto max-w-[1240px] px-5 py-28 text-center md:px-8 md:py-40">
         <Reveal>
-          <h2 className="mx-auto max-w-3xl text-[clamp(2.25rem,5vw,4rem)] font-semibold leading-[1] tracking-[-0.04em] text-fg">
+          <h2 className="mx-auto max-w-4xl text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg">
             {title}
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-fg-muted">
@@ -355,7 +356,7 @@ export function PageHeader({ title, lead, children }: { title: ReactNode; lead?:
       />
       <Container className="relative pb-16 pt-36 md:pb-24 md:pt-44">
         <h1
-          className="load-in max-w-4xl text-[clamp(2.6rem,5.4vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg"
+          className="load-rise max-w-4xl text-[clamp(2.6rem,5.4vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg"
           style={delay(0)}
         >
           {title}

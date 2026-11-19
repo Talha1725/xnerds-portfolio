@@ -89,7 +89,7 @@ const Portfolio = () => {
           )}
 
           {featured.length > 0 && (
-            <h2 className="mt-28 text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold tracking-[-0.03em] text-fg md:mt-36">
+            <h2 className="mt-28 text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg md:mt-36">
               More projects
             </h2>
           )}

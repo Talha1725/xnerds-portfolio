@@ -201,7 +201,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Descriptive copy, buttons, list items."
+        "purpose": "16px prose and form inputs (iOS zooms inputs under 16px)."
       },
       "label": {
         "displayName": "Label",
@@ -214,6 +214,10 @@
       "small": {
         "displayName": "Small",
         "purpose": "14px: navigation, footer links, inline links and the WhatsApp/Let's talk pill text."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "15px controls: button labels, nav and inline links, list points, definition values."
       }
     },
     "shadows": [

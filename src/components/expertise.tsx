@@ -201,7 +201,7 @@ export function Expertise() {
                   <h3 className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
                     {g.group}
                   </h3>
-                  <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-fg-muted">{g.intro}</p>
+                  <p className="mt-4 max-w-sm text-[16px] leading-relaxed text-fg-muted">{g.intro}</p>
                 </div>
               </Reveal>
               <ul className="lg:col-span-8">
@@ -210,7 +210,7 @@ export function Expertise() {
                     <Reveal d={i * 40} className="grid gap-3 py-8 md:grid-cols-[1fr_1.35fr] md:gap-10">
                       <h4 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{c.title}</h4>
                       <div>
-                        <p className="text-[15px] leading-relaxed text-fg-muted">{c.body}</p>
+                        <p className="text-[16px] leading-relaxed text-fg-muted">{c.body}</p>
                         <div className="mt-4">
                           <ProofLinks names={c.proof} />
                         </div>

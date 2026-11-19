@@ -47,7 +47,7 @@ function MarqueeRow({ hidden = false }: { hidden?: boolean }) {
               target="_blank"
               rel="noopener noreferrer"
               tabIndex={hidden ? -1 : undefined}
-              className="whitespace-nowrap px-7 text-[15px] font-medium tracking-[-0.01em] text-fg-muted transition-colors duration-300 hover:text-fg"
+              className="inline-flex min-h-[28px] items-center whitespace-nowrap px-7 text-[15px] font-medium tracking-[-0.01em] text-fg-muted transition-colors duration-300 hover:text-fg"
             >
               {p.title}
             </a>
@@ -70,10 +70,10 @@ function ProjectMarquee() {
       <h2 className="sr-only">Projects we have shipped</h2>
       <div
         data-paused={paused}
-        className="marquee group flex overflow-hidden py-6"
+        className="marquee group mr-14 flex overflow-hidden py-5 md:mr-20"
         style={{
-          maskImage: "linear-gradient(90deg, transparent, black 10%, black 82%, transparent 95%)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 82%, transparent 95%)",
+          maskImage: "linear-gradient(90deg, transparent, black 8%, black 88%, transparent)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent, black 8%, black 88%, transparent)",
         }}
       >
         <div className="marquee-track flex">
@@ -112,16 +112,12 @@ function HeroMosaic() {
     >
       {mosaic.map(({ project, pos, d }, i) => {
         const isActive = active === i;
+        const host = hostOf(project.url);
         return (
-          <a
+          <div
             key={project.title}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${project.title}, live at ${hostOf(project.url)}`}
             onMouseEnter={() => setActive(i)}
-            onFocus={() => setActive(i)}
-            className={cn("frame-in absolute block focus-visible:outline-offset-4", pos)}
+            className={cn("frame-in absolute", pos)}
             style={{ ...delay(d), zIndex: isActive ? 30 : 10 + i }}
           >
             <div
@@ -130,19 +126,36 @@ function HeroMosaic() {
                 isActive ? "-translate-y-2 scale-[1.015]" : "lg:[&_img]:brightness-[.5] lg:[&_img]:saturate-50"
               )}
             >
-              <BrowserFrame project={project} priority compact sizes="(min-width: 1024px) 400px, 72vw" />
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${host}: ${project.title}, opens live site`}
+                onFocus={() => setActive(i)}
+                className="block rounded-xl focus-visible:outline-offset-4"
+              >
+                {/* Only the front frame is the page's key image; the two behind load eagerly at normal priority. */}
+                <BrowserFrame
+                  project={project}
+                  priority={i === 2 ? true : "eager"}
+                  compact
+                  sizes="(min-width: 1024px) 400px, 72vw"
+                />
+              </a>
+              {/* Decorative caption for the active frame; the link above already names the product. */}
               <div
+                aria-hidden
                 className={cn(
-                  "absolute -bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-ink-strong bg-ink/90 px-3 py-1.5 text-[13px] backdrop-blur transition-[opacity,transform] duration-500 ease-out-expo",
+                  "pointer-events-none absolute -bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-ink-strong bg-ink/90 px-3 py-1.5 text-[13px] backdrop-blur transition-[opacity,transform] duration-500 ease-out-expo",
                   isActive ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
                 )}
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-signal-soft" aria-hidden />
+                <span className="h-1.5 w-1.5 rounded-full bg-signal-soft" />
                 <span className="font-medium text-fg">{project.title}</span>
-                <span className="font-mono text-fg-muted">{hostOf(project.url)}</span>
+                <span className="font-mono text-fg-muted">{host}</span>
               </div>
             </div>
-          </a>
+          </div>
         );
       })}
     </div>
@@ -164,7 +177,7 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-[1240px] flex-1 items-center gap-14 px-5 pb-16 pt-32 md:px-8 lg:grid-cols-12 lg:gap-10 lg:pb-12 lg:pt-24">
         <div className="lg:col-span-7">
           <h1
-            className="load-in text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg [text-wrap:balance] lg:[text-wrap:wrap]"
+            className="load-rise text-[clamp(2.6rem,4.9vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg [text-wrap:balance] lg:[text-wrap:wrap]"
             style={delay(0)}
           >
             <span className="lg:whitespace-nowrap">Product engineering</span>{" "}
@@ -287,7 +300,7 @@ function Services() {
               <Reveal d={i * 40} className="grid gap-4 py-9 md:grid-cols-[1fr_1.1fr] md:gap-10">
                 <h3 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">{s.title}</h3>
                 <div>
-                  <p className="text-[15px] leading-relaxed text-fg-muted">{s.body}</p>
+                  <p className="text-[16px] leading-relaxed text-fg-muted">{s.body}</p>
                   <p className="mt-3 text-[13px] text-fg-faint">{s.line}</p>
                 </div>
               </Reveal>

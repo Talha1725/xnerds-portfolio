@@ -34,7 +34,7 @@ typography:
     letterSpacing: "-0.035em"
   title-lg:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
-    fontSize: "clamp(1.75rem, 3vw, 2.5rem)"
+    fontSize: "clamp(1.6rem, 2.6vw, 2.25rem)"
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: "-0.03em"
@@ -56,13 +56,18 @@ typography:
     lineHeight: 1.625
   body:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
-    fontSize: "15px"
+    fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.625
   small:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "14px"
     fontWeight: 400
+    lineHeight: 1.5
+  ui:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "15px"
+    fontWeight: 500
     lineHeight: 1.5
   label:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
@@ -145,6 +150,8 @@ xNerds reads like a premium software company in the Linear, Vercel and Stripe ti
 Density is low and confident. Sections breathe on tall vertical rhythm (112 to 160px), content sits on a 12-column grid inside a 1240px container, and each section says one thing. Light is used once per moment: a soft blue wash falling from the top of the hero, and a matching one rising behind the closing call to action. Everything else is flat ink separated by 8% white hairlines.
 
 The system rejects the gradient-blob, neon-badge "AI agency" template the site carried before. No glow loops, no floating blobs, no slate-and-gradient cards.
+
+**One size per role.** Prose reads at 16px minimum, which makes light-on-dark copy legible, and so do form inputs (anything smaller makes iOS zoom in on focus). Buttons, nav links and list points use the 15px `ui` role. Every title-large element shares one size: featured project names, service and expertise group headings, and the About mission. The closing call to action uses the display size, the same as the page headlines. Titles always set their own line height (1.05–1.25); they never inherit body leading.
 
 **Glass only over moving content.** Frosted glass (backdrop blur plus saturate, a white/10 hairline and an inset top highlight) is used in exactly six places, each sitting over something that moves or glows: the scrolled nav, the open mobile menu, the sticky Work filter bar, the "Visit <domain>" label on project screenshots (shown on hover or focus), the Contact form panel over its blue glow, and the floating back-to-top button, whose ring traces scroll progress. Never put glass on static rows, cards or panels over flat ink, where it only lowers contrast.
 

@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 const budgets = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "Over $50,000"];
 
 const field =
-  "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[15px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none [&:user-invalid]:border-danger [&:user-invalid]:ring-danger/20";
+  "w-full rounded-lg border border-ink-strong bg-ink px-4 text-[16px] text-fg placeholder:text-fg-faint transition-colors duration-200 hover:border-white/25 focus:border-signal-soft focus:outline-none focus:ring-2 focus:ring-signal-soft/25 focus-visible:outline-none [&:user-invalid]:border-danger [&:user-invalid]:ring-danger/20";
 
 function Field({ id, label, hint, children }: { id: string; label: string; hint?: string; children: ReactNode }) {
   return (
@@ -79,7 +79,7 @@ const Contact = () => {
       <section className="border-t border-ink-line py-20 md:py-28">
         <Container className="grid gap-16 lg:grid-cols-12 lg:gap-12">
           <Reveal className="lg:col-span-5">
-            <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">Direct contact</h2>
+            <h2 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">Direct contact</h2>
             <dl className="mt-6">
               <DetailRow label="WhatsApp">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
@@ -135,8 +135,8 @@ const Contact = () => {
               onSubmit={onSubmit}
               className="relative rounded-2xl border border-white/10 bg-white/[0.035] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-30px_rgba(0,0,0,0.7)] backdrop-blur-2xl backdrop-saturate-150 sm:p-10"
             >
-              <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-fg">Project details</h2>
-              <p className="mt-2 text-[15px] text-fg-muted">
+              <h2 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-fg">Project details</h2>
+              <p className="mt-2 text-[16px] leading-relaxed text-fg-muted">
                 Sending opens your email app with everything filled in, ready to send to {EMAIL}.
               </p>
 

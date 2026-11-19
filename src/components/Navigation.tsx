@@ -74,7 +74,7 @@ export const Navigation = () => {
     >
       <nav className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 md:px-8" aria-label="Main">
         <Link to="/" className="group flex items-center gap-2.5" aria-label="xNerds home">
-          <img src="/mark.png" alt="" width={28} height={28} className="h-7 w-7" />
+          <img src="/mark.webp" alt="" width={28} height={28} className="h-7 w-7" />
           <span className="text-[17px] font-semibold tracking-[-0.02em] text-fg">xNerds</span>
         </Link>
 

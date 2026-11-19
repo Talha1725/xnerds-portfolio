@@ -157,7 +157,7 @@ const Services = () => {
             ].map((step) => (
               <li key={step.t} className="bg-ink p-7">
                 <h3 className="text-[17px] font-semibold tracking-[-0.02em] text-fg">{step.t}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-fg-muted">{step.b}</p>
+                <p className="mt-2 text-[16px] leading-relaxed text-fg-muted">{step.b}</p>
               </li>
             ))}
           </ol>

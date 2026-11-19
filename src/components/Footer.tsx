@@ -26,10 +26,10 @@ export const Footer = () => {
       <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 md:grid-cols-12 md:px-8">
         <div className="md:col-span-5">
           <Link to="/" className="flex items-center gap-2.5" aria-label="xNerds home">
-            <img src="/mark.png" alt="" width={28} height={28} className="h-7 w-7" />
+            <img src="/mark.webp" alt="" width={28} height={28} className="h-7 w-7" />
             <span className="text-[17px] font-semibold tracking-[-0.02em] text-fg">xNerds</span>
           </Link>
-          <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-fg-muted">
+          <p className="mt-5 max-w-sm text-[16px] leading-relaxed text-fg-muted">
             Software and AI engineering for founders and teams worldwide.
           </p>
         </div>
