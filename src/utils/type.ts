@@ -13,8 +13,6 @@ export interface Project {
     /** Public URL; empty for private deployments. */
     url: string;
     sector?: Sector;
-    /** Shown in the large featured rows on the homepage and at the top of Work. */
-    featured?: boolean;
   }
   
   export interface TimelineItem {

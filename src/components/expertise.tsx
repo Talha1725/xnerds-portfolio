@@ -139,6 +139,7 @@ export const integrations = [
   "Stripe",
   "Sumsub KYC",
   "AWS",
+  "Contabo",
   "Docker",
   "Redis",
   "Supabase",

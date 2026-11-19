@@ -3,7 +3,7 @@ import { Pause, Play } from "lucide-react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { projects } from "@/utils/data";
+import { projects, showcase } from "@/utils/data";
 import { EMAIL, EMAIL_URL, hostOf } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import {
@@ -208,8 +208,8 @@ function Hero() {
 /* ---------- work ---------- */
 
 function Work() {
-  const featured = [byTitle("URFX"), byTitle("BlueRock Markets")];
-  const rest = ["TradeMate", "Cockpit", "OpenReal", "BudSignal"].map(byTitle);
+  const featured = showcase.slice(0, 2);
+  const rest = showcase.slice(2);
 
   return (
     <section id="work" className="scroll-mt-20 py-28 md:py-36">

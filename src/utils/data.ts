@@ -9,7 +9,6 @@ export const projects: Project[] = [
     category: "Web application",
     url: "https://www.actflow.ai/",
     sector: "AI products",
-    featured: true,
   },
   {
     title: "FIGMENT",
@@ -19,7 +18,6 @@ export const projects: Project[] = [
     category: "Trading platform",
     url: "https://figment.trade/",
     sector: "Trading & fintech",
-    featured: true,
   },
   {
     title: "OpenReal",
@@ -30,7 +28,6 @@ export const projects: Project[] = [
     category: "Investment platform",
     url: "https://openreal.io/",
     sector: "Trading & fintech",
-    featured: true,
   },
   {
     title: "BudSignal",
@@ -41,7 +38,6 @@ export const projects: Project[] = [
     category: "Signal service",
     url: "https://budsignal.io/",
     sector: "Trading & fintech",
-    featured: true,
   },
   {
     title: "Chart Guardian",
@@ -109,9 +105,9 @@ export const projects: Project[] = [
   },
   {
     title: "NexCore VPS",
-    description: "Automates VPS provisioning, subscriptions and client access for a hosting business, with an admin console for users, orders and payments.",
+    description: "Automates VPS provisioning on Contabo infrastructure, plus subscriptions and client access for a hosting business, with an admin console for users, orders and payments.",
     image: "/work/nexcore.webp",
-    tags: ["React", "Express", "Prisma", "PostgreSQL"],
+    tags: ["React", "Express", "Prisma", "PostgreSQL", "Contabo API"],
     category: "Hosting platform",
     url: "https://nexcorevps.com/",
     sector: "Business platforms",
@@ -288,6 +284,34 @@ export const projects: Project[] = [
     url: "",
     sector: "Business platforms",
   }
+];
+
+/** The six showcase projects, in order: the homepage work section and the top of the Work page. */
+export const showcaseTitles = ["URFX", "BlueRock Markets", "TradeMate", "Cockpit", "OpenReal", "BudSignal"];
+export const showcase: Project[] = showcaseTitles.map((t) => {
+  const p = projects.find((x) => x.title === t);
+  if (!p) throw new Error(`showcase: unknown project ${t}`);
+  return p;
+});
+
+/** Order of the "More projects" grid on the Work page; anything not listed follows in data order. */
+export const moreProjectsOrder = [
+  "NexCore VPS",
+  "PropFirm Labs",
+  "FXEE",
+  "Sentinel",
+  "AdGPT",
+  "Forex Trade Automation",
+  "Chart Guardian",
+  "Calvoro Funding",
+];
+export const moreProjects: Project[] = [
+  ...moreProjectsOrder.map((t) => {
+    const p = projects.find((x) => x.title === t);
+    if (!p) throw new Error(`moreProjects: unknown project ${t}`);
+    return p;
+  }),
+  ...projects.filter((p) => !showcaseTitles.includes(p.title) && !moreProjectsOrder.includes(p.title)),
 ];
 
 export const timeline: TimelineItem[] = [

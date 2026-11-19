@@ -1,7 +1,7 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearchParams } from "react-router-dom";
 import { useHydrated } from "@/hooks/use-hydrated";
-import { projects } from "@/utils/data";
+import { moreProjects, projects, showcase } from "@/utils/data";
 import type { Sector } from "@/utils/type";
 import { cn } from "@/lib/utils";
 import { BrowserFrame, Close, Container, PageHeader, ProjectMeta, Record, Reveal } from "@/components/site";
@@ -55,8 +55,8 @@ const Portfolio = () => {
     setParams(next, { replace: true });
   };
 
-  const featured = active ? [] : projects.filter((p) => p.featured);
-  const grid = active ? projects.filter((p) => p.sector === active) : projects.filter((p) => !p.featured);
+  const featured = active ? [] : showcase;
+  const grid = active ? projects.filter((p) => p.sector === active) : moreProjects;
 
   return (
     <main>
