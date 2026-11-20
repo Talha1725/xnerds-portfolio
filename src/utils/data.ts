@@ -1,4 +1,5 @@
 import { Project, TeamMember, TimelineItem, Value } from "./type";
+import { caseStudyDetails } from "./case-studies";
 
 export const projects: Project[] = [
   {
@@ -286,7 +287,7 @@ export const projects: Project[] = [
   }
 ];
 
-/** The six showcase projects, in order: the homepage work section and the top of the Work page. */
+/** The six showcase projects, in order: the homepage work section and the top of the Portfolio page. */
 export const showcaseTitles = ["URFX", "BlueRock Markets", "TradeMate", "Cockpit", "OpenReal", "BudSignal"];
 export const showcase: Project[] = showcaseTitles.map((t) => {
   const p = projects.find((x) => x.title === t);
@@ -294,7 +295,7 @@ export const showcase: Project[] = showcaseTitles.map((t) => {
   return p;
 });
 
-/** Order of the "More projects" grid on the Work page; anything not listed follows in data order. */
+/** Order of the "More projects" grid on the Portfolio page; anything not listed follows in data order. */
 export const moreProjectsOrder = [
   "NexCore VPS",
   "PropFirm Labs",
@@ -333,7 +334,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "2024",
     title: "Growth",
-    description: "Reached 30+ satisfied clients and 50+ completed projects, building a strong portfolio across multiple industries.",
+    description: "Grew our client base and portfolio across trading, AI and business software.",
   },
   {
     year: "2025",
@@ -383,3 +384,19 @@ export const team: TeamMember[] = [
     description: "Designers who shape the product's interface and user experience.",
   }
 ]; 
+/* ---------- case studies ---------- */
+
+export const projectSlug = (title: string) =>
+  title.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/**
+ * Projects that get their own page at /portfolio/<slug>: those with a written case study,
+ * plus those with a screenshot and a description.
+ */
+export const caseStudies: Project[] = projects.filter(
+  (p) => p.title in caseStudyDetails || (p.image && p.description)
+);
+
+/** Internal case-study path for a project, or undefined when it has no page of its own. */
+export const caseStudyPath = (p: Project) =>
+  caseStudies.includes(p) ? `/portfolio/${projectSlug(p.title)}` : undefined;

@@ -62,7 +62,7 @@ const Portfolio = () => {
     <main>
       <PageHeader
         title="Products we built, live in production."
-        lead={`A selection of ${projects.length} from our 70+ projects, across trading, prop firms, AI and business software. Most are live; a few run privately for the clients who own them.`}
+        lead="A selection of our work across trading, prop firms, AI and business software. Most are live; a few run privately for the clients who own them."
       />
 
       <section className="border-t border-ink-line pb-24 pt-10 md:pb-32 md:pt-12">

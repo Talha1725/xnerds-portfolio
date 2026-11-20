@@ -1,7 +1,8 @@
 import { type CSSProperties, type ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/utils/type";
-import { projects } from "@/utils/data";
+import { Link } from "react-router-dom";
+import { caseStudyPath, projects } from "@/utils/data";
 import { EMAIL, EMAIL_URL, WHATSAPP_URL, hostOf } from "@/lib/contact";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
@@ -54,7 +55,7 @@ export function BrowserFrame({
       src={project.image}
       srcSet={srcSet}
       sizes={srcSet ? sizes : undefined}
-      alt={`${project.title} screenshot`}
+      alt={`Screenshot of ${project.title}, ${/^[aeiou]/i.test(project.category) ? "an" : "a"} ${project.category.toLowerCase()} built by xNerds`}
       width={1800}
       height={1013}
       loading={priority ? "eager" : "lazy"}
@@ -159,6 +160,7 @@ export function PrimaryAction({ className, children = "Message us on WhatsApp" }
 
 export function ProjectMeta({ project, large = false }: { project: Project; large?: boolean }) {
   const host = hostOf(project.url);
+  const caseStudy = caseStudyPath(project);
   // Preview deployments have long machine hostnames; name the action instead of printing them.
   const isPreviewHost = /\.(vercel|netlify)\.app$/.test(host);
   return (
@@ -169,7 +171,13 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
           large ? "text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.05]" : "text-[22px] leading-tight"
         )}
       >
-        {project.title}
+        {caseStudy ? (
+          <Link to={caseStudy} className="transition-colors hover:text-signal-soft">
+            {project.title}
+          </Link>
+        ) : (
+          project.title
+        )}
       </h3>
       {project.description && (
         <p className={cn("mt-3 leading-relaxed text-fg-muted", large ? "max-w-md text-[17px]" : "text-[16px]")}>
@@ -189,19 +197,30 @@ export function ProjectMeta({ project, large = false }: { project: Project; larg
       <p className={cn("text-[13px] text-fg-faint", project.description || project.highlights ? "mt-5" : "mt-2")}>
         {[project.category, ...project.tags].join("  ·  ")}
       </p>
-      {host ? (
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal-soft hover:text-white"
-        >
-          {isPreviewHost ? <span>View live app</span> : <span className="font-mono">{host}</span>}
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-        </a>
-      ) : (
-        <p className="mt-5 text-[14px] text-fg-faint">Private client deployment</p>
-      )}
+      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+        {caseStudy && (
+          <Link
+            to={caseStudy}
+            className="group inline-flex items-center gap-1.5 text-[14px] font-medium text-fg hover:text-signal-soft"
+          >
+            {project.title} case study
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+          </Link>
+        )}
+        {host ? (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 text-[14px] font-medium text-signal-soft hover:text-white"
+          >
+            {isPreviewHost ? <span>View live app</span> : <span className="font-mono">{host}</span>}
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+          </a>
+        ) : (
+          <p className="text-[14px] text-fg-faint">Private client deployment</p>
+        )}
+      </div>
     </div>
   );
 }
@@ -396,7 +415,18 @@ export function SectionTitle({ children, className }: { children: ReactNode; cla
 }
 
 /** Interior page opening: one display line, one lead paragraph, the same light as the home hero. */
-export function PageHeader({ title, lead, children }: { title: ReactNode; lead?: ReactNode; children?: ReactNode }) {
+export function PageHeader({
+  title,
+  lead,
+  before,
+  children,
+}: {
+  title: ReactNode;
+  lead?: ReactNode;
+  /** Small line above the title, such as a breadcrumb. */
+  before?: ReactNode;
+  children?: ReactNode;
+}) {
   return (
     <section className="relative overflow-hidden">
       <div
@@ -408,6 +438,11 @@ export function PageHeader({ title, lead, children }: { title: ReactNode; lead?:
         }}
       />
       <Container className="relative pb-16 pt-36 md:pb-24 md:pt-44">
+        {before && (
+          <div className="load-in mb-6" style={delay(0)}>
+            {before}
+          </div>
+        )}
         <h1
           className="load-rise max-w-4xl text-[clamp(2.6rem,5.4vw,4.3rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-fg"
           style={delay(0)}

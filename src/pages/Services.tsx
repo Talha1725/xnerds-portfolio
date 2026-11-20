@@ -1,6 +1,7 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
-import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/utils/data";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { caseStudyPath, projectSlug, projects } from "@/utils/data";
+import { Link } from "react-router-dom";
 import { EMAIL, EMAIL_URL, hostOf } from "@/lib/contact";
 import {
   Close,
@@ -85,7 +86,7 @@ const Services = () => {
       <Container>
         <ul>
           {detail.map((s, i) => (
-            <li key={s.title} className="border-b border-ink-line last:border-b-0">
+            <li key={s.title} id={projectSlug(s.title)} className="scroll-mt-20 border-b border-ink-line last:border-b-0">
               <Reveal d={i * 40} className="grid gap-6 py-12 md:py-14 lg:grid-cols-12 lg:gap-10">
                 <h2 className="text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg lg:col-span-4">
                   {s.title}
@@ -108,9 +109,21 @@ const Services = () => {
                       <ul className="mt-3 space-y-2">
                         {s.work.map((p) => {
                           const host = hostOf(p.url);
+                          const caseStudy = caseStudyPath(p);
                           return (
                             <li key={p.title}>
-                              {host ? (
+                              {caseStudy ? (
+                                <Link
+                                  to={caseStudy}
+                                  className="group inline-flex items-center gap-1.5 text-[15px] font-medium text-fg hover:text-signal-soft"
+                                >
+                                  {p.title}
+                                  <ArrowRight
+                                    className="h-3.5 w-3.5 text-fg-faint transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-signal-soft"
+                                    aria-hidden
+                                  />
+                                </Link>
+                              ) : host ? (
                                 <a
                                   href={p.url}
                                   target="_blank"

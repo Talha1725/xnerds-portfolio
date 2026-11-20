@@ -3,7 +3,7 @@ import { Pause, Play } from "lucide-react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { projects, showcase } from "@/utils/data";
+import { caseStudyPath, projects, showcase } from "@/utils/data";
 import { EMAIL, EMAIL_URL, hostOf } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import {
@@ -41,7 +41,15 @@ function MarqueeRow({ hidden = false }: { hidden?: boolean }) {
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {marqueeProjects.map((p) => (
         <li key={p.title} className="flex items-center">
-          {p.url ? (
+          {caseStudyPath(p) ? (
+            <Link
+              to={caseStudyPath(p)!}
+              tabIndex={hidden ? -1 : undefined}
+              className="inline-flex min-h-[28px] items-center whitespace-nowrap px-7 text-[15px] font-medium tracking-[-0.01em] text-fg-muted transition-colors duration-300 hover:text-fg"
+            >
+              {p.title}
+            </Link>
+          ) : p.url ? (
             <a
               href={p.url}
               target="_blank"
@@ -194,7 +202,7 @@ function Hero() {
             className="load-in mt-4 max-w-[34rem] text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-fg-muted"
             style={delay(160)}
           >
-            xNerds is a senior engineering team that designs, builds and scales web, mobile and AI products, with{" "}
+            xNerds is a software development company: a senior engineering team that designs, builds and scales web, mobile and AI products, with{" "}
             <span className="whitespace-nowrap text-fg">70+ projects</span> shipped since 2023.
           </p>
           <div className="load-in mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" style={delay(220)}>
@@ -242,7 +250,7 @@ function Work() {
             to="/portfolio"
             className="group inline-flex shrink-0 items-center gap-2 text-[15px] font-medium text-fg-muted hover:text-fg"
           >
-            See all work
+            See full portfolio
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
           </Link>
         </Reveal>

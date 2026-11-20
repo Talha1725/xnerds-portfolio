@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { projects } from "@/utils/data";
+import { caseStudyPath, projects } from "@/utils/data";
 import { hostOf } from "@/lib/contact";
 import { Container, Reveal, SectionTitle } from "@/components/site";
 
@@ -158,9 +158,17 @@ function ProofLinks({ names }: { names: string[] }) {
     <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
       {names.map(byTitle).map((p) => {
         const host = hostOf(p.url);
+        const caseStudy = caseStudyPath(p);
         return (
           <li key={p.title}>
-            {host ? (
+            {caseStudy ? (
+              <Link
+                to={caseStudy}
+                className="group inline-flex items-center gap-1 text-[14px] font-medium text-fg hover:text-signal-soft"
+              >
+                {p.title}
+              </Link>
+            ) : host ? (
               <a
                 href={p.url}
                 target="_blank"

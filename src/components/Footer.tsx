@@ -6,7 +6,7 @@ const columns = [
   {
     title: "Company",
     links: [
-      { name: "Work", to: "/portfolio" },
+      { name: "Portfolio", to: "/portfolio" },
       { name: "Services", to: "/services" },
       { name: "About", to: "/about" },
       { name: "Contact", to: "/contact" },
